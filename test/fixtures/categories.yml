@@ -1,0 +1,241 @@
+apts:
+    id: 1
+    name: apts / housing
+    slug: apa
+    parent_category_id: 1
+
+housing_swap:
+    id: 2
+    name: housing swap
+    slug: swp
+    parent_category_id: 1
+    
+housing_wanted:
+    id: 3
+    name: housing wanted
+    slug: hsw
+    parent_category_id: 1
+    
+office_commercial:
+    id: 4
+    name: office / commercial
+    slug: off
+    parent_category_id: 1
+    
+parking_storage:
+    id: 5
+    name: parking / storage
+    slug: prk
+    parent_category_id: 1
+    
+real_estate:
+    id: 6
+    name: real estate for sale
+    slug: rfs
+    parent_category_id: 1
+    
+rooms_shared:
+    id: 7
+    name: rooms / shared
+    slug: rfs
+    parent_category_id: 1
+    
+sublets_temporary:
+    id: 8
+    name: sublets / temporary
+    slug: sub
+    parent_category_id: 1
+    
+vacation_rentals:
+    id: 9
+    name: vacation rentals
+    slug: vac
+    parent_category_id: 1
+    
+    
+    
+barter:
+    id: 10
+    name: barter
+    slug: bar
+    parent_category_id: 2
+    
+bikes:
+    id: 11
+    name: bikes
+    slug: bik
+    parent_category_id: 2
+    
+boats:
+    id: 12
+    name: boats
+    slug: boa
+    parent_category_id: 2
+    
+business:
+    id: 13
+    name: business
+    slug: bfs
+    parent_category_id: 2
+    
+computer:
+    id: 14
+    name: computer
+    slug: sys
+    parent_category_id: 2
+    
+free:
+    id: 15
+    name: free
+    slug: zip
+    parent_category_id: 2
+    
+general:
+    id: 16
+    name: general
+    slug: for
+    parent_category_id: 2
+    
+jewelry:
+    id: 17
+    name: jewelry
+    slug: jwl
+    parent_category_id: 2
+    
+material:
+    id: 18
+    name: material
+    slug: mat
+    parent_category_id: 2
+    
+rvs:
+    id: 19
+    name: rvs
+    slug: rvs
+    parent_category_id: 2
+    
+sporting:
+    id: 20
+    name: sporting
+    slug: spo
+    parent_category_id: 2
+    
+tickets:
+    id: 21
+    name: tickets
+    slug: tix
+    parent_category_id: 2
+    
+tools:
+    id: 22
+    name: tools
+    slug: tls
+    parent_category_id: 2
+    
+wanted:
+    id: 23
+    name: wanted
+    slug: wan
+    parent_category_id: 2
+    
+arts_crafts:
+    id: 24
+    name: arts+crafts
+    slug: art
+    parent_category_id: 2
+    
+auto_parts:
+    id: 25
+    name: auto parts
+    slug: pts
+    parent_category_id: 2
+    
+baby_kids:
+    id: 26
+    name: baby+kids
+    slug: bab
+    parent_category_id: 2
+    
+cars_trucks:
+    id: 27
+    name: cars+trucks
+    slug: car
+    parent_category_id: 2
+    
+cds_dvds_vhs:
+    id: 28
+    name: cds/dvd/vhs
+    slug: emd
+    parent_category_id: 2
+    
+clothes_acc:
+    id: 29
+    name: clothes+acc
+    slug: clo
+    parent_category_id: 2
+    
+collectibles:
+    id: 30
+    name: collectibles
+    slug: clt
+    parent_category_id: 2
+    
+electronics:
+    id: 31
+    name: electronics
+    slug: ele
+    parent_category_id: 2
+    
+farm_garden:
+    id: 32
+    name: farm+garden
+    slug: grd
+    parent_category_id: 2
+    
+furniture:
+    id: 33
+    name: furniture
+    slug: fur
+    parent_category_id: 2
+    
+games_toys:
+    id: 34
+    name: games+toys
+    slug: tag
+    parent_category_id: 2
+    
+garage_sale:
+    id: 35
+    name: garage sale
+    slug: gms
+    parent_category_id: 2
+    
+household:
+    id: 36
+    name: household
+    slug: hsh
+    parent_category_id: 2
+    
+motorcycles:
+    id: 37
+    name: motorcycles
+    slug: mcy
+    parent_category_id: 2
+    
+music_instr:
+    id: 38
+    name: music instr
+    slug: msg
+    parent_category_id: 2
+    
+photo_video:
+    id: 39
+    name: photo+video
+    slug: pho
+    parent_category_id: 2
+    
+books:
+    id: 40
+    name: books
+    slug: bks
+    parent_category_id: 2

@@ -1,0 +1,23 @@
+<%= render(:partial => 'admin')%>
+<br /><br />
+<div class="admin-form">
+    <%= error_messages_for 'new_password', 'confirm_password' %>
+    <fieldset>
+      <legend>Change Password</legend>
+      <% form_tag :action => 'change_password' do -%>
+        <p>
+          <label for ="old_password">Old:</label>
+           <%= password_field_tag 'old_password', @old_password, :size => 50 %>
+       </p><br />
+       <p>
+         <label for="new_password">New:</label>
+           <%= password_field_tag 'new_password', nil, :size => 50 %>     
+       </p><br />
+       <p>
+         <label for="confirm_password">Confirm:</label>
+            <%= password_field_tag 'confirm_password', nil, :size => 50 %>
+       </p><br />
+       <p><%= submit_tag 'Change', :class => 'submit' %></p>
+      <% end -%>
+    </fieldset>
+</div>

@@ -1,0 +1,10 @@
+<% @ad = ad %>
+<tr class="edit" id="edit_ad_<%= h(ad.id.to_s) %>" style="display:none;">
+<% form_for(:ad, @ad,
+	 			:url => { :action => 'update_ad', :id => @ad }, 
+				:html => { :id => "eaf#{@ad.id}" }) do |a|  %>
+  <td><a onclick='Element.hide("edit_ad_<%= ad.id.to_s %>")'>[Cancel]</a></td>
+  <td class="cell-shorttext"><%= a.text_field :title, :size => 20 %></td>
+  <td class="cell-longtext"><%= a.text_area :ad, :style=> "width: 100%;", :rows => ad_text_area_size(ad) %></td>
+  <td><%= submit_tag "Update &raquo;" %>zzz<% end %></td>
+</tr>

@@ -1,0 +1,53 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport/lib/active_support/values
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+unicode_tables.dat
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+3dbd2c4b3e8ad234003ad55025670126
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+has-props
+
+time_zone.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+971f958de3bb4230d77b769e8a854c1d
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

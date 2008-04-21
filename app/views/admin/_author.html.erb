@@ -1,0 +1,11 @@
+<tr id="author_<%= h(author.id.to_s) %>" class="<%= cycle('rowodd','roweven') %>">   
+    <td><%= h(author.id) %></td>
+    <td class="cell-shorttext"><%= "<del>" unless !author.banned %><%= h(author.email)%><%= "</del> [Banned]" unless !author.banned %></td>
+    <td class="cell-shorttext"><%= author.ads.size.to_s %></td>
+    <td class="cell-longtext"><%= select("ad", "ad_id", author.ads.find(:all, :order => 'created_at DESC').collect { |a| [ a.title, a.id ]}, { :onchange => nil, :include_blank => true })%></td>
+    <td class="cell-shorttext">
+	  <a href="#" onclick="Element.toggle('edit_category_<%= author.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+      <%= link_to image_tag('/images/trash2.png'), {:action => 'delete_author_and_ads', :id => author}, :method => :post, :confirm => "Are you sure?" %>
+    </td>
+</tr>
+<%#= render :partial => 'edit_category_form', :locals => { :category => category }  %>

@@ -1,0 +1,1 @@
+page.insert_html(:after, "category_#{@category.id}", :partial => 'edit_category_form', :locals => { :category => @category } )

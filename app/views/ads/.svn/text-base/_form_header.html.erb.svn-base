@@ -1,0 +1,1 @@
+Create new ad in <%= category.parent_category.name %> &raquo; <%= category.name %><br/><br/>

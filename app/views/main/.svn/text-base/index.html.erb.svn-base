@@ -1,0 +1,27 @@
+<br />
+<!-- Use Standard Nesting Grids and Special Nesting Grids to subdivid regions of your layout. -->
+<!-- Special Nesting Grid B tells three children to split space evenly -->
+<!-- the first child of a Grid needs the "first" class -->
+<% if !@parent_categories.blank? %>
+	<% @cats = 0 %>
+	<% # max categories to list on a single line %>
+	<% @maxcats = 25 %>
+	<div class="yui-u first">
+	<% for p in @parent_categories %>
+		<ul class="ads">
+	        <div class ="ads_category">
+	            <%= render :partial => 'category', :locals => { :category => p } %>
+	        </div>
+	        <div class ="ads">    
+	        <%= render :partial => 'category', :collection => p.categories.find(:all, :order => 'name ASC') %>
+	        </div>
+		</ul>
+		<% @cats += p.categories.size %>
+		<% if @cats >= @maxcats %>
+			</div>
+			<div class="yui-u">
+			<% @cats = 0 %>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>

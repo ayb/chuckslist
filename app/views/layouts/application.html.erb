@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Chuckslist</title>
+	<%= stylesheet_link_tag "style", :cache => true %>
+    <%= stylesheet_link_tag 'chuckslist', :cache => true  %>
+	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed" />        
+	<%= javascript_include_tag :defaults, :cache => true %>
+</head>
+
+<body>
+<!-- the id on the containing div determines the page width. -->
+<!-- #doc = 750px; #doc2 = 950px; #doc3 = 100%; #doc4 = 974px -->
+<div id="doc">					
+	<div id="hd">
+           <p><img src ="/images/chuckslistlogo.png"></p>
+	   <p>
+             <%= link_to 'ChucksList', root_path %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', :controller => 'ads', :action => 'feed' %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
+             <% if logged_in? %> | <a href="/logout"><%= current_user.email %>[Logout]</a><% end %>
+           </p>
+	</div>
+	<div id="bd">
+		<span id="notices">
+			<% for name in [:notice, :warning, :message] %>
+				<% if flash[name] %>
+			  		<%= "<div id=\"#{name}\">#{flash[name]}</div>" %>
+				<% end %>
+			<% end %>
+		</span>
+		<div class="yui-gb">
+		<%= yield %>
+		</div>
+	</div>
+	<div id="ft">
+		<p style="margin-top: 10px;">Copyright &copy; 2008 <%= link_to 'ChucksList', root_path %>.</p>
+	</div>
+</div>
+</body>
+</html>
+

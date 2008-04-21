@@ -1,0 +1,10 @@
+<tr class ="<%= cycle('rowodd','roweven') %>" id="parent_category_<%= parent.id %>">   
+  <td><%= h(parent.id) %></td>
+  <td><%= h(parent.name)%></td>
+  <td><%= h(parent.slug) %></td>
+  <td>
+	<a href="#" onclick="Element.toggle('edit_parent_category_<%= parent.id %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+    <%= link_to image_tag('/images/trash2.png'), {:action => 'del_parent', :id => parent}, {:method => :post, :confirm => "Confirm Delete Parent Category:#{parent.name}"} %>
+  </td>
+</tr>
+<%= render :partial => 'edit_parent_category_form', :locals => { :parent_category => parent }%>

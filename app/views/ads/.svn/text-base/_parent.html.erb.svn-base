@@ -1,0 +1,1 @@
+<li><%= link_to_remote parent.name, :url => { :action => 'select_category', :id => parent.id } %></li>

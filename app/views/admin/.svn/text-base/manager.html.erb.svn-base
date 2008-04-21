@@ -1,0 +1,20 @@
+<%= render(:partial=>'admin')%>
+<br /><br />
+<div class="admin-form">
+  <fieldset>
+    <legend>Manage Ads</legend>
+    <br />
+    <table>
+      <tr class="header">
+        <td>Ad #</td>
+        <td>Title</td>    
+        <td>Content</td>
+        <td>Options</td>
+      </tr>
+      <%= render :partial => 'ad', :collection => @display_data %>
+    </table>
+    <div class="pagination">
+       <%= will_paginate @display_data %>
+    </div>
+  </fieldset>
+</div>

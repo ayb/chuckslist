@@ -1,0 +1,55 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/railties/lib/rails_generator/generators/components/integration_test
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+USAGE
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+ec2252f62eed2c82a500d479da340df5
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+integration_test_generator.rb
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+a8c9071d01d87110b42f149cf4d08995
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+templates
+dir
+

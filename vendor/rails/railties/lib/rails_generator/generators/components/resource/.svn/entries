@@ -1,0 +1,55 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/railties/lib/rails_generator/generators/components/resource
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+resource_generator.rb
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+6b08d172d8c2b2f2de2abd46aceeb5b5
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+USAGE
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+3ab2e11c07b12c37053cafba835db5bf
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+templates
+dir
+

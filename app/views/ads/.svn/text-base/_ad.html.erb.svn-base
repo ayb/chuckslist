@@ -1,0 +1,1 @@
+<li><%= link_to h(ad.title), :controller => 'ads', :action => 'show', :id => ad %></li>

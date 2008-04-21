@@ -1,0 +1,1 @@
+page.insert_html(:after, "ad_#{@ad.id}", :partial => 'edit_ad_form', :locals => { :ad => @ad } )

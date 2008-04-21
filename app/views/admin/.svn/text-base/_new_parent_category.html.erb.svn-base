@@ -1,0 +1,6 @@
+<br />
+  <% form_tag :action => 'create_parent_category' do -%>
+    New Parent Category:&nbsp;
+    <%= text_field_tag 'parent_category' %>&nbsp;<%= submit_tag 'Add' %>
+  <% end %>
+<br />

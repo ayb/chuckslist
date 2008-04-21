@@ -1,0 +1,13 @@
+<tr id="user_<%= h(user.id.to_s) %>" class="<%= cycle('rowodd','roweven') %>">
+ <td><%= h(user.id) %></td>
+ <td class="cell-shorttext"><%= "<del>" unless !user.banned %><%= h(user.email)%><%= "</del>" unless !user.banned %> <%= "[Banned]" unless !user.banned %></td>
+ <td><a href="#" onclick="Element.toggle('edit_user_<%= user.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+   <% if !user.isAdmin %>
+       <%= link_to image_tag('/images/admin.png'), {:action => 'toggle_user_admin', :id => user}, {:method => :post, :confirm => "Make User:#{user.email} Admin?"} %>
+   <% else %>    
+       <%= link_to image_tag('/images/unadmin.png'), {:action => 'toggle_user_admin', :id => user}, {:method => :post, :confirm => "Make User:#{user.email} Non-admin?"} %>
+   <% end %>        
+   <%= link_to image_tag('/images/trash2.png'), {:action => 'delete_user', :id => user}, {:method => :post, :confirm => "Confirm Delete Category:#{user.email}"} %>
+ </td>
+</tr>
+<%= render :partial => 'edit_user_form', :locals => { :user => user } %>

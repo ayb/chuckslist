@@ -1,0 +1,94 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/actionmailer
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+7aa021fd82f4c8779ee76f51057e527e
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+7f1765c9bbf975fc3235d807ea66516a
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+install.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+8f2cf06de1b064108fb9138dc450d82b
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+MIT-LICENSE
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+0215e063ea54f0df0617e94b7f2d759c
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+README
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+067c754371f8b6ed44770e143a8421bf
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

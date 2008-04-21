@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/config/initializers
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+inflections.rb
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+46b85f9044d69b3d813d0957dae1b026
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+mime_types.rb
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+53b1216a09d1bbd2863d09a5db5318f0
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

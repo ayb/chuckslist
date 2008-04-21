@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/actionmailer/test/fixtures/path.with.dots/funky_path_mailer
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+multipart_with_template_path_with_dots.rhtml
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+multipart_with_template_path_with_dots.erb
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+cad24fb207f60087599e59b3430b1b36
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

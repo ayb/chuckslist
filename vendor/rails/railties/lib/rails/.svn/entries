@@ -1,0 +1,55 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/railties/lib/rails
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+plugin.rb
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+1ddca694ab83329011e707bd8d4fe860
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+version.rb
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+8c2da254daaf7bbb62782d5031149fa1
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+plugin
+dir
+

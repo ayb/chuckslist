@@ -1,0 +1,97 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activerecord
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+test
+dir
+
+RUNNING_UNIT_TESTS
+file
+
+
+
+
+2008-04-21T15:41:50.000000Z
+2703940d41a3d74702dcbae962588aca
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+Rakefile
+file
+
+
+
+
+2008-04-21T15:41:50.000000Z
+6d9818e09f228dcfcd403eb6b3e556ad
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-04-21T15:41:50.000000Z
+26025aec95ce4b5f98d0870bbd039af7
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+install.rb
+file
+
+
+
+
+2008-04-21T15:41:50.000000Z
+e122dbd32858b8d5dfda395d22da5fe8
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+README
+file
+
+
+
+
+2008-04-21T15:41:50.000000Z
+bfe05c7108c6e55fa53ae8b7d32691fb
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+examples
+dir
+

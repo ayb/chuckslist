@@ -1,0 +1,2 @@
+page.replace_html("new-ad", :partial => 'form_header', :locals => { :category => @category })
+page.insert_html(:bottom, "new-ad", :partial => 'form', :locals => { :submit_text => "create ad &raquo;", :category => @category })

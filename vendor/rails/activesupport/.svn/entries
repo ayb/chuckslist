@@ -1,0 +1,55 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-04-21T15:41:49.000000Z
+b29d0569ec90eea1ddfb6a2d8777e8af
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+README
+file
+
+
+
+
+2008-04-21T15:41:49.000000Z
+6d5825d5dbcc4f0d3d158618837d7b23
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

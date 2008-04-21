@@ -1,0 +1,40 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport/lib/active_support/core_ext/pathname
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+clean_within.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+9ca760d02290b0b8063b854e981166ee
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

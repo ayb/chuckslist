@@ -1,0 +1,23 @@
+<%= render(:partial=>'admin')%>
+<br /><br />
+<div class="admin-form">
+  <fieldset>
+    <legend>Manage Parent Categories</legend>
+    <br />
+    <table>
+      <tr class="header">
+        <td>#</td>
+        <td>Name</td> 
+   		<td>Slug</td>
+        <td>Options</td>
+      </tr>
+        <%= render :partial => 'parent', :collection => @display_data %>
+    </table>
+    <div class = "footer-controls">
+       <%= render :partial => 'new_parent_category' %> 
+    </div>
+    <div class="pagination">
+       <%= will_paginate @display_data %>  
+    </div>
+  </fieldset>
+</div

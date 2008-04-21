@@ -1,0 +1,67 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport/lib/active_support/json
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+encoders
+dir
+
+variable.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+4d23af636d45a50217ebdedae8e56f1d
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+encoding.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+cec50acf72982863acde8ed5547a0d41
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+decoding.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+38ce44bcf61fe1b2b56a85ca1b11ed8a
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

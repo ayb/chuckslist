@@ -1,0 +1,82 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/config
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-04-08T16:25:41.054913Z
+85
+goodkarma
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+routes.rb
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+3ad993d9d869f7c664b7acf511bbc38e
+2008-04-04T15:09:00.539055Z
+69
+goodkarma
+
+database.yml.sample
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+8e6692de103878d5bb24186eb658c682
+2008-02-12T04:31:45.096541Z
+13
+goodkarma
+
+boot.rb
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+62fe46fd028f9df081e4ec9eb85968c0
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+initializers
+dir
+
+environment.rb
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+9f6765b8b0cd2e9d11994e47843d130c
+2008-04-08T14:09:14.571450Z
+84
+goodkarma
+
+environments
+dir
+

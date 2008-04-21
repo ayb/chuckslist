@@ -1,0 +1,58 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activerecord/test/connections
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+native_openbase
+dir
+
+native_sqlite
+dir
+
+native_frontbase
+dir
+
+native_postgresql
+dir
+
+native_sqlite3
+dir
+
+native_mysql
+dir
+
+native_oracle
+dir
+
+native_firebird
+dir
+
+native_sybase
+dir
+
+native_db2
+dir
+

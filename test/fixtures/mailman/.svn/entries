@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/test/fixtures/mailman
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+test_mail_001
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+48617ecacaabf55b2c11500aa5721453
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+test_mail_002
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+5fbf24f98e363eeeb0d48c07eef2abfc
+2008-03-04T19:28:58.358531Z
+29
+drspin
+

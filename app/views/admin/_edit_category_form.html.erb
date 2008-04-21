@@ -1,0 +1,16 @@
+<% # can't get the ajax form working yet!  FRUSTRATING!! '%>
+<% @category = category # because @category is nil but we need it to use a form_for tag %>
+<tr class="edit" id="edit_category_<%= h(category.id.to_s) %>" style="display: none;">  
+<% #form_remote_tag(:url => { :controller => 'admin', :action => 'update_category', :id => category.id }) do %>
+<% # remote_form_for(@category) do |c| %>
+<% form_for(:category, @category,
+ 			:url => { :action => 'update_category', :id => @category }, 
+			:html => { :id => "ecf#{@category.id}" }) do |c|  %>
+
+    <td><a href="#" onclick="Element.hide('edit_category_<%= @category.id.to_s %>')">[Cancel]</a></td>
+    <td class="cell-shorttext"><%= c.select :parent_category_id, @parent_categories, :selected => @category.parent_category_id %></td>
+    <td class="cell-longtext"><%= c.text_field :name, :size => 20 %></td>
+	<td><%= c.text_field :slug, :size => 8 %></td>
+    <td><%= submit_tag "Update &raquo;" %></td>
+<%  end %>
+</tr>

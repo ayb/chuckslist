@@ -1,0 +1,40 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/app
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-04-08T16:25:41.054913Z
+85
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+helpers
+dir
+
+models
+dir
+
+controllers
+dir
+
+views
+dir
+

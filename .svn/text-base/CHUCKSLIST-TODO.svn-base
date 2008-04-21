@@ -1,0 +1,14 @@
+TODO for v0.2 and beyond (in no particular order)
+-------------------------------------------------
+1. Add search feature on main chuckslist page (user end)
+2. Add search feature in Admin user management page (admin side)
+3. Clean up model and controller code
+4. Add some form of CAPTCHA authentication for posting
+5. Add Javascript validation to confirm email address when posting an ad (or else redirect them back to the form in a way that is neat and prevents data loss)
+6. Add RSS feed for each category (instead of just a main one)
+7. add ability to upload image(s) with your ad
+8. add more tests (we started strong but then got sidetracked)
+9. should we consider making ChucksList an ENGINE - such as 
+10. ability to flag posts as spam/miscategorized/etc.
+11. do more to enforce banned authors (ban the IP?)
+12. enhance functions for managing authors and ads in admin section

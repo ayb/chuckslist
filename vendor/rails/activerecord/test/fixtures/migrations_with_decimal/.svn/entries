@@ -1,0 +1,40 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activerecord/test/fixtures/migrations_with_decimal
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+1_give_me_big_numbers.rb
+file
+
+
+
+
+2008-04-21T15:41:49.000000Z
+15dc3a266b0944bdad7453d251cf8a1d
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/test/fixtures/app_default_data/import
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-04-08T11:54:53.713164Z
+78
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+categories.yml
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+fe4c424ed1ebccc3ee05e956fd012976
+2008-04-08T11:54:53.713164Z
+78
+goodkarma
+
+parent_categories.yml
+file
+
+
+
+
+2008-04-21T15:41:46.000000Z
+ea91d7ea01280df0916c039b6c224cb3
+2008-04-08T11:45:55.847419Z
+77
+goodkarma
+

@@ -1,0 +1,4 @@
+page.replace_html("new-ad", :partial => 'show_parent', :locals => { :parent => @parent_category })
+page.insert_html(:bottom, "new-ad", "<ul>")
+page.insert_html(:bottom, "new-ad", :partial => 'category', :collection => @parent_category.categories.in_order)
+page.insert_html(:bottom, "new-ad", "</ul>")

@@ -1,0 +1,82 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/railties/configs
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+lighttpd.conf
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+9df5d40f1b3a3a9f1248e44d6ebbabcf
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+routes.rb
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+ad1231105071117136b47aed76d9ced3
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+apache.conf
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+efabcc9c4d4c5abeea2e1a17ff578c64
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+initializers
+dir
+
+databases
+dir
+
+empty.log
+file
+
+
+
+
+2008-04-21T15:41:53.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

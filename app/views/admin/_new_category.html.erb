@@ -1,0 +1,7 @@
+<br />
+<% form_tag :action => "create_category" do -%>
+  New Category:&nbsp;
+  <%= collection_select('ParentCategory', :id, @parents, :id, :name) %> &nbsp;
+  <%= text_field_tag 'new_category' %>&nbsp;<%= submit_tag 'Add' %>
+<% end %>
+<br />

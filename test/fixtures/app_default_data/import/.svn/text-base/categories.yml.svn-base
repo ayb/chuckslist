@@ -1,0 +1,813 @@
+categories_000001:
+  slug: art
+  name: arts+crafts
+  updated_at: 2008-04-01 15:40:49
+  id: "1"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000002:
+  slug: pts
+  name: auto parts
+  updated_at: 2008-04-01 15:40:49
+  id: "2"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000003:
+  slug: bab
+  name: baby+kids
+  updated_at: 2008-04-01 15:40:49
+  id: "3"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000004: 
+  slug: bar
+  name: barter
+  updated_at: 2008-04-01 15:40:49
+  id: "4"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000005:
+  slug: bik
+  name: bikes
+  updated_at: 2008-04-01 15:40:49
+  id: "5"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000006:
+  slug: boa
+  name: boats
+  updated_at: 2008-04-01 15:40:49
+  id: "6"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000007:
+  slug: bks
+  name: books
+  updated_at: 2008-04-01 15:40:49
+  id: "7"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000008:
+  slug: bfs
+  name: business
+  updated_at: 2008-04-01 15:40:49
+  id: "8"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000009: 
+  slug: car
+  name: cars+trucks
+  updated_at: 2008-04-01 15:40:49
+  id: "9"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000010: 
+  slug: emd
+  name: cd/dvd/vhs
+  updated_at: 2008-04-01 15:40:49
+  id: "10"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000011: 
+  slug: clt
+  name: collectibles
+  updated_at: 2008-04-01 15:40:49
+  id: "11"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000012: 
+  slug: sys
+  name: computer
+  updated_at: 2008-04-01 15:40:49
+  id: "12"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000013: 
+  slug: ele
+  name: electronics
+  updated_at: 2008-04-01 15:40:49
+  id: "13"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000014:
+  slug: grd
+  name: farm+garden
+  updated_at: 2008-04-01 15:40:49
+  id: "14"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000015: 
+  slug: zip
+  name: free
+  updated_at: 2008-04-01 15:40:49
+  id: "15"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000016: 
+  slug: fur
+  name: furniture
+  updated_at: 2008-04-01 15:40:49
+  id: "16"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000017: 
+  slug: tag
+  name: games+toys
+  updated_at: 2008-04-01 15:40:49
+  id: "17"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000018: 
+  slug: gms
+  name: garage sale
+  updated_at: 2008-04-01 15:40:49
+  id: "18"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000019: 
+  slug: for
+  name: general
+  updated_at: 2008-04-01 15:40:49
+  id: "19"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000020: 
+  slug: hsh
+  name: household
+  updated_at: 2008-04-01 15:40:49
+  id: "20"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000021: 
+  slug: jwl
+  name: jewelry
+  updated_at: 2008-04-01 15:40:49
+  id: "21"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000022: 
+  slug: mat
+  name: material
+  updated_at: 2008-04-01 15:40:49
+  id: "22"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000023: 
+  slug: mcy
+  name: motorcycles
+  updated_at: 2008-04-01 15:40:49
+  id: "23"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000024: 
+  slug: msg
+  name: music instr
+  updated_at: 2008-04-01 15:40:49
+  id: "24"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000025: 
+  slug: pho
+  name: photo+video
+  updated_at: 2008-04-01 15:40:49
+  id: "25"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000026: 
+  slug: rvs
+  name: rvs
+  updated_at: 2008-04-01 15:40:49
+  id: "26"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000027: 
+  slug: spo
+  name: sporting
+  updated_at: 2008-04-01 15:40:49
+  id: "27"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000028: 
+  slug: tix
+  name: tickets
+  updated_at: 2008-04-01 15:40:49
+  id: "28"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000029: 
+  slug: tls
+  name: tools
+  updated_at: 2008-04-01 15:40:49
+  id: "29"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000030: 
+  slug: wan
+  name: wanted
+  updated_at: 2008-04-01 15:40:49
+  id: "30"
+  parent_category_id: "1"
+  created_at: 2008-03-31 14:57:53
+categories_000031: 
+  slug: acc
+  name: accounting+finance
+  updated_at: 2008-04-01 15:40:49
+  id: "31"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000032: 
+  slug: office
+  name: admin / office
+  updated_at: 2008-04-01 15:40:49
+  id: "32"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000033: 
+  slug: egr
+  name: arch / engineering
+  updated_at: 2008-04-01 15:40:49
+  id: "33"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000034:
+  slug: med
+  name: art / media / design
+  updated_at: 2008-04-01 15:40:49
+  id: "34"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000035:
+  slug: sci
+  name: biotech / science
+  updated_at: 2008-04-01 15:40:49
+  id: "35"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000036:
+  slug: bus
+  name: business / mgmt
+  updated_at: 2008-04-01 15:40:49
+  id: "36"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000037:
+  slug: csr
+  name: customer service
+  updated_at: 2008-04-01 15:40:49
+  id: "37"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000038:
+  slug: edu
+  name: education
+  updated_at: 2008-04-01 15:40:49
+  id: "38"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000039:
+  slug: fbh
+  name: food / bev / hosp
+  updated_at: 2008-04-01 15:40:49
+  id: "39"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000040:
+  slug: lab
+  name: general labor
+  updated_at: 2008-04-01 15:40:49
+  id: "40"
+  parent_category_id: "2" 
+  created_at: 2008-03-31 14:57:53
+categories_000041:
+  slug: gov
+  name: government
+  updated_at: 2008-04-01 15:40:49
+  id: "41"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000042:
+  slug: hum
+  name: human resources
+  updated_at: 2008-04-01 15:40:49
+  id: "42"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000043:
+  slug: eng
+  name: internet engineers
+  updated_at: 2008-04-01 15:40:49
+  id: "43"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000044:
+  slug: lgl
+  name: legal / paralegal
+  updated_at: 2008-04-01 15:40:49
+  id: "44"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000045:
+  slug: mnu
+  name: manufacturing
+  updated_at: 2008-04-01 15:40:49
+  id: "45"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000046:
+  slug: mar
+  name: marketing / pr / ad
+  updated_at: 2008-04-01 15:40:49
+  id: "46"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000047:
+  slug: hea
+  name: medical / health
+  updated_at: 2008-04-01 15:40:49
+  id: "47"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000048:
+  slug: npo
+  name: nonprofit sector
+  updated_at: 2008-04-01 15:40:49
+  id: "48"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53 
+categories_000049:
+  slug: rej
+  name: real estate
+  updated_at: 2008-04-01 15:40:49
+  id: "49"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000050:
+  slug: ret
+  name: retail / wholesale
+  updated_at: 2008-04-01 15:40:49
+  id: "50"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000051:
+  slug: sls
+  name: sales / biz dev
+  updated_at: 2008-04-01 15:40:49
+  id: "51"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000052:
+  slug: spa
+  name: salon / spa / fitness
+  updated_at: 2008-04-01 15:40:49
+  id: "52"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000053:
+  slug: sec
+  name: security
+  updated_at: 2008-04-01 15:40:49
+  id: "53"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000054:
+  slug: trd
+  name: skilled trade / craft
+  updated_at: 2008-04-01 15:40:49
+  id: "54"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000055:
+  slug: sof
+  name: software / qa / dba
+  updated_at: 2008-04-01 15:40:49
+  id: "55"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000056:
+  slug: sad
+  name: systems / network
+  updated_at: 2008-04-01 15:40:49
+  id: "56"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000057:
+  slug: tch
+  name: technical support
+  updated_at: 2008-04-01 15:40:49
+  id: "57"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000058:
+  slug: trp
+  name: transport
+  updated_at: 2008-04-01 15:40:49
+  id: "58"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000059:
+  slug: tfr
+  name: tv / film / video
+  updated_at: 2008-04-01 15:40:49
+  id: "59"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000060:
+  slug: web
+  name: web / info design
+  updated_at: 2008-04-01 15:40:49
+  id: "60"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000061:
+  slug: wri
+  name: writing / editing
+  updated_at: 2008-04-01 15:40:49
+  id: "61"
+  parent_category_id: "2"
+  created_at: 2008-03-31 14:57:53
+categories_000062:
+  slug: aos
+  name: automotive
+  updated_at: 2008-04-01 15:40:49
+  id: "62"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000063:
+  slug: bts
+  name: beauty
+  updated_at: 2008-04-01 15:40:49
+  id: "63"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000064:
+  slug: cps
+  name: computer
+  updated_at: 2008-04-01 15:40:49
+  id: "64"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000065:
+  slug: crs
+  name: creative
+  updated_at: 2008-04-01 15:40:49
+  id: "65"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000066:
+  slug: evs
+  name: event
+  updated_at: 2008-04-01 15:40:49
+  id: "66"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000067:
+  slug: fns
+  name: financial
+  updated_at: 2008-04-01 15:40:49
+  id: "67"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000068:
+  slug: hss
+  name: household
+  updated_at: 2008-04-01 15:40:49
+  id: "68"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000069:
+  slug: lbs
+  name: labor/move
+  updated_at: 2008-04-01 15:40:49
+  id: "69"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000070:
+  slug: lgs
+  name: legal
+  updated_at: 2008-04-01 15:40:49
+  id: "70"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000071:
+  slug: lss
+  name: lessons
+  updated_at: 2008-04-01 15:40:49
+  id: "71"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000072:
+  slug: rts
+  name: real estate
+  updated_at: 2008-04-01 15:40:49
+  id: "72"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000073:
+  slug: sks
+  name: skilled trade
+  updated_at: 2008-04-01 15:40:49
+  id: "73"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000074:
+  slug: biz
+  name: sm biz ads
+  updated_at: 2008-04-01 15:40:49
+  id: "74"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000075:
+  slug: ths
+  name: therapeutic
+  updated_at: 2008-04-01 15:40:49
+  id: "75"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000076:
+  slug: trv
+  name: travel/vac
+  updated_at: 2008-04-01 15:40:49
+  id: "76"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000077:
+  slug: wet
+  name: write/ed/tr8
+  updated_at: 2008-04-01 15:40:49
+  id: "77"
+  parent_category_id: "3"
+  created_at: 2008-03-31 14:57:53
+categories_000078:
+  slug: cpg
+  name: computer
+  updated_at: 2008-04-01 15:40:49
+  id: "78"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000079:
+  slug: cwg
+  name: crew
+  updated_at: 2008-04-01 15:40:49
+  id: "79"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000080:
+  slug: crg
+  name: creative
+  updated_at: 2008-04-01 15:40:49
+  id: "80"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000081:
+  slug: dmg
+  name: domestic
+  updated_at: 2008-04-01 15:04:20
+  id: "81"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000082:
+  slug: evg
+  name: event
+  updated_at: 2008-04-01 15:40:49
+  id: "82"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000083:
+  slug: lbg
+  name: labor
+  updated_at: 2008-04-01 15:40:49
+  id: "83"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000084:
+  slug: tlg
+  name: talent
+  updated_at: 2008-04-01 15:40:49
+  id: "84"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000085:
+  slug: wrg
+  name: writing
+  updated_at: 2008-04-01 15:40:49
+  id: "85"
+  parent_category_id: "4"
+  created_at: 2008-03-31 14:57:53
+categories_000086:
+  slug: apa
+  name: apts / housing
+  updated_at: 2008-04-01 15:40:49
+  id: "86"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000087:
+  slug: swp
+  name: housing swap
+  updated_at: 2008-04-01 15:40:49
+  id: "87"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000088:
+  slug: hsw
+  name: housing wanted
+  updated_at: 2008-04-01 15:40:49
+  id: "88"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000089:
+  slug: off
+  name: office / commercial
+  updated_at: 2008-04-01 15:40:49
+  id: "89"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000090:
+  slug: prk
+  name: parking / storage
+  updated_at: 2008-04-01 15:40:49
+  id: "90"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000091:
+  slug: rfs
+  name: real estate for sale
+  updated_at: 2008-04-01 15:40:49
+  id: "91"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000092:
+  slug: roo
+  name: rooms / shared
+  updated_at: 2008-04-01 15:40:49
+  id: "92"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000093:
+  slug: sub
+  name: sublets / temporary
+  updated_at: 2008-04-01 15:40:49
+  id: "93"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000094:
+  slug: vac
+  name: vacation rentals
+  updated_at: 2008-04-01 15:40:49
+  id: "94"
+  parent_category_id: "5"
+  created_at: 2008-03-31 14:57:53
+categories_000095:
+  slug: stp
+  name: strictly platonic
+  updated_at: 2008-04-01 15:40:49
+  id: "95"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000096:
+  slug: w4w
+  name: women seek women
+  updated_at: 2008-04-01 15:40:49
+  id: "96"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000097:
+  slug: w4m
+  name: women seeking men
+  updated_at: 2008-04-01 15:40:49
+  id: "97"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000098:
+  slug: m4m
+  name: men seeking men
+  updated_at: 2008-04-01 15:40:49
+  id: "98"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000099:
+  slug: msr
+  name: misc romance
+  updated_at: 2008-04-01 15:40:49
+  id: "99"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000100:
+  slug: cas
+  name: casual encounters
+  updated_at: 2008-04-01 15:40:49
+  id: "100"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000101:
+  slug: mis
+  name: missed connections
+  updated_at: 2008-04-01 15:40:49
+  id: "101"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000102:
+  slug: rnr
+  name: rants and raves
+  updated_at: 2008-04-01 15:40:49
+  id: "102"
+  parent_category_id: "6"
+  created_at: 2008-03-31 14:57:53
+categories_000103:
+  slug: act
+  name: activities
+  updated_at: 2008-04-01 15:40:49
+  id: "103"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000104:
+  slug: ats
+  name: artists
+  updated_at: 2008-04-01 15:40:49
+  id: "104"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000105:
+  slug: kid
+  name: childcare
+  updated_at: 2008-04-01 15:40:49
+  id: "105"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000106:
+  slug: cla
+  name: classes
+  updated_at: 2008-04-01 15:40:49
+  id: "106"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000107:
+  slug: cal
+  name: events
+  updated_at: 2008-04-01 15:40:49
+  id: "107"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000108:
+  slug: com
+  name: general
+  updated_at: 2008-04-01 15:40:49
+  id: "108"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000109:
+  slug: grp
+  name: groups
+  updated_at: 2008-04-01 15:40:49
+  id: "109"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000110:
+  slug: vnn
+  name: local news
+  updated_at: 2008-04-01 15:40:49
+  id: "110"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000111:
+  slug: laf
+  name: lost+found
+  updated_at: 2008-04-01 15:40:49
+  id: "111"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000112:
+  slug: muc
+  name: musicians
+  updated_at: 2008-04-01 15:40:49
+  id: "112"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000113:
+  slug: pet
+  name: pets
+  updated_at: 2008-04-01 15:40:49
+  id: "113"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000114:
+  slug: pol
+  name: politics
+  updated_at: 2008-04-01 15:40:49
+  id: "114"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000115:
+  slug: rid
+  name: rideshare
+  updated_at: 2008-04-01 15:40:49
+  id: "115"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+categories_000116:
+  slug: vol
+  name: volunteers
+  updated_at: 2008-04-01 15:40:49
+  id: "116"
+  parent_category_id: "7"
+  created_at: 2008-03-31 14:57:53
+  

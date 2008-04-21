@@ -1,0 +1,19 @@
+<div class="admin-form">
+<fieldset>
+  <legend>Login</legend>
+  <% form_tag do -%>
+  <p><label for="email">Email Address</label>
+  <%= text_field_tag 'email' %></p><br />
+
+  <p><label for="password">Password</label>
+  <%= password_field_tag 'password' %></p><br />
+
+  <!-- Uncomment this if you want this functionality
+  <p><label for="remember_me">Remember me:</label>
+  <%= check_box_tag 'remember_me' %></p>
+  -->
+
+  <p><%= submit_tag 'Log in', :class => 'submit' %></p>
+  <% end -%>
+</fieldset>
+</div>

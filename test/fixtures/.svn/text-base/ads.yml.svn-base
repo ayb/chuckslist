@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+test_one:
+    id: 1
+    title: "test ad"
+    ad: "some ad here"
+    expiration: 2008-03-01 12:00:00
+    email: 200806159145300001@chuckslist.com
+    author_id: 1
+    category_id: 1
+    created_at: 2008-01-01 09:08:04
+    updated_at: 2008-01-01 09:08:04
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

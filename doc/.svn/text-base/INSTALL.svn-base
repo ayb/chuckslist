@@ -1,0 +1,59 @@
+ChucksList v0.1 Documentation (April 8, 2008)
+---------------------------------------------
+
+This is our first release of ChucksList.  The application archive should contain everything you need to get going.
+
+
+DEPENDENCIES
+------------
+ChucksList requires Rails 2.0.2 (frozen in /vendor/rails/).  Chuckslist requires the plugins acts_as_authenticated and will_paginate.  It also requires the UUIDtools gem.  We have included the plugins and unpacked and included the gem so the app should work right out of the box.
+
+
+GETTING STARTED:
+----------------
+Set up ChucksList like you would any other rails application.  Edit the database.yml.sample file, fill out your database details, and save it as database.yml.  Create a database and run "rake db:migrate" to create the database schema.
+
+
+LOADING CATEGORY DATA INTO DB:
+---------------------===------
+We have included YAML fixtures in /test/fixtures/app_default_data/import/
+This allows you to load 116 categories and 7 parent categories easily into your database.
+
+To Load The Fixtures Into A Production DB:
+rake db:fixtures:import RAILS_ENV=production
+
+To Load Them Into A Development DB:
+rake db:fixtures:import
+
+
+SITE-SPECIFIC SETTINGS
+----------------------
+You will want to edit some settings in the following files:
+(a)  /config/environment.rb - site name and other info used by the app
+(b)  /config/environments/development.rb and /config/environments/production.rb - mailer configuration settings
+(c)  /app/models/mailman.rb - you will need to customize the emails and domains used in each function
+
+GETTING ADMIN ACCESS:
+---------------------
+Once you've set up the app and gotten it running, go to yourdomain.com/account/signup/ to set up your administrator account.  Then you can go to yourdomain.com/admin/ to administer everything.
+
+
+EMAIL FORWARDING/REDIRECTION
+----------------------------
+We set up ChucksList to handle the email forwarding and redirecting as discussed here:  
+http://wiki.rubyonrails.org/rails/pages/HowToReceiveEmailsWithActionMailer
+
+You will have to set up a cron job to run mailman or postfix (depending on your server setup) and pipe the data into Mailman.receive.  If you are using sendmail to receive emails you should be able to execute the following as a cron job:
+
+mailman: "|/path/to/app/script/runner 'Mailman.receive(STDIN.read)'" 
+
+(be sure to change /path/to/app/ to be the actual path to your app)
+
+Also, be sure to edit the domain in the regular expression used in the Mailman.receive() function of /app/models/mailman.rb 
+
+
+CONTACT
+-------
+Please use the ChucksList Google Group for questions, comments, bug reports and other feedback, etc.
+http://groups.google.com/group/chuckslist/
+

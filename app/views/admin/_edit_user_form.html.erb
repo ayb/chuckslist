@@ -1,0 +1,7 @@
+<tr class="edit" id="edit_user_<%= h(user.id.to_s) %>" style="display: none; width: 100%;">  
+
+    <td><a href="#" onclick="Element.hide('edit_user_<%= user.id.to_s %>')">[Cancel]</a></td>
+    <td class="cell-shorttext">[<span id="reset_pw_user_<%= user.id.to_s %>"><%= link_to_remote "Reset Password", :url => { :controller => "admin", :action => "reset_password", :id => user }, :method => :post %></span>]</td>
+    <td class="cell-longtext">[<span id="ban_user_<%= user.id.to_s %>"><%= link_to_remote "Ban User", :url => { :controller => "admin", :action => "ban_user", :id => user }, :confirm => "Are you sure?", :method => :post  unless user.banned %><%= link_to_remote "Un-Ban User", :url => { :controller => "admin", :action => "unban_user", :id => user }, :confirm => "Are you sure?", :method => :post  unless !user.banned %></span>]</td>
+
+</tr>

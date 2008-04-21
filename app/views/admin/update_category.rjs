@@ -1,0 +1,2 @@
+page.hide("edit_category_#{@category.id}")
+page.replace_html("category_#{@category.id}", :partial => 'category', :locals => { :category => @category })

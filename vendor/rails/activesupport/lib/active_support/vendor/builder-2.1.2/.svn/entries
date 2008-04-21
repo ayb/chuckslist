@@ -1,0 +1,55 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport/lib/active_support/vendor/builder-2.1.2
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+blankslate.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+724d3f100f03c25e5de5054886fc3363
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+builder
+dir
+
+builder.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+80f725825cbd92437a509360081ba3af
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

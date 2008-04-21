@@ -1,0 +1,40 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activerecord/test/fixtures/categories/subsubdir
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+arbitrary_filename.yml
+file
+
+
+
+
+2008-04-21T15:41:49.000000Z
+db0906b5cea56b8d1fae13ca2476e7b0
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

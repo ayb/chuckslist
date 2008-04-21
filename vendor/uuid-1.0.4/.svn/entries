@@ -1,0 +1,85 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/uuid-1.0.4
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+7b570fa112435a7ddaf2c7cb5d577330
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+bce4502d7a83e417c5666040ef2b18ee
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+bin
+dir
+
+MIT-LICENSE
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+c3e0e7d61077b9c0382c12c8bb21ba30
+2008-03-04T19:28:58.358531Z
+29
+drspin
+
+README
+file
+
+
+
+
+2008-04-21T15:41:47.000000Z
+9428df9ff20e7f9f90335fed26ab71e6
+2008-03-04T19:28:58.358531Z
+29
+drspin
+

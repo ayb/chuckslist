@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/railties/lib/rails_generator/generators/applications/app
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+USAGE
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+50ee57ad5ab666da2872537ddc4f6bbc
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+app_generator.rb
+file
+
+
+
+
+2008-04-21T15:41:52.000000Z
+19b94585a458a587728b311200bfefc8
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

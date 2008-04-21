@@ -1,0 +1,23 @@
+ChucksList v0.1 Release Notes - April 8, 2008
+---------------------------------------------
+
+Kevin and I have been working on ChucksList in our spare time for a couple months now.  However, neither of us have deployed it and actively used it on a site yet.
+
+In the spirit of releasing early and releasing often, it is time to get our first release out into the wild and get some real world feedback.
+
+Here are some of the features that we have integrated into v0.1:
+1. ability to post ads with just an e-mail address (and email verification), no login required
+2. email forwarding/redirection, so responses get redirected through a @chuckslist.org email address
+3. site wide RSS feed
+4. full admin interface
+5. full list of categories and parent categories in YAML format, you can import the whole list easily
+
+Please check out ChucksList and give us some feedback.  If you get it deployed somewhere, send us the link.
+
+Thanks, and enjoy!
+
+Alexander Barbara
+http://twitter.com/ayb
+
+Kevin Ewe
+http://twitter.com/kevinewe

@@ -1,0 +1,9 @@
+housing:
+    id: 1
+    name: housing
+    slug: hhh
+
+for_sale:
+    id: 2
+    name: for sale
+    slug: sss

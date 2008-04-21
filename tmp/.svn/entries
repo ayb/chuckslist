@@ -1,0 +1,40 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/tmp
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-19T19:09:02.815122Z
+22
+drspin
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+pids
+dir
+
+cache
+dir
+
+sessions
+dir
+
+sockets
+dir
+

@@ -1,0 +1,13 @@
+<% # can't get the ajax form working yet!  FRUSTRATING!! '%>
+<% @parent_category = parent_category # because @parent_category is nil but we need it to use a form_for tag %>
+<tr class="edit" id="edit_parent_category_<%= h(@parent_category.id.to_s) %>" style="display: none;">  
+<% form_for(:parent_category, @parent_category,
+ 			:url => { :action => 'update_parent_category', :id => @parent_category }, 
+			:html => { :id => "epf#{@parent_category.id}" }) do |p|  %>
+
+    <td><a href="#" onclick="Element.hide('edit_parent_category_<%= @parent_category.id.to_s %>')">[Cancel]</a></td>
+    <td class="cell-longtext"><%= p.text_field :name, :size => 20 %></td>
+	<td><%= p.text_field :slug, :size => 8 %></td>
+    <td><%= submit_tag "Update &raquo;" %></td>
+<%  end %>
+</tr>

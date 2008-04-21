@@ -1,0 +1,52 @@
+8
+
+dir
+85
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist/vendor/rails/activesupport/lib/active_support/core_ext/date_time
+svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
+
+
+
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd10b052-61e0-4115-8f85-d5b82b27b118
+
+calculations.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+662066fe0a5de67944e7f950e1000268
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+
+conversions.rb
+file
+
+
+
+
+2008-04-21T15:41:48.000000Z
+3c5260c5a215b6fa4c6071b9206dfb0e
+2008-02-08T14:59:17.752253Z
+1
+goodkarma
+

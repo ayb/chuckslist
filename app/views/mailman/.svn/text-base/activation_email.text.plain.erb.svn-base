@@ -1,0 +1,14 @@
+Hi,
+
+Your Ad has been activated on Chuckslist. 
+
+You can see your ad here:
+<%= SITE_URL + 'ads/show/' + @ad.id.to_s + '/' %>
+
+Please visit the page below to edit your ad:
+<%= SITE_URL + 'manage/' + @ad.activation_hash + '/' %>
+
+
+All the best.
+---
+The Chuckslist Team
