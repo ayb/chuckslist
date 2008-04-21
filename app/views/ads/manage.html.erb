@@ -3,3 +3,5 @@
 <h1><%= @ad.title %></h1>
 <h3>Reply to: <%= @ad.email.to_s %></h3>
 <p><%= @ad.ad %></p>
+
+<%= render :partial => "ads/ad_images" %>

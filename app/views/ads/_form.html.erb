@@ -1,13 +1,23 @@
 <%# remote_form_for(ad) do |a| %>
-<% form_tag('/ads/new') do %>
+<% form_tag('/ads/new', :multipart => true) do %>
+
 Posting Title:<br/>
 <%= text_field_tag "title", nil, :size => 57 %><br/><br/>
+
 Posting Description:<br/>
 <%= text_area_tag "ad", nil, :rows => 10, :cols => 55 %><br/><br/>
+
+Attach an Image (optional):<br/>
+<%= file_field_tag "image_attachments[]", :id => "image_attachment" %><br/>
+<% #= link_to "Attach Another...", "#", :class => "clone", :rel => "image_attachment" %>
+<br/><br />
+
 Reply-to Email address:<br/>
 <%= text_field_tag "email", nil, :size => 57 %><br/><br/>
+
 Type email address again:<br/>
-<%= text_field_tag "email_verify", nil, :size => 57 %>
-<%= hidden_field_tag 'category', @category.id %><br/><br/>
+<%= text_field_tag "email_verify", nil, :size => 57 %><br/><br/>
+
+<%= hidden_field_tag 'category', @category.id %>
 <%= submit_tag submit_text %>
 <% end %>

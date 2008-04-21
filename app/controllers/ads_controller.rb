@@ -92,6 +92,9 @@ class AdsController < ApplicationController
       @ad.author_ip = request.env['REMOTE_ADDR']
       @ad.save
       
+      # handle image attachments
+      @ad.handle_images(params[:image_attachments])     
+
       # send confirmation email with activation url
       Mailman.deliver_confirmation_email(@ad, @author.email)
       flash[:notice] = 'A Confirmation Email Has Been Sent To ' + @author.email
@@ -162,12 +165,29 @@ class AdsController < ApplicationController
       @ad.ad = params[:ad].gsub("\n", "<br/>")
       @ad.title = params[:title]
       if @ad.save
+        
+        # handle image attachments
+        @ad.handle_images(params["image_attachments"])
+        
         flash[:notice] = "Ad Updated Successfully"
       else
         flash[:warning] = "Error Updating Ad"
       end
       redirect_to :controller => 'ads', :action => 'manage', :activation_hash => @ad.activation_hash
     end    
+  end
+  
+  def delete_image
+    @ad = Ad.find_by_activation_hash(params[:activation_hash])
+    @ad_image = @ad.ad_images.find_by_id(params[:id])
+    
+    if @ad_image.destroy
+      flash[:notice] = "Ad Image Deleted"
+    else
+      flash[:warning] = "Unable to Find Ad Image to Delete"
+    end
+    
+    redirect_to :controller => 'ads', :action => 'manage', :activation_hash => @ad.activation_hash
   end
   
   
@@ -180,5 +200,6 @@ class AdsController < ApplicationController
       format.atom # index.atom.builder
     end
   end
+  
   
 end
