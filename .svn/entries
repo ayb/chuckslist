@@ -1,97 +1,0 @@
-8
-
-dir
-85
-svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
-svn+ssh://goodkarma@rubyforge.org/var/svn/chuckslist
-
-
-
-2008-04-08T16:25:41.054913Z
-85
-goodkarma
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-bd10b052-61e0-4115-8f85-d5b82b27b118
-
-test
-dir
-
-CHUCKSLIST-TODO
-file
-
-
-
-
-2008-04-21T15:41:53.000000Z
-651078b5543807983e7f3cfcfa5ac1a6
-2008-04-08T13:56:00.671848Z
-83
-goodkarma
-
-app
-dir
-
-tmp
-dir
-
-log
-dir
-
-Rakefile
-file
-
-
-
-
-2008-04-21T15:41:53.000000Z
-17f2f134da4cd31ea095d5868ca89e86
-2008-02-08T14:59:17.752253Z
-1
-goodkarma
-
-script
-dir
-
-config
-dir
-
-db
-dir
-
-doc
-dir
-
-lib
-dir
-
-vendor
-dir
-
-README
-file
-
-
-
-
-2008-04-21T15:41:53.000000Z
-c5dfaa49e6471bd83c373fee541ae430
-2008-04-08T13:43:38.079700Z
-82
-goodkarma
-
-public
-dir
-

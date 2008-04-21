@@ -1,4 +1,0 @@
-<%= @email.body %>
-
----
-Email delivered by Chuckslist.

@@ -1,8 +1,0 @@
-<br/>
-<% if @ads.size > 0 %>
-<ul>
-	<%= render :partial => 'ad', :collection => @ads %>
-</ul>
-<% else %>
-	Sorry - there are no ads in the category <%= @requested_category %>
-<% end %>

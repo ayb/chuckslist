@@ -1,1 +1,0 @@
-page.replace_html("ban_user_#{@user.id}", "User Banned!")

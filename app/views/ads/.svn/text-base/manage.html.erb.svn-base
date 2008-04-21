@@ -1,5 +1,0 @@
-<br/>
-<%= link_to "Edit Ad", { :controller => 'ads', :action => 'edit', :id => @ad.activation_hash }, :method => :post %> | <%= link_to "Delete Ad",  { :controller => 'ads', :action => 'destroy', :id => @ad.activation_hash }, :method => :post, :confirm => 'This will permanently remove your ad.  Are you sure?' %><br/>
-<h1><%= @ad.title %></h1>
-<h3>Reply to: <%= @ad.email.to_s %></h3>
-<p><%= @ad.ad %></p>

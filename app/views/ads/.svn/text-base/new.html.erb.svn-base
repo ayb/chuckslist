@@ -1,3 +1,0 @@
-Thank you for submitting your ad.
-
-We have sent a confirmation e-mail to you at <%= @author.email %>

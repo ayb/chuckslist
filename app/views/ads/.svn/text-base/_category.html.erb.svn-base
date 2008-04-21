@@ -1,1 +1,0 @@
-<li><%= link_to_remote category.name, :url => { :action => 'show_form', :id => category.id } %></li>
