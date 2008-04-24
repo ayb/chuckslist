@@ -2,7 +2,19 @@ require 'uuid'
 class Ad < ActiveRecord::Base
   belongs_to :category
   belongs_to :author
+  
+  has_many :ad_images
+  
   validate :expiration_is_set
+  
+  def handle_images(image_attachments)
+    return unless image_attachments.respond_to? :each
+    
+    image_attachments.each do |image|
+      ad_image = self.ad_images.build(:uploaded_data => image)
+      ad_image.save
+    end
+  end
   
   def expiration_is_set
     if expiration.nil?
@@ -57,6 +69,7 @@ class Ad < ActiveRecord::Base
   def self.display_paged_data(page)
     paginate(:page => page, :per_page => 10,:order => "id")
   end
+  
   
 protected
  def before_create
