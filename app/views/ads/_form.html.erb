@@ -7,9 +7,9 @@ Posting Title:<br/>
 Posting Description:<br/>
 <%= text_area_tag "ad", nil, :rows => 10, :cols => 55 %><br/><br/>
 
-Attach an Image (optional):<br/>
+Attach an Image (options):<br/>
 <%= file_field_tag "image_attachments[]", :id => "image_attachment" %><br/>
-<% #= link_to "Attach Another...", "#", :class => "clone", :rel => "image_attachment" %>
+<%= link_to "Attach Another...", "#", :class => "clone", :rel => "image_attachment" %>
 <br/><br />
 
 Reply-to Email address:<br/>

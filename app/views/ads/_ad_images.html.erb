@@ -1,0 +1,11 @@
+<% @ad.ad_images.each do |ad_image|  %>
+  <p>
+    <br />
+    <%= image_tag ad_image.public_filename(:thumb), :style => "vertical-align: middle" %>
+    <%= link_to "Show", ad_image.public_filename, :target => "_blank" %>
+    |
+    <%= link_to "Delete", {:controller => "ads", :action => "delete_image", 
+                          :id => ad_image.id, :activation_hash => @ad.activation_hash}, 
+                          :confirm => "Are you sure you want to delete this image?" %>
+  </p>
+<% end %>
