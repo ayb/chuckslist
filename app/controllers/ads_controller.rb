@@ -93,7 +93,11 @@ class AdsController < ApplicationController
       @ad.save
       
       # handle image attachments
+<<<<<<< HEAD:app/controllers/ads_controller.rb
       @ad.handle_images(params[:image_attachments])     
+=======
+      @ad.handle_images(params["image_attachments"])     
+>>>>>>> 30c291ee79f753d780ec45f63d4d7236dc712848:app/controllers/ads_controller.rb
 
       # send confirmation email with activation url
       Mailman.deliver_confirmation_email(@ad, @author.email)

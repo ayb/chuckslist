@@ -18,6 +18,12 @@ config.action_view.cache_template_extensions         = false
 config.action_mailer.raise_delivery_errors = true
 
 
+DOMAIN = 'localhost:3000'
+SITE_NAME = 'ChucksList'
+# be sure to include the trailing slash '/' here
+SITE_URL = 'http://localhost:3000/'
+JUNK_MAIL = 'garbage@chuckslist.org'
+
 ########### CHUCKSLIST CONFIGURATION VALUES #############
 
 DOMAIN = 'localhost:3000'
