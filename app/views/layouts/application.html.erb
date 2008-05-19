@@ -4,7 +4,7 @@
 	<title>Chuckslist</title>
 	<%= stylesheet_link_tag "style", :cache => true %>
     <%= stylesheet_link_tag 'chuckslist', :cache => true  %>
-	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed" />        
+	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="<%= rss_url(@slug) %>"/>
 	<%= javascript_include_tag :defaults, :cache => true %>
 	<%= javascript_include_tag "lowpro" %>
 </head>
@@ -16,7 +16,7 @@
 	<div id="hd">
            <p><img src ="/images/chuckslistlogo.png"></p>
 	   <p>
-             <%= link_to 'ChucksList', root_path %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', :controller => 'ads', :action => 'feed' %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
+             <%= link_to 'ChucksList', root_path %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', rss_url(@slug) %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
              <% if logged_in? %> | <a href="/logout"><%= current_user.email %>[Logout]</a><% end %>
            </p>
 	</div>

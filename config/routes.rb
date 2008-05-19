@@ -41,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
   # maps a route of http://chuckslist.org/forsale/ to list all ads with the category slug 'forsale'
   map.connect ':slug', :controller => 'ads', :action => 'list'
   
+  map.connect ':slug/feed', :controller => 'ads', :action => 'category_feed'
+  
   # maps a route of /destroy/hash/ to ads controller, action destroy
   map.connect 'ads/destroy/:activation_hash', :controller => 'ads', :action => 'destroy', :method => :post
   

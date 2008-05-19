@@ -66,6 +66,24 @@ class Ad < ActiveRecord::Base
     find(:all, :conditions => ['expiration > ? and active = ?', Time.now, true], :order => 'created_at ASC')
   end
   
+  def self.all_active_by_slug(slug)
+    category = Category.find_by_slug(slug)
+    if category
+      return category.ads.all_active
+    else
+      category = ParentCategory.find_by_slug(slug)
+      if category
+        return category.all_ads
+      else
+        return false
+      end
+    return false
+  end
+    
+    
+    find(:all, :conditions => ['expiration > ? and active = ?', Time.now, true], :order => 'created_at ASC')
+  end
+  
   def self.display_paged_data(page)
     paginate(:page => page, :per_page => 10,:order => "id")
   end

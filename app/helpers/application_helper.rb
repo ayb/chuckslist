@@ -23,5 +23,13 @@ module ApplicationHelper
     return false
   end
  end
+ 
+ def rss_url(slug)
+ 	if slug
+	  return '/' + slug + '/feed' 
+	else       
+	  return '/feed' 
+  end
+ end
 
 end

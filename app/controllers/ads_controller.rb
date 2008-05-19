@@ -7,6 +7,8 @@ class AdsController < ApplicationController
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
     end
+    
+    @category = @ad.category
   end
   
   # destroy ad with that particular hash
@@ -31,19 +33,11 @@ class AdsController < ApplicationController
   # have a page slug how to identify one vs. the other?  might be easier to 
   # inherit then do this code checking tfor a blank array..
   def list
-    @category = Category.find_by_slug(params[:slug])
-    if @category
-      @ads = @category.ads.all_active
-      @requested_category = @category.parent_category.name + ' >> ' + @category.name
-    else
-      @category = ParentCategory.find_by_slug(params[:slug])
-      if @category
-        @ads = @category.all_ads
-        @requested_category = @category.name
-      else
-        flash[:warning] = 'Invalid Request'
-        redirect_to root_path
-      end
+    @slug = params[:slug]
+    @ads = Ad.all_active_by_slug(params[:slug])
+    if !@ads
+      flash[:warning] = 'Invalid Request'
+      redirect_to root_path
     end
   end
   
@@ -191,9 +185,19 @@ class AdsController < ApplicationController
   end
   
   
-  # rss feed 
+  # rss feed for the whole site
   def feed
     @ads = Ad.all_active
+    
+    respond_to do |format|
+      format.rss { render :layout => false }
+      format.atom # index.atom.builder
+    end
+  end
+  
+  # rss feed for just one category
+  def category_feed
+    @ads = Ad.all_active_by_slug(params[:slug])
     
     respond_to do |format|
       format.rss { render :layout => false }
