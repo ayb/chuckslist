@@ -26,12 +26,13 @@ config.action_mailer.delivery_method = :sendmail
 
 #configure SMTP options
 config.action_mailer.smtp_settings = {
-  :address        => '',
-  :port           => 25,
-  :domain         => 'chuckslist.org',
-  :authentication => :login,
-  :user_name      => 'chuck',
-  :password       => 'secret'
+  :enable_starttls_auto => true,
+  :address              => "smtp.gmail.com",
+  :port                 => "587",
+  :domain               => "#{SITE_URL}",
+  :authentication       => :plain,
+  :user_name            => "kany.chuckslist@gmail.com",
+  :password             => "kanychuck"
 }
 
 #########################################################

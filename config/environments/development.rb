@@ -12,14 +12,14 @@ config.whiny_nils = true
 config.action_controller.consider_all_requests_local = true
 config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
-config.action_view.cache_template_extensions         = false
+#config.action_view.cache_template_extensions         = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = true
 
 
 DOMAIN = 'localhost:3000'
-SITE_NAME = 'ChucksList'
+SITE_NAME = 'KanyChucksList'
 # be sure to include the trailing slash '/' here
 SITE_URL = 'http://localhost:3000/'
 JUNK_MAIL = 'garbage@chuckslist.org'
@@ -34,15 +34,16 @@ JUNK_MAIL = 'garbage@chuckslist.org'
 
 
 # choose :smtp, :sendmail, :test
-config.action_mailer.delivery_method = :test
+config.action_mailer.delivery_method = :sendmail
 
 #configure SMTP options
 config.action_mailer.smtp_settings = {
-  :address        => '',
-  :port           => 25,
-  :domain         => 'www.chuckslist.com',
-  :authentication => :login,
-  :user_name      => 'chuck',
-  :password       => 'secret'
+  :enable_starttls_auto => true,
+  :address              => "smtp.gmail.com",
+  :port                 => "587",
+  :domain               => "#{SITE_URL}",
+  :authentication       => :plain,
+  :user_name            => "kany.chuckslist@gmail.com",
+  :password             => "kanychuck"
 }
 #########################################################

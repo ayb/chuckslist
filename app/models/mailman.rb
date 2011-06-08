@@ -16,7 +16,7 @@ class Mailman < ActionMailer::Base
   # this e-mail gets send for confirmation before the ad is activated
    def confirmation_email(ad, author)
     recipients author
-    from       "ChucksList <postman@chuckslist.org>"
+    from       "KanyChucksList <postman@chuckslist.org>"
     subject    "Your Ad Activation"
     body       :ad => ad
   end
@@ -24,7 +24,7 @@ class Mailman < ActionMailer::Base
   # this e-mail gets sent after activation
   def activation_email(ad, author)
     recipients author
-    from       "ChucksList <postman@chuckslist.org>"
+    from       "KanyChucksList <postman@chuckslist.org>"
     subject    "Your Ad Has Been Activated"
     body       :ad => ad
   end   
@@ -32,7 +32,7 @@ class Mailman < ActionMailer::Base
   # this gets sent when password has been reset
   def password_reset_email(user, password)
     recipients user
-    from       "ChucksList <postman@chuckslist.org>"
+    from       "KanyChucksList <postman@chuckslist.org>"
     subject    "Your Password Has Been Reset"
     body       :password => password
   end
