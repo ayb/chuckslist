@@ -1,49 +1,26 @@
-# Settings specified here will take precedence over those in config/environment.rb
+Chuckslist::Application.configure do
+  # Settings specified here will take precedence over those in config/application.rb
 
-# In the development environment your application's code is reloaded on
-# every request.  This slows down response time but is perfect for development
-# since you don't have to restart the webserver when you make code changes.
-config.cache_classes = false
+  # In the development environment your application's code is reloaded on
+  # every request.  This slows down response time but is perfect for development
+  # since you don't have to restart the webserver when you make code changes.
+  config.cache_classes = false
 
-# Log error messages when you accidentally call methods on nil.
-config.whiny_nils = true
+  # Log error messages when you accidentally call methods on nil.
+  config.whiny_nils = true
 
-# Show full error reports and disable caching
-config.action_controller.consider_all_requests_local = true
-config.action_view.debug_rjs                         = true
-config.action_controller.perform_caching             = false
-#config.action_view.cache_template_extensions         = false
+  # Show full error reports and disable caching
+  config.consider_all_requests_local       = true
+  config.action_view.debug_rjs             = true
+  config.action_controller.perform_caching = false
 
-# Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = true
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = false
 
+  # Print deprecation notices to the Rails logger
+  config.active_support.deprecation = :log
 
-DOMAIN = 'localhost:3000'
-SITE_NAME = 'KanyChucksList'
-# be sure to include the trailing slash '/' here
-SITE_URL = 'http://localhost:3000/'
-JUNK_MAIL = 'garbage@chuckslist.org'
+  # Only use best-standards-support built into browsers
+  config.action_dispatch.best_standards_support = :builtin
+end
 
-########### CHUCKSLIST CONFIGURATION VALUES #############
-
-DOMAIN = 'localhost:3000'
-SITE_NAME = 'ChucksList'
-# be sure to include the trailing slash '/' here
-SITE_URL = 'http://localhost:3000/'
-JUNK_MAIL = 'garbage@chuckslist.org'
-
-
-# choose :smtp, :sendmail, :test
-config.action_mailer.delivery_method = :sendmail
-
-#configure SMTP options
-config.action_mailer.smtp_settings = {
-  :enable_starttls_auto => true,
-  :address              => "smtp.gmail.com",
-  :port                 => "587",
-  :domain               => "#{SITE_URL}",
-  :authentication       => :plain,
-  :user_name            => "kany.chuckslist@gmail.com",
-  :password             => "kanychuck"
-}
-#########################################################
