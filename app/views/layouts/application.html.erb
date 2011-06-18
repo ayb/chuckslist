@@ -16,7 +16,7 @@
 	<div id="hd">
            <p><img src ="/images/chuckslistlogo.png"></p>
 	   <p>
-             <%= link_to 'ChucksList', root_path %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', rss_url(@slug) %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
+             <%= link_to 'ChucksList', "/" %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', rss_url(@slug) %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
              <% if logged_in? %> | <a href="/logout"><%= current_user.email %>[Logout]</a><% end %>
            </p>
 	</div>
@@ -24,7 +24,7 @@
 		<span id="notices">
 			<% for name in [:notice, :warning, :message] %>
 				<% if flash[name] %>
-			  		<%= "<div id=\"#{name}\">#{flash[name]}</div>" %>
+			  		<%= raw("<div id=\"#{name}\">#{flash[name]}</div>") %>
 				<% end %>
 			<% end %>
 		</span>
