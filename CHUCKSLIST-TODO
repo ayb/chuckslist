@@ -1,14 +1,26 @@
 TODO for v0.2 and beyond (in no particular order)
 -------------------------------------------------
-1. Add search feature in Admin user management page (admin side)
-2. Clean up model and controller code
-3. Add some form of CAPTCHA authentication for posting
-4. Add Javascript validation to confirm email address when posting an ad (or else redirect them back to the form in a way that is neat and prevents data loss)
-5. Add RSS feed for each category (instead of just a main one)
-6. add ability to upload image(s) with your ad
-7. add more tests (we started strong but then got sidetracked)
-8. should we consider making ChucksList an ENGINE - such as 
-9. ability to flag posts as spam/miscategorized/etc.
-10. do more to enforce banned authors (ban the IP?)
-11. enhance functions for managing authors and ads in admin section
-12. Use Paperlip and Amazon S3
+add subdomains (abc_city.chuckslist.org, def_city.chuckslist.org, etc...)
+
+Add some form of CAPTCHA authentication for posting
+
+Add Javascript validation to confirm email address when posting an ad 
+(or else redirect them back to the form in a way that is neat and prevents data loss)
+
+Use Paperlip for image attachment to ads and store on Amazon S3
+
+Use SWFUpload for uploading images(http://jimneath.org/2008/05/15/swfupload-paperclip-and-ruby-on-rails.html)
+
+ability to flag posts as spam/miscategorized/etc.
+
+do more to enforce banned authors (ban the IP?)
+
+Add search feature in Admin user management page (admin side)
+
+Clean up model and controller code
+
+Add RSS feed for each category (instead of just a main one)
+
+add more tests (we started strong but then got sidetracked)
+
+enhance functions for managing authors and ads in admin section
