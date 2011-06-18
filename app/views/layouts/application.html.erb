@@ -10,32 +10,19 @@
 </head>
 
 <body>
-<!-- the id on the containing div determines the page width. -->
-<!-- #doc = 750px; #doc2 = 950px; #doc3 = 100%; #doc4 = 974px -->
-<div id="doc">					
-	<div id="hd">
-           <p><img src ="/images/chuckslistlogo.png"></p>
-	   <p>
-             <%= link_to 'ChucksList', "/" %> | <%= link_to 'Post a New Ad', :controller => 'ads', :action => 'post' %> | <%= link_to 'RSS', rss_url(@slug) %><% if is_admin %> | <a href="/admin">Admin</a><% end %>
-             <% if logged_in? %> | <a href="/logout"><%= current_user.email %>[Logout]</a><% end %>
-           </p>
-	</div>
-	<div id="bd">
-		<span id="notices">
-			<% for name in [:notice, :warning, :message] %>
-				<% if flash[name] %>
-			  		<%= raw("<div id=\"#{name}\">#{flash[name]}</div>") %>
-				<% end %>
-			<% end %>
-		</span>
-		<div class="yui-gb">
-		<%= yield %>
+	<!-- the id on the containing div determines the page width. -->
+	<!-- #doc = 750px; #doc2 = 950px; #doc3 = 100%; #doc4 = 974px -->
+	<div id="doc">					
+		<div id="hd">
+			<%= render :partial => '/layouts/header' %>
+		</div>		
+		<div id="bd">
+			<%= render :partial => '/layouts/body' %>
+		</div>
+		<div id="ft">
+			<%= render :partial => '/layouts/footer' %>
 		</div>
 	</div>
-	<div id="ft">
-		<p style="margin-top: 10px;">Copyright &copy; <%= Time.now.strftime('%Y') %> <%= link_to 'ChucksList', root_path %>.</p>
-	</div>
-</div>
 </body>
 </html>
 

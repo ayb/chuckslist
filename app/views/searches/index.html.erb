@@ -1,0 +1,19 @@
+&nbsp;<br/>
+
+<div>
+  <div>
+    <div style="float: left; width: 600px">    
+      <h1>Search Results:</h1>
+
+      <% unless @ads.size < 1 %>
+		<% @ads.each {|ad| %>
+        	<ul> <%= render :partial => '/ads/ad', :locals => {:ad => ad} %> </ul>
+		<% } %>
+	  <% else %>
+		No Ads matched your search.
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

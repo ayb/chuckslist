@@ -19,5 +19,5 @@ Type email address again:<br/>
 <%= text_field_tag "email_verify", nil, :size => 57 %><br/><br/>
 
 <%= hidden_field_tag 'category', @category.id %>
-<%= submit_tag submit_text %>
+<%= submit_tag raw(submit_text) %>
 <% end %>

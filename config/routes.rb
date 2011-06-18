@@ -1,4 +1,5 @@
 Chuckslist::Application.routes.draw do
+  match 'searches' => 'searches#index'
   match 'update_category/:id' => 'admin#update_category'
   match 'admin' => 'admin#index'
   match 'logout' => 'admin#destroy'

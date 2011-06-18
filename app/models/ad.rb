@@ -88,6 +88,13 @@ class Ad < ActiveRecord::Base
     paginate(:page => page, :per_page => 10,:order => "id")
   end
   
+  def self.search(search)
+    if search
+      where("title LIKE ? or ad LIKE ?", "%#{search}%", "%#{search}%")
+    else
+      all
+    end
+  end  
   
 protected
  def before_create

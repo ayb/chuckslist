@@ -15,9 +15,9 @@ DOMAIN = 'chuckslist.org'
 SITE_NAME = 'ChucksList'
 # be sure to include the trailing slash '/' here
 SITE_URL =  case Rails.env
-                when 'development' then 'localhost:3000'
-                when 'production'  then 'chuckslist.org'
-                when 'test'        then 'test.chuckslist.org'
+                when 'development' then 'http://localhost:3000/'
+                when 'production'  then 'http://chuckslist.org/'
+                when 'test'        then 'http://test.chuckslist.org/'
                end
 JUNK_MAIL = 'garbage@chuckslist.org'
 

@@ -1,0 +1,10 @@
+<span id="notices">
+	<% for name in [:notice, :warning, :message] %>
+		<% if flash[name] %>
+	  		<%= raw("<div id=\"#{name}\">#{flash[name]}</div>") %>
+		<% end %>
+	<% end %>
+</span>
+<div class="yui-gb">
+	<%= yield %>
+</div>

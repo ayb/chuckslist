@@ -48,7 +48,7 @@ private
     mail(
       :subject    => email.subject,
       :from       => email.from,
-      :to         => unmulch(email.to),      
+      :to         => unmulch(email.to)      
     )
   end
   
