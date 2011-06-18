@@ -1,4 +1,3 @@
-<%# remote_form_for(ad) do |a| %>
 <%= form_tag('/ads/new', :multipart => true) do %>
 
 Posting Title:<br/>
@@ -19,5 +18,5 @@ Type email address again:<br/>
 <%= text_field_tag "email_verify", nil, :size => 57 %><br/><br/>
 
 <%= hidden_field_tag 'category', @category.id %>
-<%= submit_tag raw(submit_text) %>
+<%= submit_tag raw(submit_text), :onclick => "return validate_new_ad_form();" %>
 <% end %>

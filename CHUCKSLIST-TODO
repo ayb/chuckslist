@@ -1,21 +1,14 @@
 TODO for v0.2 and beyond (in no particular order)
 -------------------------------------------------
-add subdomains (abc_city.chuckslist.org, def_city.chuckslist.org, etc...)
-
-Add some form of CAPTCHA authentication for posting
-
-Add Javascript validation to confirm email address when posting an ad 
-(or else redirect them back to the form in a way that is neat and prevents data loss)
-
 Use Paperlip for image attachment to ads and store on Amazon S3
 
 Use SWFUpload for uploading images(http://jimneath.org/2008/05/15/swfupload-paperclip-and-ruby-on-rails.html)
 
+add subdomains (abc_city.chuckslist.org, def_city.chuckslist.org, etc...)
+
+Add some form of CAPTCHA authentication for posting
+
 ability to flag posts as spam/miscategorized/etc.
-
-do more to enforce banned authors (ban the IP?)
-
-Add search feature in Admin user management page (admin side)
 
 Clean up model and controller code
 

@@ -1,5 +1,5 @@
 <br/>
-<%= link_to "&laquo; Manage Ad", { :controller => 'ads', :action => 'manage', :id => @ad.activation_hash }, :method => :post %> | <%= link_to "Delete Ad",  { :controller => 'ads', :action => 'destroy', :id => @ad.activation_hash }, :method => :post, :confirm => 'This will permanently remove your ad.  Are you sure?' %><br/>
+<%= link_to raw("&laquo; Manage Ad"), { :controller => 'ads', :action => 'manage', :id => @ad.activation_hash }, :method => :post %> | <%= link_to "Delete Ad",  { :controller => 'ads', :action => 'destroy', :id => @ad.activation_hash }, :method => :post, :confirm => 'This will permanently remove your ad.  Are you sure?' %><br/>
 <%= form_tag('/ads/update', :multipart => true) do %>
   Posting Title:<br/>
   <%= text_field_tag "title", @ad.title, :size => 57 %><br/><br/>
@@ -14,5 +14,5 @@
   
   
   <%= hidden_field_tag 'activation_hash', @ad.activation_hash %>
-  <%= submit_tag raw('Update Ad &raquo;') %>
+  <%= submit_tag raw('Update Ad &raquo;'), :onclick => "return validate_update_ad_form();" %>
 <% end %>
