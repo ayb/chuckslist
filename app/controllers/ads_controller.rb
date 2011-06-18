@@ -2,7 +2,7 @@ class AdsController < ApplicationController
 
   # show one particular ad
   def show
-    @ad = Ad.find_by_id(params[:id])
+    @ad = Ad.find(params[:id])
     if (@ad.nil?)
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
@@ -14,7 +14,7 @@ class AdsController < ApplicationController
   # destroy ad with that particular hash
   def destroy
     if request.post?
-      @ad = Ad.find_by_activation_hash(params[:id])
+      @ad = Ad.where(:activation_hash => params[:id]).first
       if (@ad.nil?)
         flash[:warning] = 'Error - That Ad Does Not Exist'
         redirect_to root_path
@@ -44,18 +44,18 @@ class AdsController < ApplicationController
   
   # show parent category list for new ad
   def post
-    @parents = ParentCategory.find :all, :order => 'name ASC'
+    @parents = ParentCategory.order("name ASC")
   end
   
 
   # ajaxy function to show subcategories when they select a parent
   def select_category
-    @parent_category = ParentCategory.find_by_id(params[:id])
+    @parent_category = ParentCategory.find(params[:id])
   end
   
   # show the ajaxy form for a new ad
   def show_form
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find(params[:id])
   end
   
   # ajaxy - create new ad
@@ -69,14 +69,14 @@ class AdsController < ApplicationController
       redirect_to :controller => 'ads', :action => 'post'
     else
       # email and confirmation match
-      @author = Author.find_by_email(params[:email])
+      @author = Author.where(:email => params[:email]).first
       if @author.blank?
         @author = Author.new
         @author.email = params[:email]
         @author.ip = request.env['REMOTE_ADDR']
         @author.save
       end
-      @ad = Category.find_by_id(params[:category]).ads.new
+      @ad = Category.find(params[:category]).ads.new
       @ad.title = params[:title]
       @ad.ad = params[:ad].gsub("\n", "<br/>")
       @ad.expiration = Time.now + 30.days
@@ -90,7 +90,7 @@ class AdsController < ApplicationController
       @ad.handle_images(params[:image_attachments])     
 
       # send confirmation email with activation url
-      Mailman.deliver_confirmation_email(@ad, @author.email)
+      Mailman.confirmation_email(@ad, @author.email).deliver
       flash[:notice] = 'A Confirmation Email Has Been Sent To ' + @author.email
       
     end
@@ -98,7 +98,7 @@ class AdsController < ApplicationController
   
   # activate an ad that is new but not active yet
   def activate
-    @ad = Ad.find_by_activation_hash(params[:activation_hash])
+    @ad = Ad.where(:activation_hash => params[:activation_hash]).first
     if (@ad.nil?)
       flash[:warning] = 'Error Activating Your Ad'
       redirect_to root_path
@@ -109,7 +109,7 @@ class AdsController < ApplicationController
         #redirect to confirmation thank you page
         if @ad.activate(params[:activation_hash])
           flash[:notice] = 'Your Ad Has Been Activated - An Email Has Been Sent To ' + @ad.author.email
-          Mailman.deliver_activation_email(@ad, @ad.author.email)
+          Mailman.activation_email(@ad, @ad.author.email).deliver
           #redirect_to :action => 'show', :id => @ad
           redirect_to :action => 'edit', :activation_hash => @ad.activation_hash
         else
@@ -124,7 +124,7 @@ class AdsController < ApplicationController
   
   # manage an ad based on the hash
   def manage
-    @ad = Ad.find_by_activation_hash(params[:activation_hash])
+    @ad = Ad.where(:activation_hash => params[:activation_hash]).first
     if (@ad.nil?)
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
@@ -138,7 +138,7 @@ class AdsController < ApplicationController
   
   # edit an ad based on the hash
   def edit
-    @ad = Ad.find_by_activation_hash(params[:activation_hash])
+    @ad = Ad.where(:activation_hash => params[:activation_hash]).first
     if (@ad.nil?)
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
@@ -150,7 +150,7 @@ class AdsController < ApplicationController
   
   # update an ad after someone edits (via the edit form) and hits 'submit'
   def update
-    @ad = Ad.find_by_activation_hash(params[:activation_hash])
+    @ad = Ad.where(:activation_hash => params[:activation_hash]).first
     if (@ad.nil?)
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
@@ -172,8 +172,8 @@ class AdsController < ApplicationController
   end
   
   def delete_image
-    @ad = Ad.find_by_activation_hash(params[:activation_hash])
-    @ad_image = @ad.ad_images.find_by_id(params[:id])
+    @ad = Ad.where(:activation_hash => params[:activation_hash]).first
+    @ad_image = @ad.ad_images.find(params[:id])
     
     if @ad_image.destroy
       flash[:notice] = "Ad Image Deleted"

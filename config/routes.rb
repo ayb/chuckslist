@@ -17,5 +17,6 @@ Chuckslist::Application.routes.draw do
   match 'ads/edit/:activation_hash' => 'ads#edit'
   match 'ads/manage/:activation_hash' => 'ads#manage'
   match '/' => 'main#index'
+  match 'root' => 'main#index'
   match '/:controller(/:action(/:id))'
 end

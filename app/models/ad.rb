@@ -63,15 +63,15 @@ class Ad < ActiveRecord::Base
   
   
   def self.all_active
-    find(:all, :conditions => ['expiration > ? and active = ?', Time.now, true], :order => 'created_at ASC')
+    where("expiration > ? and active = ?", Time.now, true).order("created_at ASC")
   end
   
   def self.all_active_by_slug(slug)
-    category = Category.find_by_slug(slug)
+    category = Category.where(:slug => slug).first
     if category
       return category.ads.all_active
     else
-      category = ParentCategory.find_by_slug(slug)
+      category = ParentCategory.where(:slug => slug).first
       if category
         return category.all_ads
       else
@@ -81,7 +81,7 @@ class Ad < ActiveRecord::Base
   end
     
     
-    find(:all, :conditions => ['expiration > ? and active = ?', Time.now, true], :order => 'created_at ASC')
+    where("expiration > ? and active = ?", Time.now, true).order("created_at ASC")
   end
   
   def self.display_paged_data(page)

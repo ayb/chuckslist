@@ -6,6 +6,28 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+Rails.env = 'development'
+
+# #####################################################
+# CHUCKSLIST CONFIGURATION VALUES
+# #####################################################
+DOMAIN = 'chuckslist.org'
+SITE_NAME = 'ChucksList'
+# be sure to include the trailing slash '/' here
+SITE_URL =  case Rails.env
+                when 'development' then 'localhost:3000'
+                when 'production'  then 'chuckslist.org'
+                when 'test'        then 'test.chuckslist.org'
+               end
+JUNK_MAIL = 'garbage@chuckslist.org'
+
+# Define DateTime format for use in our ads email address generator
+# e.g. DateTime.now.to_s(:generate_hash)
+Time::DATE_FORMATS[:generate_hash] = "%Y%j%S%H%M"
+
+# Global var
+$generatedKeyCount = 1
+
 module Chuckslist
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -14,6 +36,8 @@ module Chuckslist
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W( #{::Rails.root.to_s}/vendor/uuid-1.0.4/lib )
+    config.autoload_paths += %W( #{::Rails.root.to_s}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -37,6 +61,6 @@ module Chuckslist
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]  
   end
 end

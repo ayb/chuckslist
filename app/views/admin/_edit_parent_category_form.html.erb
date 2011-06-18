@@ -1,7 +1,7 @@
 <% # can't get the ajax form working yet!  FRUSTRATING!! '%>
 <% @parent_category = parent_category # because @parent_category is nil but we need it to use a form_for tag %>
 <tr class="edit" id="edit_parent_category_<%= h(@parent_category.id.to_s) %>" style="display: none;">  
-<% form_for(:parent_category, @parent_category,
+<%= form_for(:parent_category, @parent_category,
  			:url => { :action => 'update_parent_category', :id => @parent_category }, 
 			:html => { :id => "epf#{@parent_category.id}" }) do |p|  %>
 

@@ -20,7 +20,7 @@ class AdminController < ApplicationController
   
   def category
     @display_data = Category.display_paged_data(params[:page])
-    @parents = ParentCategory.find(:all)
+    @parents = ParentCategory.all
     @parent_categories = @parents.collect { |p| [p.name, p.id] }
   end
     
@@ -77,7 +77,7 @@ class AdminController < ApplicationController
   end
   
   def delete_author_and_ads
-    @author = Author.find_by_id(params[:id])
+    @author = Author.find(params[:id])
     if request.post? && !@author.nil?
       @author.ads.remove_all
       @author.is_banned
@@ -186,11 +186,11 @@ class AdminController < ApplicationController
   end
   
   def reset_password
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
       @new_password = @user.reset_password
       if @new_password
-        Mailman.deliver_password_reset_email(@user.email, @new_password)
+        Mailman.password_reset_email(@user.email, @new_password).deliver
       else
         flash[:warning] = "Error Resetting Password"
         redirect_to :action => "user"
@@ -202,7 +202,7 @@ class AdminController < ApplicationController
   end
   
   def ban_user
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
       @user.banned = true
       if !@user.save
@@ -213,7 +213,7 @@ class AdminController < ApplicationController
   end
   
   def unban_user
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
       @user.banned = false
       if !@user.save
@@ -235,7 +235,7 @@ class AdminController < ApplicationController
   
   def update_category
     # update the category
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find(params[:id])
     if @category.nil?
       flash[:warning] = "Invalid Category"
     end
@@ -269,7 +269,7 @@ class AdminController < ApplicationController
   # end
   
   def update_ad
-    @ad = Ad.find_by_id(params[:id])
+    @ad = Ad.find(params[:id])
     if @ad.nil?
       flash[:warning] = "Invalid Ad"
       redirect_to :action => 'manager'
@@ -288,7 +288,7 @@ class AdminController < ApplicationController
   
   def update_parent_category
     # update the category
-    @parent_category = ParentCategory.find_by_id(params[:id])
+    @parent_category = ParentCategory.find(params[:id])
     if @parent_category.nil?
       flash[:warning] = "Invalid Parent Category"
       redirect_to :action => 'parent_category'

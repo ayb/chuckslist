@@ -13,7 +13,7 @@
 	            <%= render :partial => 'category', :locals => { :category => p } %>
 	        </div>
 	        <div class ="ads">    
-	        <%= render :partial => 'category', :collection => p.categories.find(:all, :order => 'name ASC') %>
+	        <%= render :partial => 'category', :collection => p.categories.order("name ASC") %>
 	        </div>
 		</ul>
 		<% @cats += p.categories.size %>

@@ -1,6 +1,6 @@
 <% @ad = ad %>
 <tr class="edit" id="edit_ad_<%= h(ad.id.to_s) %>" style="display:none;">
-<% form_for(:ad, @ad,
+<%= form_for(:ad, @ad,
 	 			:url => { :action => 'update_ad', :id => @ad }, 
 				:html => { :id => "eaf#{@ad.id}" }) do |a|  %>
   <td><a onclick='Element.hide("edit_ad_<%= ad.id.to_s %>")'>[Cancel]</a></td>

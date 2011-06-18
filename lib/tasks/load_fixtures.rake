@@ -13,12 +13,12 @@ namespace :db  do
 	
         require 'active_record/fixtures'
         require 'rake'
-        ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
+        ActiveRecord::Base.establish_connection(Rails.env.to_sym)
         ## set directory to import
-        file_base_path = File.join(RAILS_ROOT, 'test', 'fixtures', 'app_default_data', 'import') 
+        file_base_path = File.join(Rails.root, 'test', 'fixtures', 'app_default_data', 'import') 
         puts "importing from: " + file_base_path
 	
-        puts "the RAILS_ENV is " + RAILS_ENV
+        puts "the RAILS_ENV is " + Rails.env
 	
         if ENV["TABLE"] != nil
             files_array = ENV["TABLE"].to_s.split(",")

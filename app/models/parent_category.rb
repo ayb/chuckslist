@@ -2,7 +2,7 @@ class ParentCategory < ActiveRecord::Base
   has_many :categories do
     
     def in_order
-      find(:all, :order => 'name ASC')
+      order("name ASC")
     end
     
 

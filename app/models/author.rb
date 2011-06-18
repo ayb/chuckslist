@@ -4,7 +4,7 @@ class Author < ActiveRecord::Base
   has_many :ads do
     
     def active
-      find(:all, :conditions => ["expiration > ? and active = ?", Time.now, true])
+      where("expiration > ? and active = ?", Time.now, true)
     end
     
     def remove_all

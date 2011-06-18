@@ -1,6 +1,6 @@
 <br/>
 <%= link_to "&laquo; Manage Ad", { :controller => 'ads', :action => 'manage', :id => @ad.activation_hash }, :method => :post %> | <%= link_to "Delete Ad",  { :controller => 'ads', :action => 'destroy', :id => @ad.activation_hash }, :method => :post, :confirm => 'This will permanently remove your ad.  Are you sure?' %><br/>
-<% form_tag('/ads/update', :multipart => true) do %>
+<%= form_tag('/ads/update', :multipart => true) do %>
   Posting Title:<br/>
   <%= text_field_tag "title", @ad.title, :size => 57 %><br/><br/>
   Posting Description:<br/>

@@ -1,5 +1,5 @@
 <%# remote_form_for(ad) do |a| %>
-<% form_tag('/ads/new', :multipart => true) do %>
+<%= form_tag('/ads/new', :multipart => true) do %>
 
 Posting Title:<br/>
 <%= text_field_tag "title", nil, :size => 57 %><br/><br/>
