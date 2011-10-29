@@ -26,7 +26,7 @@ class AssociationsTest < Test::Unit::TestCase
       Class.new(ActiveRecord::Base).has_many(:wheels, :name => 'wheels')
     end
   end
-  
+
   def test_should_construct_new_finder_sql_after_create
     person = Person.new
     assert_equal [], person.readers.find(:all)
@@ -667,21 +667,21 @@ class HasManyAssociationsTest < Test::Unit::TestCase
     assert_equal 3, first_firm.plain_clients.length
     assert_equal 3, first_firm.plain_clients.size
   end
-  
+
   def test_create_with_bang_on_has_many_when_parent_is_new_raises
-    assert_raises(ActiveRecord::RecordNotSaved) do 
+    assert_raises(ActiveRecord::RecordNotSaved) do
       firm = Firm.new
       firm.plain_clients.create! :name=>"Whoever"
     end
   end
 
   def test_regular_create_on_has_many_when_parent_is_new_raises
-    assert_raises(ActiveRecord::RecordNotSaved) do 
+    assert_raises(ActiveRecord::RecordNotSaved) do
       firm = Firm.new
       firm.plain_clients.create :name=>"Whoever"
     end
   end
-  
+
   def test_create_with_bang_on_has_many_raises_when_record_not_saved
     assert_raises(ActiveRecord::RecordInvalid) do
       firm = Firm.find(:first)
@@ -690,8 +690,8 @@ class HasManyAssociationsTest < Test::Unit::TestCase
   end
 
   def test_create_with_bang_on_habtm_when_parent_is_new_raises
-    assert_raises(ActiveRecord::RecordNotSaved) do 
-      Developer.new("name" => "Aredridel").projects.create!    
+    assert_raises(ActiveRecord::RecordNotSaved) do
+      Developer.new("name" => "Aredridel").projects.create!
     end
   end
 
@@ -1305,7 +1305,7 @@ class BelongsToAssociationsTest < Test::Unit::TestCase
     topic.update_attributes(:title => "37signals")
     assert_equal 1, Topic.find(topic.id)[:replies_count]
   end
-  
+
   def test_belongs_to_counter_after_save
     topic = Topic.create("title" => "monday night")
     topic.replies.create("title" => "re: monday night", "content" => "football")

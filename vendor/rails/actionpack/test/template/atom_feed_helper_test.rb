@@ -44,7 +44,7 @@ class ScrollsController < ActionController::Base
       Scroll.new(1, "1", "Hello One", "Something <i>COOL!</i>", Time.utc(2007, 12, 12, 15), Time.utc(2007, 12, 12, 15)),
       Scroll.new(2, "2", "Hello Two", "Something Boring", Time.utc(2007, 12, 12, 15)),
     ]
-    
+
     render :inline => FEEDS[params[:id]], :type => :builder
   end
 end
@@ -57,21 +57,21 @@ class AtomFeedTest < Test::Unit::TestCase
 
     @request.host = "www.nextangle.com"
   end
-  
+
   def test_feed_should_use_default_language_if_none_is_given
     with_restful_routing(:scrolls) do
       get :index, :id => "defaults"
       assert_match %r{xml:lang="en-US"}, @response.body
     end
   end
-  
+
   def test_feed_should_include_two_entries
     with_restful_routing(:scrolls) do
       get :index, :id => "defaults"
       assert_select "entry", 2
     end
   end
-  
+
   def test_entry_should_only_use_published_if_created_at_is_present
     with_restful_routing(:scrolls) do
       get :index, :id => "defaults"

@@ -7,7 +7,7 @@
     <table>
       <tr class="header">
         <td>Category #</td>
-        <td>Parent Category</td>    
+        <td>Parent Category</td>
         <td>Category Name</td>
 		<td>Slug</td>
         <td>Options</td>
@@ -15,10 +15,10 @@
       <%= render :partial => 'category', :collection => @display_data %>
     </table>
     <div class = "footer-controls">
-      <%= render :partial => 'new_category' %>  
+      <%= render :partial => 'new_category' %>
     </div>
     <div class="pagination">
-       <%= will_paginate @display_data %>  
+       <%= will_paginate @display_data %>
     </div>
   </fieldset>
 </div>

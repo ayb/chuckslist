@@ -30,8 +30,8 @@ class AuthenticatedGenerator < Rails::Generator::NamedBase
   def manifest
     record do |m|
       # Check for class naming collisions.
-      m.class_collisions controller_class_path, "#{controller_class_name}Controller", 
-                                                #"#{controller_class_name}ControllerTest", 
+      m.class_collisions controller_class_path, "#{controller_class_name}Controller",
+                                                #"#{controller_class_name}ControllerTest",
                                                 "#{controller_class_name}Helper"
       m.class_collisions class_path,            "#{class_name}"
                                                 #"#{class_name}Test"

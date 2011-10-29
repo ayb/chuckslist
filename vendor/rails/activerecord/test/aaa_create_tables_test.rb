@@ -21,7 +21,7 @@ class AAACreateTablesTest < Test::Unit::TestCase
     end
     assert true
   end
-  
+
   def test_drop_and_create_courses_table
     if Course.connection.supports_migrations?
       eval(File.read("#{File.dirname(__FILE__)}/fixtures/db_definitions/schema2.rb"))

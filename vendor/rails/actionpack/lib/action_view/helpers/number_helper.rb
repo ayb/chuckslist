@@ -22,7 +22,7 @@ module ActionView
       #  number_to_phone(1235551234, :country_code => 1)                    # => +1-123-555-1234
       #
       #  number_to_phone(1235551234, :country_code => 1, :extension => 1343, :delimiter => ".")
-      #  => +1.123.555.1234 x 1343      
+      #  => +1.123.555.1234 x 1343
       def number_to_phone(number, options = {})
         number       = number.to_s.strip unless number.nil?
         options      = options.stringify_keys
@@ -147,7 +147,7 @@ module ActionView
       end
 
       # Formats the bytes in +size+ into a more understandable representation
-      # (e.g., giving it 1500 yields 1.5 KB). This method is useful for 
+      # (e.g., giving it 1500 yields 1.5 KB). This method is useful for
       # reporting file sizes to users. This method returns nil if
       # +size+ cannot be converted into a number. You can change the default
       # precision of 1 using the precision parameter +precision+.

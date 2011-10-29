@@ -16,7 +16,7 @@ module Rails
       def initialize(initializer)
         @initializer = initializer
       end
-      
+
       # Returns the plugins to be loaded, in the order they should be loaded.
       def plugins
         @plugins ||= all_plugins.select { |plugin| should_load?(plugin) }.sort { |p1, p2| order_plugins(p1, p2) }
@@ -27,20 +27,20 @@ module Rails
         @all_plugins ||= locate_plugins
         @all_plugins
       end
-    
+
       def load_plugins
-        plugins.each do |plugin| 
+        plugins.each do |plugin|
           plugin.load(initializer)
           register_plugin_as_loaded(plugin)
         end
         ensure_all_registered_plugins_are_loaded!
       end
-      
+
       # Adds the load paths for every plugin into the $LOAD_PATH. Plugin load paths are
       # added *after* the application's <tt>lib</tt> directory, to ensure that an application
       # can always override code within a plugin.
       #
-      # Plugin load paths are also added to Dependencies.load_paths, and Dependencies.load_once_paths.  
+      # Plugin load paths are also added to Dependencies.load_paths, and Dependencies.load_once_paths.
       def add_plugin_load_paths
         plugins.each do |plugin|
           plugin.load_paths.each do |path|
@@ -50,10 +50,10 @@ module Rails
           end
         end
         $LOAD_PATH.uniq!
-      end      
-      
+      end
+
       protected
-      
+
         # The locate_plugins method uses each class in config.plugin_locators to
         # find the set of all plugins available to this Rails application.
         def locate_plugins
@@ -70,7 +70,7 @@ module Rails
         def configuration
           initializer.configuration
         end
-        
+
         def should_load?(plugin)
           # uses Plugin#name and Plugin#valid?
           enabled?(plugin) && plugin.valid?
@@ -84,21 +84,21 @@ module Rails
               plugin_a <=> plugin_b
             else
               effective_order_of(plugin_a) <=> effective_order_of(plugin_b)
-            end            
+            end
           end
         end
-        
+
         def effective_order_of(plugin)
           if explicitly_enabled?(plugin)
-            registered_plugin_names.index(plugin.name) 
+            registered_plugin_names.index(plugin.name)
           else
             registered_plugin_names.index('all')
-          end        
+          end
         end
 
         def application_lib_index
           $LOAD_PATH.index(File.join(RAILS_ROOT, 'lib')) || 0
-        end      
+        end
 
         def enabled?(plugin)
           !explicit_plugin_loading_order? || registered?(plugin)
@@ -119,23 +119,23 @@ module Rails
         def explicitly_registered?(plugin)
           explicit_plugin_loading_order? && registered_plugin_names.include?(plugin.name)
         end
-      
+
         def registered_plugins_names_plugin?(plugin)
           registered_plugin_names.include?(plugin.name) || registered_plugin_names.include?('all')
         end
-        
+
         # The plugins that have been explicitly listed with config.plugins. If this list is nil
-        # then it means the client does not care which plugins or in what order they are loaded, 
+        # then it means the client does not care which plugins or in what order they are loaded,
         # so we load all in alphabetical order. If it is an empty array, we load no plugins, if it is
         # non empty, we load the named plugins in the order specified.
         def registered_plugin_names
           configuration.plugins ? configuration.plugins.map(&:to_s) : nil
         end
-        
+
         def loaded?(plugin_name)
           initializer.loaded_plugins.detect { |plugin| plugin.name == plugin_name.to_s }
         end
-        
+
         def ensure_all_registered_plugins_are_loaded!
           if explicit_plugin_loading_order?
             if configuration.plugins.detect {|plugin| plugin != :all && !loaded?(plugin) }
@@ -144,7 +144,7 @@ module Rails
             end
           end
         end
-  
+
     end
   end
 end

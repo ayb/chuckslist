@@ -19,7 +19,7 @@ module ActionController
       # ==== Examples
       #
       #   # assert that the response was a redirection
-      #   assert_response :redirect 
+      #   assert_response :redirect
       #
       #   # assert that the response code was status code 401 (unauthorized)
       #   assert_response 401
@@ -38,7 +38,7 @@ module ActionController
         end
       end
 
-      # Assert that the redirection options passed in match those of the redirect called in the latest action. 
+      # Assert that the redirection options passed in match those of the redirect called in the latest action.
       # This match can be partial, such that assert_redirected_to(:controller => "weblog") will also
       # match the redirection of redirect_to(:controller => "weblog", :action => "show") and so on.
       #

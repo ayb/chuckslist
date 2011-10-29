@@ -19,7 +19,7 @@ module ActiveSupport #:nodoc:
         alias :megabyte :megabytes
 
         def gigabytes
-          self * 1024.megabytes 
+          self * 1024.megabytes
         end
         alias :gigabyte :gigabytes
 
@@ -27,17 +27,17 @@ module ActiveSupport #:nodoc:
           self * 1024.gigabytes
         end
         alias :terabyte :terabytes
-        
+
         def petabytes
           self * 1024.terabytes
         end
         alias :petabyte :petabytes
-        
+
         def exabytes
           self * 1024.petabytes
         end
         alias :exabyte :exabytes
-        
+
       end
     end
   end

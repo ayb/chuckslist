@@ -65,7 +65,7 @@ class PrimaryKeysTest < Test::Unit::TestCase
   def test_find_with_more_than_one_string_key
     assert_equal 2, Subscriber.find(subscribers(:first).nick, subscribers(:second).nick).length
   end
-  
+
   def test_primary_key_prefix
     ActiveRecord::Base.primary_key_prefix_type = :table_name
     Topic.reset_primary_key
@@ -79,7 +79,7 @@ class PrimaryKeysTest < Test::Unit::TestCase
     Topic.reset_primary_key
     assert_equal "id", Topic.primary_key
   end
-  
+
   def test_delete_should_quote_pkey
     assert_nothing_raised { MixedCaseMonkey.delete(1) }
   end

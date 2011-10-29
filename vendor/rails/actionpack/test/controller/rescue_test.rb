@@ -70,7 +70,7 @@ class RescueController < ActionController::Base
   def method_not_allowed
     raise ActionController::MethodNotAllowed.new(:get, :head, :put)
   end
-  
+
   def not_implemented
     raise ActionController::NotImplemented.new(:get, :put)
   end
@@ -102,7 +102,7 @@ class RescueController < ActionController::Base
   def record_invalid_raise_as_string
     raise RecordInvalidToRescueAsString
   end
-  
+
   def bad_gateway
     raise BadGateway
   end
@@ -302,7 +302,7 @@ class RescueTest < Test::Unit::TestCase
       assert_nil @controller.send(:clean_backtrace, Exception.new)
     end
   end
-  
+
   def test_not_implemented
     with_all_requests_local false do
       head :not_implemented

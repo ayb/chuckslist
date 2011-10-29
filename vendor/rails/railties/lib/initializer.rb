@@ -34,7 +34,7 @@ module Rails
 
     # The set of loaded plugins.
     attr_reader :loaded_plugins
-    
+
     # Runs the initializer. By default, this will invoke the #process method,
     # which simply executes all of the initialization routines. Alternately,
     # you can specify explicitly which initialization routine you want:
@@ -84,7 +84,7 @@ module Rails
     def process
       check_ruby_version
       set_load_path
-      
+
       require_frameworks
       set_autoload_paths
       add_plugin_load_paths
@@ -199,12 +199,12 @@ module Rails
       silence_warnings do
         return if @environment_loaded
         @environment_loaded = true
-        
+
         config = configuration
         constants = self.class.constants
-        
+
         eval(IO.read(configuration.environment_path), binding, configuration.environment_path)
-        
+
         (self.class.constants - constants).each do |const|
           Object.const_set(const, self.class.const_get(const))
         end
@@ -443,7 +443,7 @@ module Rails
     # a sub class would have access to fine grained modification of the loading behavior. See
     # the implementation of Rails::Plugin::Loader for more details.
     attr_accessor :plugin_loader
-    
+
     # Deprecated options:
     def breakpoint_server(_ = nil)
       $stderr.puts %(
@@ -494,7 +494,7 @@ module Rails
         else
           Pathname.new(::RAILS_ROOT).realpath.to_s
         end
-      
+
       Object.const_set(:RELATIVE_RAILS_ROOT, ::RAILS_ROOT.dup) unless defined?(::RELATIVE_RAILS_ROOT)
       ::RAILS_ROOT.replace @root_path
     end
@@ -547,11 +547,11 @@ module Rails
     def framework_paths
       paths = %w(railties railties/lib activesupport/lib)
       paths << 'actionpack/lib' if frameworks.include? :action_controller or frameworks.include? :action_view
-      
+
       [:active_record, :action_mailer, :active_resource, :action_web_service].each do |framework|
         paths << "#{framework.to_s.gsub('_', '')}/lib" if frameworks.include? framework
       end
-      
+
       paths.map { |dir| "#{framework_root_path}/#{dir}" }.select { |dir| File.directory?(dir) }
     end
 

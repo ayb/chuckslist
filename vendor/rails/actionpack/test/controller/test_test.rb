@@ -50,7 +50,7 @@ class TestTest < Test::Unit::TestCase
 </html>
 HTML
     end
-    
+
     def test_xml_output
       response.content_type = "application/xml"
       render :text => <<XML
@@ -331,7 +331,7 @@ XML
           :children => { :count => 1,
             :only => { :tag => "img" } } } }
   end
-  
+
   def test_should_not_impose_childless_html_tags_in_xml
     process :test_xml_output
 
@@ -480,15 +480,15 @@ XML
     assert_equal file.path, file.local_path
     assert_equal File.read(path), file.read
   end
-  
+
   def test_test_uploaded_file_with_binary
     filename = 'mona_lisa.jpg'
     path = "#{FILES_DIR}/#{filename}"
     content_type = 'image/png'
-    
+
     binary_uploaded_file = ActionController::TestUploadedFile.new(path, content_type, :binary)
     assert_equal File.open(path, 'rb').read, binary_uploaded_file.read
-    
+
     plain_uploaded_file = ActionController::TestUploadedFile.new(path, content_type)
     assert_equal File.open(path, 'r').read, plain_uploaded_file.read
   end
@@ -497,10 +497,10 @@ XML
     filename = 'mona_lisa.jpg'
     path = "#{FILES_DIR}/#{filename}"
     content_type = 'image/jpg'
-    
+
     binary_file_upload = fixture_file_upload(path, content_type, :binary)
     assert_equal File.open(path, 'rb').read, binary_file_upload.read
-    
+
     plain_file_upload = fixture_file_upload(path, content_type)
     assert_equal File.open(path, 'r').read, plain_file_upload.read
   end
@@ -550,7 +550,7 @@ XML
     get :test_send_file
     assert_nothing_raised(NoMethodError) { @response.binary_content }
   end
-  
+
   protected
     def with_foo_routing
       with_routing do |set|

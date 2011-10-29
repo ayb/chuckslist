@@ -108,7 +108,7 @@ require 'logger'
 # application is running.
 #++
 module UUID
- 
+
   VERSION = '1.0.4'
 
   # Regular expression to identify a 36 character UUID. Can be used for a partial match.

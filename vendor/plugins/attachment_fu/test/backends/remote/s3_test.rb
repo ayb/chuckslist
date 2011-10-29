@@ -83,11 +83,11 @@ class S3Test < Test::Unit::TestCase
         url = URI.parse(url)
         Net::HTTP.start(url.host, url.port) {|http| http.request_head(url.path) }
       end
-      
+
       def s3_protocol
         Technoweenie::AttachmentFu::Backends::S3Backend.protocol
       end
-      
+
       def s3_hostname
         Technoweenie::AttachmentFu::Backends::S3Backend.hostname
       end

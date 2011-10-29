@@ -13,7 +13,7 @@ module ActiveRecord
         255
       end
 
-      # Truncates a table alias according to the limits of the current adapter.  
+      # Truncates a table alias according to the limits of the current adapter.
       def table_alias_for(table_name)
         table_name[0..table_alias_length-1].gsub(/\./, '_')
       end
@@ -244,9 +244,9 @@ module ActiveRecord
       def dump_schema_information #:nodoc:
         begin
           if (current_schema = ActiveRecord::Migrator.current_version) > 0
-            return "INSERT INTO #{quote_table_name(ActiveRecord::Migrator.schema_info_table_name)} (version) VALUES (#{current_schema})" 
+            return "INSERT INTO #{quote_table_name(ActiveRecord::Migrator.schema_info_table_name)} (version) VALUES (#{current_schema})"
           end
-        rescue ActiveRecord::StatementInvalid 
+        rescue ActiveRecord::StatementInvalid
           # No Schema Info
         end
       end
@@ -290,7 +290,7 @@ module ActiveRecord
       def distinct(columns, order_by)
         "DISTINCT #{columns}"
       end
-      
+
       # ORDER BY clause for the passed order option.
       # PostgreSQL overrides this due to its stricter standards compliance.
       def add_order_by_for_association_limiting!(sql, options)

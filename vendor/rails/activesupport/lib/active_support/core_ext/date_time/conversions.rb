@@ -15,15 +15,15 @@ module ActiveSupport #:nodoc:
             remove_method :to_time if base.instance_methods.include?(:to_time)
           end
         end
-        
+
         # Convert to a formatted string - see DATE_FORMATS for predefined formats.
         # You can also add your own formats to the DATE_FORMATS constant and use them with this method.
-        # 
+        #
         # This method is also aliased as <tt>to_s</tt>.
-        # 
+        #
         # === Examples:
         #   datetime = DateTime.civil(2007, 12, 4, 0, 0, 0, 0)   # => Tue, 04 Dec 2007 00:00:00 +0000
-        # 
+        #
         #   datetime.to_formatted_s(:db)            # => "2007-12-04 00:00:00"
         #   datetime.to_s(:db)                      # => "2007-12-04 00:00:00"
         #   datetime.to_s(:number)                  # => "20071204000000"

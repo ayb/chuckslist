@@ -11,7 +11,7 @@ class CustomMethodsTest < Test::Unit::TestCase
     @addy  = { :id => 1, :street => '12345 Street' }.to_xml(:root => 'address')
     @addy_deep  = { :id => 1, :street => '12345 Street', :zip => "27519" }.to_xml(:root => 'address')
     @default_request_headers = { 'Content-Type' => 'application/xml' }
-    
+
     ActiveResource::HttpMock.respond_to do |mock|
       mock.get    "/people/1.xml",             {}, @matz
       mock.get    "/people/1/shallow.xml", {}, @matz
@@ -32,7 +32,7 @@ class CustomMethodsTest < Test::Unit::TestCase
       mock.put    "/people/1/addresses/sort.xml?by=name", {}, nil, 204
       mock.post   "/people/1/addresses/new/link.xml", {}, { :street => '12345 Street' }.to_xml(:root => 'address'), 201, 'Location' => '/people/1/addresses/2.xml'
     end
-  end  
+  end
 
   def teardown
     ActiveResource::HttpMock.reset!
@@ -61,13 +61,13 @@ class CustomMethodsTest < Test::Unit::TestCase
     # Test GET against an element URL
     assert_equal Person.find(1).get(:shallow), {"id" => 1, "name" => 'Matz'}
     assert_equal Person.find(1).get(:deep), {"id" => 1, "name" => 'Matz', "other" => 'other'}
-    
+
     # Test PUT against an element URL
     assert_equal ActiveResource::Response.new("", 204, {}), Person.find(1).put(:promote, {:position => 'Manager'}, 'body')
-    
+
     # Test DELETE against an element URL
     assert_equal ActiveResource::Response.new("", 200, {}), Person.find(1).delete(:deactivate)
-    
+
     # With nested resources
     assert_equal StreetAddress.find(1, :params => { :person_id => 1 }).get(:deep),
                   { "id" => 1, "street" => '12345 Street', "zip" => "27519" }
@@ -82,7 +82,7 @@ class CustomMethodsTest < Test::Unit::TestCase
 
     # Test POST against a nested collection URL
     addy = StreetAddress.new(:street => '123 Test Dr.', :person_id => 1)
-    assert_equal ActiveResource::Response.new({ :street => '12345 Street' }.to_xml(:root => 'address'), 
+    assert_equal ActiveResource::Response.new({ :street => '12345 Street' }.to_xml(:root => 'address'),
                    201, {'Location' => '/people/1/addresses/2.xml'}),
                  addy.post(:link)
 

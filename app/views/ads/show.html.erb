@@ -5,5 +5,5 @@
 <p><%=h @ad.ad %></p>
 
 <% @ad.ad_images.each do |ad_image| %>
-  <%= link_to image_tag(ad_image.public_filename(:show)), ad_image.public_filename, :target => "_blank" %>  
+  <%= link_to image_tag(ad_image.public_filename(:show)), ad_image.public_filename, :target => "_blank" %>
 <% end %>

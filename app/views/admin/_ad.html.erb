@@ -12,4 +12,4 @@
     <%= link_to image_tag('/images/trash2.png'), {:action => 'delete_ad', :id => ad}, {:method => :post, :confirm => "Confirm Delete Ad:#{ad.title}"} %>
   </td>
 </tr>
-<%= render :partial => 'edit_ad_form', :locals => { :ad => ad  }%> 
+<%= render :partial => 'edit_ad_form', :locals => { :ad => ad  }%>

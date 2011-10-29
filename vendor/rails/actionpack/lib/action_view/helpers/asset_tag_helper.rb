@@ -5,14 +5,14 @@ require 'action_view/helpers/tag_helper'
 module ActionView
   module Helpers #:nodoc:
     # This module provides methods for generating HTML that links views to assets such
-    # as images, javascripts, stylesheets, and feeds. These methods do not verify 
-    # the assets exist before linking to them. 
+    # as images, javascripts, stylesheets, and feeds. These methods do not verify
+    # the assets exist before linking to them.
     #
     # === Using asset hosts
     # By default, Rails links to these assets on the current host in the public
-    # folder, but you can direct Rails to link to assets from a dedicated assets server by 
+    # folder, but you can direct Rails to link to assets from a dedicated assets server by
     # setting ActionController::Base.asset_host in your environment.rb.  For example,
-    # let's say your asset host is assets.example.com. 
+    # let's say your asset host is assets.example.com.
     #
     #   ActionController::Base.asset_host = "assets.example.com"
     #   image_tag("rails.png")
@@ -22,16 +22,16 @@ module ActionView
     #
     # This is useful since browsers typically open at most two connections to a single host,
     # which means your assets often wait in single file for their turn to load.  You can
-    # alleviate this by using a %d wildcard in <tt>asset_host</tt> (for example, "assets%d.example.com") 
+    # alleviate this by using a %d wildcard in <tt>asset_host</tt> (for example, "assets%d.example.com")
     # to automatically distribute asset requests among four hosts (e.g., assets0.example.com through assets3.example.com)
-    # so browsers will open eight connections rather than two.  
+    # so browsers will open eight connections rather than two.
     #
     #   image_tag("rails.png")
     #     => <img src="http://assets0.example.com/images/rails.png" alt="Rails" />
     #   stylesheet_include_tag("application")
     #     => <link href="http://assets3.example.com/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
     #
-    # To do this, you can either setup 4 actual hosts, or you can use wildcard DNS to CNAME 
+    # To do this, you can either setup 4 actual hosts, or you can use wildcard DNS to CNAME
     # the wildcard to a single asset host.  You can read more about setting up your DNS CNAME records from
     # your ISP.
     #
@@ -71,7 +71,7 @@ module ActionView
     # asset far into the future, but still be able to instantly invalidate it by simply updating the file (and hence updating the timestamp,
     # which then updates the URL as the timestamp is part of that, which in turn busts the cache).
     #
-    # It's the responsibility of the web server you use to set the far-future expiration date on cache assets that you need to take 
+    # It's the responsibility of the web server you use to set the far-future expiration date on cache assets that you need to take
     # advantage of this feature. Here's an example for Apache:
     #
     # # Asset Expiration
@@ -80,16 +80,16 @@ module ActionView
     #   ExpiresDefault "access plus 1 year"
     # </FilesMatch>
     #
-    # Also note that in order for this to work, all your application servers must return the same timestamps. This means that they must 
+    # Also note that in order for this to work, all your application servers must return the same timestamps. This means that they must
     # have their clocks synchronized. If one of them drift out of sync, you'll see different timestamps at random and the cache won't
     # work. Which means that the browser will request the same assets over and over again even thought they didn't change. You can use
-    # something like Live HTTP Headers for Firefox to verify that the cache is indeed working (and that the assets are not being 
+    # something like Live HTTP Headers for Firefox to verify that the cache is indeed working (and that the assets are not being
     # requested over and over).
     module AssetTagHelper
       ASSETS_DIR      = defined?(RAILS_ROOT) ? "#{RAILS_ROOT}/public" : "public"
       JAVASCRIPTS_DIR = "#{ASSETS_DIR}/javascripts"
       STYLESHEETS_DIR = "#{ASSETS_DIR}/stylesheets"
-      
+
       # Returns a link tag that browsers and news readers can use to auto-detect
       # an RSS or ATOM feed. The +type+ can either be <tt>:rss</tt> (default) or
       # <tt>:atom</tt>. Control the link options in url_for format using the
@@ -177,7 +177,7 @@ module ActionView
       #
       # * = The application.js file is only referenced if it exists
       #
-      # Though it's not really recommended practice, if you need to extend the default JavaScript set for any reason 
+      # Though it's not really recommended practice, if you need to extend the default JavaScript set for any reason
       # (e.g., you're going to be using a certain .js file in every action), then take a look at the register_javascript_include_default method.
       #
       # You can also include all javascripts in the javascripts directory using <tt>:all</tt> as the source:
@@ -198,7 +198,7 @@ module ActionView
       # You can also cache multiple javascripts into one file, which requires less HTTP connections to download and can better be
       # compressed by gzip (leading to faster transfers). Caching will only happen if ActionController::Base.perform_caching
       # is set to <tt>true</tt> (which is the case by default for the Rails production environment, but not for the development
-      # environment). 
+      # environment).
       #
       # ==== Examples
       #   javascript_include_tag :all, :cache => true # when ActionController::Base.perform_caching is false =>
@@ -375,9 +375,9 @@ module ActionView
       #    <img alt="Icon" height="32" src="/icons/icon.gif" width="32" />
       #  image_tag("/icons/icon.gif", :class => "menu_icon") # =>
       #    <img alt="Icon" class="menu_icon" src="/icons/icon.gif" />
-      #  image_tag("mouse.png", :mouseover => "/images/mouse_over.png") # => 
+      #  image_tag("mouse.png", :mouseover => "/images/mouse_over.png") # =>
       #    <img src="/images/mouse.png" onmouseover="this.src='/images/mouse_over.png'" onmouseout="this.src='/images/mouse.png'" alt="Mouse" />
-      #  image_tag("mouse.png", :mouseover => image_path("mouse_over.png")) # => 
+      #  image_tag("mouse.png", :mouseover => image_path("mouse_over.png")) # =>
       #    <img src="/images/mouse.png" onmouseover="this.src='/images/mouse_over.png'" onmouseout="this.src='/images/mouse.png'" alt="Mouse" />
       def image_tag(source, options = {})
         options.symbolize_keys!
@@ -514,8 +514,8 @@ module ActionView
             sources = ((@@javascript_default_sources.dup & all_javascript_files) + all_javascript_files).uniq
 
           when sources.include?(:defaults)
-            sources = sources[0..(sources.index(:defaults))] + 
-              @@javascript_default_sources.dup + 
+            sources = sources[0..(sources.index(:defaults))] +
+              @@javascript_default_sources.dup +
               sources[(sources.index(:defaults) + 1)..sources.length]
 
             sources.delete(:defaults)

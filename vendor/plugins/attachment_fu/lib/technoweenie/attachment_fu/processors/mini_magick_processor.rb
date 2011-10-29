@@ -7,7 +7,7 @@ module Technoweenie # :nodoc:
           base.send :extend, ClassMethods
           base.alias_method_chain :process_attachment, :processing
         end
-        
+
         module ClassMethods
           # Yields a block containing an MiniMagick Image for the given binary data.
           def with_image(file, &block)
@@ -48,11 +48,11 @@ module Technoweenie # :nodoc:
           end
           self.temp_path = img
         end
-        
-        def resize_and_crop(image, square_size)         
-          if image[:width] < image[:height]   
-            shave_off = ((image[:height] - image[:width])/2).round 
-            image.shave("0x#{shave_off}") 
+
+        def resize_and_crop(image, square_size)
+          if image[:width] < image[:height]
+            shave_off = ((image[:height] - image[:width])/2).round
+            image.shave("0x#{shave_off}")
           elsif image[:width] > image[:height]
             shave_off = ((image[:width] - image[:height])/2).round
             image.shave("#{shave_off}x0")

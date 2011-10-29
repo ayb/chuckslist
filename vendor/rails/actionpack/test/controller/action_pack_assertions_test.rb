@@ -141,7 +141,7 @@ module Admin
     def redirect_to_fellow_controller
       redirect_to :controller => 'user'
     end
-    
+
     def redirect_to_top_level_named_route
       redirect_to top_level_url(:id => "foo")
     end
@@ -255,7 +255,7 @@ class ActionPackAssertionsControllerTest < Test::Unit::TestCase
       assert_redirected_to admin_inner_module_path
     end
   end
-  
+
   def test_assert_redirected_to_top_level_named_route_from_nested_controller
     with_routing do |set|
       set.draw do |map|

@@ -5,28 +5,28 @@ module Rails
       def names
         map {|(name, )| name}
       end
-      
+
       def value_for(property_name)
         find {|(name, )| name == property_name}.last rescue nil
       end
     end
-  
+
     class << self #:nodoc:
       def property(name, value = nil)
         value ||= yield
-        properties << [name, value] if value 
+        properties << [name, value] if value
       rescue Exception
       end
 
       def components
         %w( active_record action_pack active_resource action_mailer active_support )
       end
-      
+
       def component_version(component)
         require "#{component}/version"
         "#{component.classify}::VERSION::STRING".constantize
       end
-    
+
       def edge_rails_revision(info = svn_info)
         info[/^Revision: (\d+)/, 1] || freeze_edge_version
       end
@@ -49,7 +49,7 @@ module Rails
       end
 
       alias inspect to_s
-      
+
       def to_html
         returning table = '<table>' do
           properties.each do |(name, value)|
@@ -82,25 +82,25 @@ module Rails
     property 'RubyGems version' do
       Gem::RubyGemsVersion
     end
-  
+
     # The Rails version.
     property 'Rails version' do
       Rails::VERSION::STRING
     end
-  
-    # Versions of each Rails component (Active Record, Action Pack, 
+
+    # Versions of each Rails component (Active Record, Action Pack,
     # Active Resource, Action Mailer, and Active Support).
     components.each do |component|
-      property "#{component.titlecase} version" do 
+      property "#{component.titlecase} version" do
         component_version(component)
       end
     end
-  
+
     # The Rails SVN revision, if it's checked out into vendor/rails.
     property 'Edge Rails revision' do
       edge_rails_revision
     end
-  
+
     # The application's location on the filesystem.
     property 'Application root' do
       File.expand_path(RAILS_ROOT)
@@ -110,7 +110,7 @@ module Rails
     property 'Environment' do
       RAILS_ENV
     end
-    
+
     # The name of the database adapter for the current environment.
     property 'Database adapter' do
       ActiveRecord::Base.configurations[RAILS_ENV]['adapter']

@@ -45,7 +45,7 @@ class ReflectionTest < Test::Unit::TestCase
     assert_equal :string, @first.column_for_attribute("title").type
     assert_equal 255, @first.column_for_attribute("title").limit
   end
-  
+
   def test_column_null_not_null
     subscriber = Subscriber.find(:first)
     assert subscriber.column_for_attribute("name").null
@@ -87,7 +87,7 @@ class ReflectionTest < Test::Unit::TestCase
     assert_equal reflection_for_address, Customer.reflect_on_aggregation(:address)
 
     assert_equal Address, Customer.reflect_on_aggregation(:address).klass
-    
+
     assert_equal Money, Customer.reflect_on_aggregation(:balance).klass
   end
 
@@ -157,7 +157,7 @@ class ReflectionTest < Test::Unit::TestCase
       :class_name => 'Nested::Firm',
       :table_name => 'companies'
   end
-  
+
   def test_reflection_of_all_associations
     assert_equal 17, Firm.reflect_on_all_associations.size
     assert_equal 15, Firm.reflect_on_all_associations(:has_many).size

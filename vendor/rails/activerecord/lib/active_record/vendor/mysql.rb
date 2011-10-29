@@ -107,7 +107,7 @@ class Mysql
       sock = UNIXSocket::new(unix_socket)
       @host_info = Error::err(Error::CR_LOCALHOST_CONNECTION)
       @unix_socket = unix_socket
-    else      
+    else
       sock = TCPSocket::new(host, port||ENV["MYSQL_TCP_PORT"]||(Socket::getservbyname("mysql","tcp") rescue MYSQL_PORT))
       @host_info = sprintf Error::err(Error::CR_TCP_CONNECTION), host
     end
@@ -1103,10 +1103,10 @@ class Mysql
       @sock.sync = true
       buf.join
     rescue
-      errno = Error::CR_SERVER_LOST 
-      raise Error::new(errno, Error::err(errno)) 
+      errno = Error::CR_SERVER_LOST
+      raise Error::new(errno, Error::err(errno))
     end
-    
+
     def write(data)
       if data.is_a? Array then
 	data = data.join
@@ -1123,8 +1123,8 @@ class Mysql
       @sock.sync = true
       @sock.flush
     rescue
-      errno = Error::CR_SERVER_LOST 
-      raise Error::new(errno, Error::err(errno)) 
+      errno = Error::CR_SERVER_LOST
+      raise Error::new(errno, Error::err(errno))
     end
 
     def close()

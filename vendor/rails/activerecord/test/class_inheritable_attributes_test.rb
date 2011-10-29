@@ -24,7 +24,7 @@ class ClassInheritableAttributesTest < Test::Unit::TestCase
     assert_equal [ :one, :two ], B.read_inheritable_attribute("first")
     assert_equal [ :three ], C.read_inheritable_attribute("first")
   end
-  
+
   def test_second_level
     assert_equal [ :one, :two, :four ], D.read_inheritable_attribute("first")
     assert_equal [ :one, :two ], B.read_inheritable_attribute("first")

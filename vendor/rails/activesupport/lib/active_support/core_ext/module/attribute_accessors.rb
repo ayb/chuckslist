@@ -1,4 +1,4 @@
-# Extends the module object with module and instance accessors for class attributes, 
+# Extends the module object with module and instance accessors for class attributes,
 # just like the native attr* accessors for instance attributes.
 class Module # :nodoc:
   def mattr_reader(*syms)
@@ -8,7 +8,7 @@ class Module # :nodoc:
         unless defined? @@#{sym}
           @@#{sym} = nil
         end
-        
+
         def self.#{sym}
           @@#{sym}
         end
@@ -19,7 +19,7 @@ class Module # :nodoc:
       EOS
     end
   end
-  
+
   def mattr_writer(*syms)
     options = syms.extract_options!
     syms.each do |sym|
@@ -27,11 +27,11 @@ class Module # :nodoc:
         unless defined? @@#{sym}
           @@#{sym} = nil
         end
-        
+
         def self.#{sym}=(obj)
           @@#{sym} = obj
         end
-        
+
         #{"
         def #{sym}=(obj)
           @@#{sym} = obj
@@ -40,7 +40,7 @@ class Module # :nodoc:
       EOS
     end
   end
-  
+
   def mattr_accessor(*syms)
     mattr_reader(*syms)
     mattr_writer(*syms)

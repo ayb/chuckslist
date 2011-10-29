@@ -7,10 +7,10 @@ class AdsController < ApplicationController
       flash[:warning] = 'Error - That Ad Does Not Exist'
       redirect_to root_path
     end
-    
+
     @category = @ad.category
   end
-  
+
   # destroy ad with that particular hash
   def destroy
     if request.post?
@@ -27,10 +27,10 @@ class AdsController < ApplicationController
       end
     end
   end
-  
+
   # show a list of ads in a category
-  # we need a clever way to do this - if both parent and child categories 
-  # have a page slug how to identify one vs. the other?  might be easier to 
+  # we need a clever way to do this - if both parent and child categories
+  # have a page slug how to identify one vs. the other?  might be easier to
   # inherit then do this code checking tfor a blank array..
   def list
     @slug = params[:slug]
@@ -40,24 +40,24 @@ class AdsController < ApplicationController
       redirect_to root_path
     end
   end
-  
-  
+
+
   # show parent category list for new ad
   def post
     @parents = ParentCategory.find :all, :order => 'name ASC'
   end
-  
+
 
   # ajaxy function to show subcategories when they select a parent
   def select_category
     @parent_category = ParentCategory.find_by_id(params[:id])
   end
-  
+
   # show the ajaxy form for a new ad
   def show_form
     @category = Category.find_by_id(params[:id])
   end
-  
+
   # ajaxy - create new ad
   def new
     if (params[:email] != params[:email_verify])
@@ -81,21 +81,21 @@ class AdsController < ApplicationController
       @ad.ad = params[:ad].gsub("\n", "<br/>")
       @ad.expiration = Time.now + 30.days
       @ad.author = @author
-      
+
       # record author IP address
       @ad.author_ip = request.env['REMOTE_ADDR']
       @ad.save
-      
+
       # handle image attachments
-      @ad.handle_images(params[:image_attachments])     
+      @ad.handle_images(params[:image_attachments])
 
       # send confirmation email with activation url
       Mailman.deliver_confirmation_email(@ad, @author.email)
       flash[:notice] = 'A Confirmation Email Has Been Sent To ' + @author.email
-      
+
     end
   end
-  
+
   # activate an ad that is new but not active yet
   def activate
     @ad = Ad.find_by_activation_hash(params[:activation_hash])
@@ -120,8 +120,8 @@ class AdsController < ApplicationController
       #end
     end
   end
-  
-  
+
+
   # manage an ad based on the hash
   def manage
     @ad = Ad.find_by_activation_hash(params[:activation_hash])
@@ -135,7 +135,7 @@ class AdsController < ApplicationController
       #render :action => 'show'
     end
   end
-  
+
   # edit an ad based on the hash
   def edit
     @ad = Ad.find_by_activation_hash(params[:activation_hash])
@@ -147,7 +147,7 @@ class AdsController < ApplicationController
       # show the ad and let them edit it
     end
   end
-  
+
   # update an ad after someone edits (via the edit form) and hits 'submit'
   def update
     @ad = Ad.find_by_activation_hash(params[:activation_hash])
@@ -159,51 +159,51 @@ class AdsController < ApplicationController
       @ad.ad = params[:ad].gsub("\n", "<br/>")
       @ad.title = params[:title]
       if @ad.save
-        
+
         # handle image attachments
         @ad.handle_images(params["image_attachments"])
-        
+
         flash[:notice] = "Ad Updated Successfully"
       else
         flash[:warning] = "Error Updating Ad"
       end
       redirect_to :controller => 'ads', :action => 'manage', :activation_hash => @ad.activation_hash
-    end    
+    end
   end
-  
+
   def delete_image
     @ad = Ad.find_by_activation_hash(params[:activation_hash])
     @ad_image = @ad.ad_images.find_by_id(params[:id])
-    
+
     if @ad_image.destroy
       flash[:notice] = "Ad Image Deleted"
     else
       flash[:warning] = "Unable to Find Ad Image to Delete"
     end
-    
+
     redirect_to :controller => 'ads', :action => 'manage', :activation_hash => @ad.activation_hash
   end
-  
-  
+
+
   # rss feed for the whole site
   def feed
     @ads = Ad.all_active
-    
+
     respond_to do |format|
       format.rss { render :layout => false }
       format.atom # index.atom.builder
     end
   end
-  
+
   # rss feed for just one category
   def category_feed
     @ads = Ad.all_active_by_slug(params[:slug])
-    
+
     respond_to do |format|
       format.rss { render :layout => false }
       format.atom # index.atom.builder
     end
   end
-  
-  
+
+
 end

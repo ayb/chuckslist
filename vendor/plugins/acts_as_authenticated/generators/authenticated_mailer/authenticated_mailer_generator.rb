@@ -14,7 +14,7 @@ class AuthenticatedMailerGenerator < Rails::Generator::NamedBase
                                              class_path,
                                              "#{file_name}_#{model_type}.rb")
       end
-      
+
       m.template 'notifier_test.rb', File.join('test/unit', class_path, "#{file_name}_notifier_test.rb")
 
       # Mailer templates

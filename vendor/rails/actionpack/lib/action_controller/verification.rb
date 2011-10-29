@@ -35,7 +35,7 @@ module ActionController #:nodoc:
     #            :add_flash => { "alert" => "Failed to create your message" },
     #            :redirect_to => :category_url
     #
-    # Note that these prerequisites are not business rules. They do not examine 
+    # Note that these prerequisites are not business rules. They do not examine
     # the content of the session or the parameters. That level of validation should
     # be encapsulated by your domain model or helper methods in the controller.
     module ClassMethods
@@ -55,14 +55,14 @@ module ActionController #:nodoc:
       #   be safely called. (The key should be a symbol: <tt>:get</tt> or
       #   <tt>:post</tt>, for example.)
       # * <tt>:xhr</tt> - true/false option to ensure that the request is coming
-      #   from an Ajax call or not. 
+      #   from an Ajax call or not.
       # * <tt>:add_flash</tt> - a hash of name/value pairs that should be merged
       #   into the session's flash if the prerequisites cannot be satisfied.
       # * <tt>:add_headers</tt> - a hash of name/value pairs that should be
       #   merged into the response's headers hash if the prerequisites cannot
       #   be satisfied.
       # * <tt>:redirect_to</tt> - the redirection parameters to be used when
-      #   redirecting if the prerequisites cannot be satisfied. You can 
+      #   redirecting if the prerequisites cannot be satisfied. You can
       #   redirect either to named route or to the action in some controller.
       # * <tt>:render</tt> - the render parameters to be used when
       #   the prerequisites cannot be satisfied.
@@ -83,14 +83,14 @@ module ActionController #:nodoc:
         [*options[:params] ].find { |v| params[v].nil?  } ||
         [*options[:session]].find { |v| session[v].nil? } ||
         [*options[:flash]  ].find { |v| flash[v].nil?   }
-      
+
       if !prereqs_invalid && options[:method]
-        prereqs_invalid ||= 
+        prereqs_invalid ||=
           [*options[:method]].all? { |v| request.method != v.to_sym }
       end
-      
+
       prereqs_invalid ||= (request.xhr? != options[:xhr]) unless options[:xhr].nil?
-      
+
       if prereqs_invalid
         flash.update(options[:add_flash]) if options[:add_flash]
         response.headers.update(options[:add_headers]) if options[:add_headers]

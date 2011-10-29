@@ -332,7 +332,7 @@ class_def = <<-CODE
 
     def setup
     end
-  
+
     def test_should_properly_setup_fixtures
       assert_nothing_raised { topics(:first) }
     end

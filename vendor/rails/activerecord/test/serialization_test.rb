@@ -3,7 +3,7 @@ require 'fixtures/contact'
 
 class SerializationTest < Test::Unit::TestCase
   FORMATS = [ :xml, :json ]
-  
+
   def setup
     @contact_attributes = {
       :name        => 'aaron stack',
@@ -16,12 +16,12 @@ class SerializationTest < Test::Unit::TestCase
 
     @contact = Contact.new(@contact_attributes)
   end
-  
+
   def test_serialize_should_be_reversible
     for format in FORMATS
       @serialized = Contact.new.send("to_#{format}")
       contact = Contact.new.send("from_#{format}", @serialized)
-      
+
       assert_equal @contact_attributes.keys.collect(&:to_s).sort, contact.attributes.keys.collect(&:to_s).sort, "For #{format}"
     end
   end

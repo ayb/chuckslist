@@ -83,7 +83,7 @@ module ActiveRecord
       def requires_reloading?
         true
       end
- 
+
       def disconnect!
         super
         @connection.close rescue nil
@@ -295,7 +295,7 @@ module ActiveRecord
                 (options[:rename][column.name] ||
                  options[:rename][column.name.to_sym] ||
                  column.name) : column.name
-              
+
               @definition.column(column_name, column.type,
                 :limit => column.limit, :default => column.default,
                 :null => column.null)

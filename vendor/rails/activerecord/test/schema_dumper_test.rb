@@ -11,14 +11,14 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       stream.string
     end
-    
+
     def test_schema_dump
       output = standard_dump
       assert_match %r{create_table "accounts"}, output
       assert_match %r{create_table "authors"}, output
       assert_no_match %r{create_table "schema_info"}, output
     end
-    
+
     def test_schema_dump_excludes_sqlite_sequence
       output = standard_dump
       assert_no_match %r{create_table "sqlite_sequence"}, output
@@ -41,7 +41,7 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
       column_definition_lines.each do |column_set|
         next if column_set.empty?
 
-        lengths = column_set.map do |column| 
+        lengths = column_set.map do |column|
           if match = column.match(/t\.(?:integer|decimal|float|datetime|timestamp|time|date|text|binary|string|boolean)\s+"/)
             match[0].length
           end
@@ -50,7 +50,7 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
         assert_equal 1, lengths.uniq.length
       end
     end
-    
+
     def test_arguments_line_up
       column_definition_lines.each do |column_set|
         assert_line_up(column_set, /:default => /)
@@ -58,15 +58,15 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
         assert_line_up(column_set, /:null => /)
       end
     end
-    
+
     def test_no_dump_errors
       output = standard_dump
       assert_no_match %r{\# Could not dump table}, output
     end
-    
+
     def test_schema_dump_includes_not_null_columns
       stream = StringIO.new
-      
+
       ActiveRecord::SchemaDumper.ignore_tables = [/^[^r]/]
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       output = stream.string
@@ -75,8 +75,8 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
 
     def test_schema_dump_with_string_ignored_table
       stream = StringIO.new
-      
-      ActiveRecord::SchemaDumper.ignore_tables = ['accounts']      
+
+      ActiveRecord::SchemaDumper.ignore_tables = ['accounts']
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       output = stream.string
       assert_no_match %r{create_table "accounts"}, output
@@ -87,8 +87,8 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
 
     def test_schema_dump_with_regexp_ignored_table
       stream = StringIO.new
-      
-      ActiveRecord::SchemaDumper.ignore_tables = [/^account/]      
+
+      ActiveRecord::SchemaDumper.ignore_tables = [/^account/]
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       output = stream.string
       assert_no_match %r{create_table "accounts"}, output
@@ -98,8 +98,8 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
 
 
     def test_schema_dump_illegal_ignored_table_value
-      stream = StringIO.new      
-      ActiveRecord::SchemaDumper.ignore_tables = [5]      
+      stream = StringIO.new
+      ActiveRecord::SchemaDumper.ignore_tables = [5]
       assert_raise(StandardError) do
         ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       end
@@ -120,7 +120,7 @@ if ActiveRecord::Base.connection.respond_to?(:tables)
     end
 
     def test_schema_dump_includes_decimal_options
-      stream = StringIO.new      
+      stream = StringIO.new
       ActiveRecord::SchemaDumper.ignore_tables = [/^[^n]/]
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
       output = stream.string

@@ -20,7 +20,7 @@ class BaseErrorsTest < Test::Unit::TestCase
   end
 
   def test_should_parse_errors_to_individual_attributes
-    assert @person.errors.invalid?(:name)    
+    assert @person.errors.invalid?(:name)
     assert_equal "can't be blank", @person.errors.on(:age)
     assert_equal ["can't be blank", "must start with a letter"], @person.errors[:name]
     assert_equal "Person quota full for today.", @person.errors.on_base

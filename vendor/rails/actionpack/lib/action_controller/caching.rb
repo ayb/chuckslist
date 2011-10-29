@@ -187,8 +187,8 @@ module ActionController #:nodoc:
     #     before_filter :authenticate, :except => :public
     #     caches_page   :public
     #     caches_action :show, :cache_path => { :project => 1 }
-    #     caches_action :show, :cache_path => Proc.new { |controller| 
-    #       controller.params[:user_id] ? 
+    #     caches_action :show, :cache_path => Proc.new { |controller|
+    #       controller.params[:user_id] ?
     #         controller.send(:user_list_url, c.params[:user_id], c.params[:id]) :
     #         controller.send(:list_url, c.params[:id]) }
     #   end
@@ -262,16 +262,16 @@ module ActionController #:nodoc:
             controller.request.get? && controller.response.headers['Status'].to_i == 200
           end
       end
-      
+
       class ActionCachePath
         attr_reader :path, :extension
-        
+
         class << self
           def path_for(controller, options)
             new(controller, options).path
           end
         end
-        
+
         def initialize(controller, options = {})
           @extension = extract_extension(controller.request.path)
           path = controller.url_for(options).split('://').last
@@ -279,16 +279,16 @@ module ActionController #:nodoc:
           add_extension!(path, @extension)
           @path = URI.unescape(path)
         end
-        
+
         private
           def normalize!(path)
             path << 'index' if path[-1] == ?/
           end
-        
+
           def add_extension!(path, extension)
             path << ".#{extension}" if extension
           end
-          
+
           def extract_extension(file_path)
             # Don't want just what comes after the last '.' to accommodate multi part extensions
             # such as tar.gz.
@@ -307,27 +307,27 @@ module ActionController #:nodoc:
     #     <%= render :partial => "topic", :collection => Topic.find(:all) %>
     #   <% end %>
     #
-    # This cache will bind to the name of the action that called it, so if this code was part of the view for the topics/list action, you would 
-    # be able to invalidate it using <tt>expire_fragment(:controller => "topics", :action => "list")</tt>. 
-    # 
-    # This default behavior is of limited use if you need to cache multiple fragments per action or if the action itself is cached using 
+    # This cache will bind to the name of the action that called it, so if this code was part of the view for the topics/list action, you would
+    # be able to invalidate it using <tt>expire_fragment(:controller => "topics", :action => "list")</tt>.
+    #
+    # This default behavior is of limited use if you need to cache multiple fragments per action or if the action itself is cached using
     # <tt>caches_action</tt>, so we also have the option to qualify the name of the cached fragment with something like:
     #
     #   <% cache(:action => "list", :action_suffix => "all_topics") do %>
     #
-    # That would result in a name such as "/topics/list/all_topics", avoiding conflicts with the action cache and with any fragments that use a 
-    # different suffix. Note that the URL doesn't have to really exist or be callable - the url_for system is just used to generate unique 
-    # cache names that we can refer to when we need to expire the cache. 
-    # 
+    # That would result in a name such as "/topics/list/all_topics", avoiding conflicts with the action cache and with any fragments that use a
+    # different suffix. Note that the URL doesn't have to really exist or be callable - the url_for system is just used to generate unique
+    # cache names that we can refer to when we need to expire the cache.
+    #
     # The expiration call for this example is:
-    # 
+    #
     #   expire_fragment(:controller => "topics", :action => "list", :action_suffix => "all_topics")
     #
     # == Fragment stores
     #
     # By default, cached fragments are stored in memory. The available store options are:
     #
-    # * FileStore: Keeps the fragments on disk in the +cache_path+, which works well for all types of environments and allows all 
+    # * FileStore: Keeps the fragments on disk in the +cache_path+, which works well for all types of environments and allows all
     #   processes running from the same application directory to access the cached content.
     # * MemoryStore: Keeps the fragments in memory, which is fine for WEBrick and for FCGI (if you don't care that each FCGI process holds its
     #   own fragment store). It's not suitable for CGI as the process is thrown away at the end of each request. It can potentially also take
@@ -364,7 +364,7 @@ module ActionController #:nodoc:
         end
       end
 
-      # Given a name (as described in <tt>expire_fragment</tt>), returns a key suitable for use in reading, 
+      # Given a name (as described in <tt>expire_fragment</tt>), returns a key suitable for use in reading,
       # writing, or expiring a cached fragment. If the name is a hash, the generated name is the return
       # value of url_for on that hash (without the protocol).
       def fragment_cache_key(name)

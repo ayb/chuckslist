@@ -8,7 +8,7 @@ TODO for v0.2 and beyond (in no particular order)
 6. Add RSS feed for each category (instead of just a main one)
 7. add ability to upload image(s) with your ad
 8. add more tests (we started strong but then got sidetracked)
-9. should we consider making ChucksList an ENGINE - such as 
+9. should we consider making ChucksList an ENGINE - such as
 10. ability to flag posts as spam/miscategorized/etc.
 11. do more to enforce banned authors (ban the IP?)
 12. enhance functions for managing authors and ads in admin section

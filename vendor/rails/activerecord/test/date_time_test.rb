@@ -10,7 +10,7 @@ class DateTimeTest < Test::Unit::TestCase
     task = Task.new
     task.starting = now
     task.save!
-    
+
     # check against Time.local_time, since some platforms will return a Time instead of a DateTime
     assert_equal Time.local_time(*time_values), Task.find(task.id).starting
   end

@@ -25,12 +25,12 @@ class Module
     # e.g. target?_without_feature is not a valid method name.
     aliased_target, punctuation = target.to_s.sub(/([?!=])$/, ''), $1
     yield(aliased_target, punctuation) if block_given?
-    
+
     with_method, without_method = "#{aliased_target}_with_#{feature}#{punctuation}", "#{aliased_target}_without_#{feature}#{punctuation}"
-    
+
     alias_method without_method, target
     alias_method target, with_method
-    
+
     case
       when public_method_defined?(without_method)
         public target
@@ -41,7 +41,7 @@ class Module
     end
   end
 
-  # Allows you to make aliases for attributes, which includes 
+  # Allows you to make aliases for attributes, which includes
   # getter, setter, and query methods.
   #
   # Example:

@@ -40,16 +40,16 @@ Once you've set up the app and gotten it running, go to yourdomain.com/account/s
 
 EMAIL FORWARDING/REDIRECTION
 ----------------------------
-We set up ChucksList to handle the email forwarding and redirecting as discussed here:  
+We set up ChucksList to handle the email forwarding and redirecting as discussed here:
 http://wiki.rubyonrails.org/rails/pages/HowToReceiveEmailsWithActionMailer
 
 You will have to set up a cron job to run mailman or postfix (depending on your server setup) and pipe the data into Mailman.receive.  If you are using sendmail to receive emails you should be able to execute the following as a cron job:
 
-mailman: "|/path/to/app/script/runner 'Mailman.receive(STDIN.read)'" 
+mailman: "|/path/to/app/script/runner 'Mailman.receive(STDIN.read)'"
 
 (be sure to change /path/to/app/ to be the actual path to your app)
 
-Also, be sure to edit the domain in the regular expression used in the Mailman.receive() function of /app/models/mailman.rb 
+Also, be sure to edit the domain in the regular expression used in the Mailman.receive() function of /app/models/mailman.rb
 
 
 CONTACT

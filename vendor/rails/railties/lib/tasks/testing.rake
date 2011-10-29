@@ -7,7 +7,7 @@ def recent_tests(source_pattern, test_path, touched_since = 10.minutes.ago)
       tests = []
       source_dir = File.dirname(path).split("/")
       source_file = File.basename(path, '.rb')
-      
+
       # Support subdirs in app/models and app/controllers
       modified_test_path = source_dir.length > 2 ? "#{test_path}/" << source_dir[1..source_dir.length].join('/') : test_path
 
@@ -18,7 +18,7 @@ def recent_tests(source_pattern, test_path, touched_since = 10.minutes.ago)
       # For modified files in app, run tests in subdirs too. ex. /test/functional/account/*_test.rb
       test = "#{modified_test_path}/#{File.basename(path, '.rb').sub("_controller","")}"
       FileList["#{test}/*_test.rb"].each { |f| tests.push f } if File.exists?(test)
-		
+
       return tests
 
     end
@@ -63,20 +63,20 @@ namespace :test do
     t.test_files = touched.uniq
   end
   Rake::Task['test:recent'].comment = "Test recent changes"
-  
+
   Rake::TestTask.new(:uncommitted => "db:test:prepare") do |t|
     def t.file_list
       changed_since_checkin = silence_stderr { `svn status` }.map { |path| path.chomp[7 .. -1] }
 
       models      = changed_since_checkin.select { |path| path =~ /app[\\\/]models[\\\/].*\.rb/ }
-      controllers = changed_since_checkin.select { |path| path =~ /app[\\\/]controllers[\\\/].*\.rb/ }  
+      controllers = changed_since_checkin.select { |path| path =~ /app[\\\/]controllers[\\\/].*\.rb/ }
 
       unit_tests       = models.map { |model| "test/unit/#{File.basename(model, '.rb')}_test.rb" }
       functional_tests = controllers.map { |controller| "test/functional/#{File.basename(controller, '.rb')}_test.rb" }
 
       unit_tests.uniq + functional_tests.uniq
     end
-    
+
     t.libs << 'test'
     t.verbose = true
   end

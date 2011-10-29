@@ -82,7 +82,7 @@ ensure
   unless detach
     tail_thread.kill if tail_thread
     puts 'Exiting'
-  
+
     # Ensure FCGI processes are reaped
     silence_stream(STDOUT) do
       ARGV.replace ['-a', 'kill']

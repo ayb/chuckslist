@@ -10,7 +10,7 @@ module Technoweenie # :nodoc:
     class AttachmentError < StandardError; end
 
     module ActMethods
-      # Options: 
+      # Options:
       # *  <tt>:content_type</tt> - Allowed content types.  Allows all by default.  Use :image to allow all standard image types.
       # *  <tt>:min_size</tt> - Minimum size allowed.  1 byte is the default.
       # *  <tt>:max_size</tt> - Maximum size allowed.  1.megabyte is the default.
@@ -31,7 +31,7 @@ module Technoweenie # :nodoc:
       #   has_attachment :content_type => ['application/pdf', :image], :resize_to => 'x50'
       #   has_attachment :thumbnails => { :thumb => [50, 50], :geometry => 'x50' }
       #   has_attachment :storage => :file_system, :path_prefix => 'public/files'
-      #   has_attachment :storage => :file_system, :path_prefix => 'public/files', 
+      #   has_attachment :storage => :file_system, :path_prefix => 'public/files',
       #     :content_type => :image, :resize_to => [50,50]
       #   has_attachment :storage => :file_system, :path_prefix => 'public/files',
       #     :thumbnails => { :thumb => [50, 50], :geometry => 'x50' }
@@ -45,11 +45,11 @@ module Technoweenie # :nodoc:
         options[:thumbnail_class]  ||= self
         options[:s3_access]        ||= :public_read
         options[:content_type] = [options[:content_type]].flatten.collect! { |t| t == :image ? Technoweenie::AttachmentFu.content_types : t }.flatten unless options[:content_type].nil?
-        
+
         unless options[:thumbnails].is_a?(Hash)
           raise ArgumentError, ":thumbnails option should be a hash: e.g. :thumbnails => { :foo => '50x50' }"
         end
-        
+
         # doing these shenanigans so that #attachment_options is available to processors and backends
         class_inheritable_accessor :attachment_options
         self.attachment_options = options
@@ -120,7 +120,7 @@ module Technoweenie # :nodoc:
       #
       #   class Foo < ActiveRecord::Base
       #     acts_as_attachment
-      #     after_resize do |record, img| 
+      #     after_resize do |record, img|
       #       record.aspect_ratio = img.columns.to_f / img.rows.to_f
       #     end
       #   end
@@ -167,7 +167,7 @@ module Technoweenie # :nodoc:
           FileUtils.cp file, tmp.path
         end
       end
-      
+
       # Writes the given data to a new tempfile, returning the closed tempfile.
       def write_to_temp_file(data, temp_base_name)
         returning Tempfile.new(temp_base_name, Technoweenie::AttachmentFu.tempfile_path) do |tmp|
@@ -183,7 +183,7 @@ module Technoweenie # :nodoc:
       def image?
         self.class.image?(content_type)
       end
-      
+
       # Returns true/false if an attachment is thumbnailable.  A thumbnailable attachment has an image content type and the parent_id attribute.
       def thumbnailable?
         image? && respond_to?(:parent_id) && parent_id.nil?
@@ -211,8 +211,8 @@ module Technoweenie # :nodoc:
         thumbnailable? || raise(ThumbnailError.new("Can't create a thumbnail if the content type is not an image or there is no parent_id column"))
         returning find_or_initialize_thumbnail(file_name_suffix) do |thumb|
           thumb.attributes = {
-            :content_type             => content_type, 
-            :filename                 => thumbnail_name_for(file_name_suffix), 
+            :content_type             => content_type,
+            :filename                 => thumbnail_name_for(file_name_suffix),
             :temp_path                => temp_file,
             :thumbnail_resize_options => size
           }
@@ -225,7 +225,7 @@ module Technoweenie # :nodoc:
       def content_type=(new_type)
         write_attribute :content_type, new_type.to_s.strip
       end
-      
+
       # Sanitizes a filename.
       def filename=(new_name)
         write_attribute :filename, sanitize_filename(new_name)
@@ -256,14 +256,14 @@ module Technoweenie # :nodoc:
       #
       # TODO: Allow it to work with Merb tempfiles too.
       def uploaded_data=(file_data)
-        return nil if file_data.nil? || file_data.size == 0 
-                
+        return nil if file_data.nil? || file_data.size == 0
+
         if File.respond_to?(:mime_type?)
           self.content_type = !(file_data.content_type.strip == "application/octet-stream") ? file_data.content_type : File.mime_type?(file_data.original_filename)
         else
           self.content_type = file_data.content_type
         end
-        
+
         self.filename     = file_data.original_filename if respond_to?(:filename)
         if file_data.is_a?(StringIO)
           file_data.rewind
@@ -281,13 +281,13 @@ module Technoweenie # :nodoc:
         p = temp_paths.first
         p.respond_to?(:path) ? p.path : p.to_s
       end
-      
+
       # Gets an array of the currently used temp paths.  Defaults to a copy of #full_filename.
       def temp_paths
         @temp_paths ||= (new_record? || !File.exist?(full_filename)) ? [] : [copy_to_temp_file(full_filename)]
       end
-      
-      # Adds a new temp_path to the array.  This should take a string or a Tempfile.  This class makes no 
+
+      # Adds a new temp_path to the array.  This should take a string or a Tempfile.  This class makes no
       # attempt to remove the files, so Tempfiles should be used.  Tempfiles remove themselves when they go out of scope.
       # You can also use string paths for temporary files, such as those used for uploaded files in a web server.
       def temp_path=(value)
@@ -299,22 +299,22 @@ module Technoweenie # :nodoc:
       def temp_data
         save_attachment? ? File.read(temp_path) : nil
       end
-      
+
       # Writes the given data to a Tempfile and adds it to the collection of temp files.
       def temp_data=(data)
         self.temp_path = write_to_temp_file data unless data.nil?
       end
-      
+
       # Copies the given file to a randomly named Tempfile.
       def copy_to_temp_file(file)
         self.class.copy_to_temp_file file, random_tempfile_filename
       end
-      
+
       # Writes the given file to a randomly named Tempfile.
       def write_to_temp_file(data)
         self.class.write_to_temp_file data, random_tempfile_filename
       end
-      
+
       # Stub for creating a temp file from the attachment data.  This should be defined in the backend module.
       def create_temp_file() end
 
@@ -329,7 +329,7 @@ module Technoweenie # :nodoc:
       end
 
       protected
-        # Generates a unique filename for a Tempfile. 
+        # Generates a unique filename for a Tempfile.
         def random_tempfile_filename
           "#{rand Time.now.to_i}#{filename || 'attachment'}"
         end
@@ -339,7 +339,7 @@ module Technoweenie # :nodoc:
             # NOTE: File.basename doesn't work right with Windows paths on Unix
             # get only the filename, not the whole path
             name.gsub! /^.*(\\|\/)/, ''
-            
+
             # Finally, replace all non alphanumeric, underscore or periods with underscore
             name.gsub! /[^\w\.\-]/, '_'
           end
@@ -389,7 +389,7 @@ module Technoweenie # :nodoc:
           if (!respond_to?(:parent_id) || parent_id.nil?) && attachment_options[:resize_to] # parent image
             resize_image(img, attachment_options[:resize_to])
           elsif thumbnail_resize_options # thumbnail
-            resize_image(img, thumbnail_resize_options) 
+            resize_image(img, thumbnail_resize_options)
           end
         end
 
@@ -406,7 +406,7 @@ module Technoweenie # :nodoc:
 
           return result
         end
-        
+
         # Removes the thumbnails for the attachment, if it has any
         def destroy_thumbnails
           self.thumbnails.each { |thumbnail| thumbnail.destroy } if thumbnailable?

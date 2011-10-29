@@ -209,7 +209,7 @@ module DB2
         check_rc(rc)
       end
     end
- 
+
     #------------------------------------------------------------------------------
     # bind method does not use DB2's SQLBindParams, but replaces "?" in the
     # SQL statement with the value before passing the SQL statement to DB2.

@@ -28,49 +28,49 @@ module ActiveSupport::Multibyte #:nodoc:
   # Note that a few methods are defined on Chars instead of the handler because they are defined on Object or Kernel
   # and method_missing can't catch them.
   class Chars
-    
+
     attr_reader :string # The contained string
     alias_method :to_s, :string
-    
+
     include Comparable
-    
+
     # The magic method to make String and Chars comparable
     def to_str
       # Using any other ways of overriding the String itself will lead you all the way from infinite loops to
       # core dumps. Don't go there.
       @string
     end
-    
+
     # Make duck-typing with String possible
     def respond_to?(method)
       super || @string.respond_to?(method) || handler.respond_to?(method) ||
         (method.to_s =~ /(.*)!/ && handler.respond_to?($1)) || false
     end
-    
+
     # Create a new Chars instance.
     def initialize(str)
       @string = str.respond_to?(:string) ? str.string : str
     end
-    
+
     # Returns -1, 0 or +1 depending on whether the Chars object is to be sorted before, equal or after the
     # object on the right side of the operation. It accepts any object that implements +to_s+. See String.<=>
     # for more details.
     def <=>(other); @string <=> other.to_s; end
-    
+
     # Works just like String#split, with the exception that the items in the resulting list are Chars
     # instances instead of String. This makes chaining methods easier.
     def split(*args)
       @string.split(*args).map { |i| i.chars }
     end
-    
+
     # Gsub works exactly the same as gsub on a normal string.
     def gsub(*a, &b); @string.gsub(*a, &b).chars; end
-    
+
     # Like String.=~ only it returns the character offset (in codepoints) instead of the byte offset.
     def =~(other)
       handler.translate_offset(@string, @string =~ other)
     end
-    
+
     # Try to forward all undefined methods to the handler, when a method is not defined on the handler, send it to
     # the contained string. Method_missing is also responsible for making the bang! methods destructive.
     def method_missing(m, *a, &b)
@@ -92,14 +92,14 @@ module ActiveSupport::Multibyte #:nodoc:
         @string.replace handler.tidy_bytes(@string)
         retry
       end
-      
+
       if result.kind_of?(String)
         result.chars
       else
         result
       end
     end
-    
+
     # Set the handler class for the Char objects.
     def self.handler=(klass)
       @@handler = klass
@@ -116,7 +116,7 @@ module ActiveSupport::Multibyte #:nodoc:
     end
 
     private
-      
+
       # +utf8_pragma+ checks if it can send this string to the handlers. It makes sure @string isn't nil and $KCODE is
       # set to 'UTF8'.
       if RUBY_VERSION < '1.9'

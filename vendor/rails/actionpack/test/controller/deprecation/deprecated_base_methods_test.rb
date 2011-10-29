@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../abstract_unit'
 
 class DeprecatedBaseMethodsTest < Test::Unit::TestCase
   class Target < ActionController::Base
-    
+
     def home_url(greeting)
       "http://example.com/#{greeting}"
     end

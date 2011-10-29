@@ -323,7 +323,7 @@ module ActionController #:nodoc:
     # Controls the default charset for all renders.
     @@default_charset = "utf-8"
     cattr_accessor :default_charset
-    
+
     # The logger is used for generating information on the action run-time (including benchmarking) if available.
     # Can be set to nil for no logging. Compatible with both Ruby's own Logger and Log4r loggers.
     cattr_accessor :logger
@@ -337,7 +337,7 @@ module ActionController #:nodoc:
     # Controls the resource action separator
     @@resource_action_separator = "/"
     cattr_accessor :resource_action_separator
-    
+
     # Sets the token parameter name for RequestForgery.  Calling #protect_from_forgery sets it to :authenticity_token by default
     cattr_accessor :request_forgery_protection_token
 
@@ -431,7 +431,7 @@ module ActionController #:nodoc:
       end
 
       # Adds a view_path to the front of the view_paths array.
-      # If the current class has no view paths, copy them from 
+      # If the current class has no view paths, copy them from
       # the superclass.  This change will be visible for all future requests.
       #
       #   ArticleController.prepend_view_path("views/default")
@@ -441,9 +441,9 @@ module ActionController #:nodoc:
         @view_paths = superclass.view_paths.dup if @view_paths.nil?
         view_paths.unshift(*path)
       end
-      
+
       # Adds a view_path to the end of the view_paths array.
-      # If the current class has no view paths, copy them from 
+      # If the current class has no view paths, copy them from
       # the superclass. This change will be visible for all future requests.
       #
       #   ArticleController.append_view_path("views/default")
@@ -453,7 +453,7 @@ module ActionController #:nodoc:
         @view_paths = superclass.view_paths.dup if @view_paths.nil?
         view_paths.push(*path)
       end
-      
+
       # Replace sensitive parameter data from the request log.
       # Filters parameters that have any of the arguments as a substring.
       # Looks in all subhashes of the param hash for keys to filter.
@@ -639,12 +639,12 @@ module ActionController #:nodoc:
       end
 
       self.view_paths = []
-      
+
       # View load paths for controller.
       def view_paths
         (@template || self.class).view_paths
       end
-    
+
       def view_paths=(value)
         (@template || self.class).view_paths = value
       end
@@ -658,7 +658,7 @@ module ActionController #:nodoc:
       def prepend_view_path(path)
         (@template || self.class).prepend_view_path(path)
       end
-      
+
       # Adds a view_path to the end of the view_paths array.
       # This change affects the current request only.
       #
@@ -867,10 +867,10 @@ module ActionController #:nodoc:
           elsif action_name = options[:action]
             template = default_template_name(action_name.to_s)
             if options[:layout] && !template_exempt_from_layout?(template)
-              render_with_a_layout(:file => template, :status => options[:status], :use_full_path => true, :layout => true)              
+              render_with_a_layout(:file => template, :status => options[:status], :use_full_path => true, :layout => true)
             else
               render_with_no_layout(:file => template, :status => options[:status], :use_full_path => true)
-            end            
+            end
 
           elsif xml = options[:xml]
             response.content_type ||= Mime::XML
@@ -888,12 +888,12 @@ module ActionController #:nodoc:
 
             if collection = options[:collection]
               render_for_text(
-                @template.send!(:render_partial_collection, partial, collection, 
+                @template.send!(:render_partial_collection, partial, collection,
                 options[:spacer_template], options[:locals]), options[:status]
               )
             else
               render_for_text(
-                @template.send!(:render_partial, partial, 
+                @template.send!(:render_partial, partial,
                 ActionView::Base::ObjectWrapper.new(options[:object]), options[:locals]), options[:status]
               )
             end
@@ -1017,7 +1017,7 @@ module ActionController #:nodoc:
       #   redirect_to articles_url
       #   redirect_to :back
       #
-      # The redirection happens as a "302 Moved" header unless otherwise specified. 
+      # The redirection happens as a "302 Moved" header unless otherwise specified.
       #
       # Examples:
       #   redirect_to post_url(@post), :status=>:found
@@ -1028,16 +1028,16 @@ module ActionController #:nodoc:
       # When using <tt>redirect_to :back</tt>, if there is no referrer,
       # RedirectBackError will be raised. You may specify some fallback
       # behavior for this case by rescuing RedirectBackError.
-      def redirect_to(options = {}, response_status = {}) #:doc: 
-        
-        if options.is_a?(Hash) && options[:status] 
-          status = options.delete(:status) 
-        elsif response_status[:status] 
-          status = response_status[:status] 
-        else 
-          status = 302 
+      def redirect_to(options = {}, response_status = {}) #:doc:
+
+        if options.is_a?(Hash) && options[:status]
+          status = options.delete(:status)
+        elsif response_status[:status]
+          status = response_status[:status]
+        else
+          status = 302
         end
-        
+
         case options
           when %r{^\w+://.*}
             raise DoubleRenderError if performed?
@@ -1112,7 +1112,7 @@ module ActionController #:nodoc:
           response.body = text.is_a?(Proc) ? text : text.to_s
         end
       end
-      
+
       def initialize_template_class(response)
         unless @@template_class
           raise "You must assign a template class through ActionController.template_class= before processing a request"

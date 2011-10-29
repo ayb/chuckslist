@@ -2,15 +2,15 @@ class Author < ActiveRecord::Base
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :email, :case_sensitive => false
   has_many :ads do
-    
+
     def active
       find(:all, :conditions => ["expiration > ? and active = ?", Time.now, true])
     end
-    
+
     def remove_all
       find(:all).each { |a| a.destroy }
     end
-    
+
   end
 
 

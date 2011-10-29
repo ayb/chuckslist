@@ -4,12 +4,12 @@ module ActiveSupport #:nodoc:
   module CoreExtensions #:nodoc:
     module Array #:nodoc:
       module Grouping
-        # Iterate over an array in groups of a certain size, padding any remaining 
+        # Iterate over an array in groups of a certain size, padding any remaining
         # slots with specified value (<tt>nil</tt> by default) unless it is
         # <tt>false</tt>.
-        # 
+        #
         # E.g.
-        # 
+        #
         #   %w(1 2 3 4 5 6 7).in_groups_of(3) {|g| p g}
         #   ["1", "2", "3"]
         #   ["4", "5", "6"]

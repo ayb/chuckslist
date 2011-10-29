@@ -92,7 +92,7 @@ module ActionView
       # The <tt>:value_method</tt> and <tt>:text_method</tt> parameters are methods to be called on each member
       # of +collection+. The return values are used as the +value+ attribute and contents of each
       # <tt><option></tt> tag, respectively.
-      # 
+      #
       # Example object structure for use with this method:
       #   class Post < ActiveRecord::Base
       #     belongs_to :author

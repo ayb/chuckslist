@@ -399,7 +399,7 @@ module TMail
     end
 
     alias content_type= set_content_type
-    
+
     def type_param( name, default = nil )
       if h = @header['content-type']
         h[name] || default
@@ -470,7 +470,7 @@ module TMail
     alias disposition=            set_disposition
     alias set_content_disposition set_disposition
     alias content_disposition=    set_disposition
-    
+
     def disposition_param( name, default = nil )
       if h = @header['content-disposition']
         h[name] || default

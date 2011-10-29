@@ -39,7 +39,7 @@ module ActionMailer
     end
 
     private
-    
+
       def parse_content_type(defaults=nil)
         return [defaults && defaults.content_type, {}] if content_type.blank?
         ctype, *attrs = content_type.split(/;\s*/)

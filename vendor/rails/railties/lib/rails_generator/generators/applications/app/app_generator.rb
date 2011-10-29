@@ -1,5 +1,5 @@
 require 'rbconfig'
-require 'digest/md5' 
+require 'digest/md5'
 require 'rails_generator/secret_key_generator'
 
 class AppGenerator < Rails::Generator::Base

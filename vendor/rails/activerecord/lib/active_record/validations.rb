@@ -379,7 +379,7 @@ module ActiveRecord
       #   method, proc or string should return or evaluate to a true or false value.
       # * <tt>unless</tt> - Specifies a method, proc or string to call to determine if the validation should
       #   not occur (e.g. :unless => :skip_validation, or :unless => Proc.new { |user| user.signup_step <= 2 }).  The
-      #   method, proc or string should return or evaluate to a true or false value.      
+      #   method, proc or string should return or evaluate to a true or false value.
       def validates_each(*attrs)
         options = attrs.extract_options!.symbolize_keys
         attrs   = attrs.flatten
@@ -424,7 +424,7 @@ module ActiveRecord
       #   method, proc or string should return or evaluate to a true or false value.
       # * <tt>unless</tt> - Specifies a method, proc or string to call to determine if the validation should
       #   not occur (e.g. :unless => :skip_validation, or :unless => Proc.new { |user| user.signup_step <= 2 }).  The
-      #   method, proc or string should return or evaluate to a true or false value.      
+      #   method, proc or string should return or evaluate to a true or false value.
       def validates_confirmation_of(*attr_names)
         configuration = { :message => ActiveRecord::Errors.default_error_messages[:confirmation], :on => :save }
         configuration.update(attr_names.extract_options!)
@@ -458,7 +458,7 @@ module ActiveRecord
       #   method, proc or string should return or evaluate to a true or false value.
       # * <tt>unless</tt> - Specifies a method, proc or string to call to determine if the validation should
       #   not occur (e.g. :unless => :skip_validation, or :unless => Proc.new { |user| user.signup_step <= 2 }).  The
-      #   method, proc or string should return or evaluate to a true or false value.      
+      #   method, proc or string should return or evaluate to a true or false value.
       def validates_acceptance_of(*attr_names)
         configuration = { :message => ActiveRecord::Errors.default_error_messages[:accepted], :on => :save, :allow_nil => true, :accept => "1" }
         configuration.update(attr_names.extract_options!)
@@ -553,7 +553,7 @@ module ActiveRecord
       #   method, proc or string should return or evaluate to a true or false value.
       # * <tt>unless</tt> - Specifies a method, proc or string to call to determine if the validation should
       #   not occur (e.g. :unless => :skip_validation, or :unless => Proc.new { |user| user.signup_step <= 2 }).  The
-      #   method, proc or string should return or evaluate to a true or false value.      
+      #   method, proc or string should return or evaluate to a true or false value.
       def validates_length_of(*attrs)
         # Merge given options with defaults.
         options = {
@@ -632,7 +632,7 @@ module ActiveRecord
       # attribute (that maps to a column). When the record is updated, the same check is made but disregarding the record itself.
       #
       # Because this check is performed outside the database there is still a chance that duplicate values
-      # will be inserted in two parallel transactions.  To guarantee against this you should create a 
+      # will be inserted in two parallel transactions.  To guarantee against this you should create a
       # unique index on the field. See +create_index+ for more information.
       #
       # Configuration options:

@@ -1,4 +1,4 @@
-<tr id="author_<%= h(author.id.to_s) %>" class="<%= cycle('rowodd','roweven') %>">   
+<tr id="author_<%= h(author.id.to_s) %>" class="<%= cycle('rowodd','roweven') %>">
     <td><%= h(author.id) %></td>
     <td class="cell-shorttext"><%= "<del>" unless !author.banned %><%= h(author.email)%><%= "</del> [Banned]" unless !author.banned %></td>
     <td class="cell-shorttext"><%= author.ads.size.to_s %></td>

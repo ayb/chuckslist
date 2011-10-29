@@ -9,14 +9,14 @@ module ActionView
       def self.included(base)
         base.extend(ClassMethods)
       end
-      
-      # This #sanitize helper will html encode all tags and strip all attributes that aren't specifically allowed.  
+
+      # This #sanitize helper will html encode all tags and strip all attributes that aren't specifically allowed.
       # It also strips href/src tags with invalid protocols, like javascript: especially.  It does its best to counter any
       # tricks that hackers may use, like throwing in unicode/ascii/hex values to get past the javascript: filters.  Check out
       # the extensive test suite.
       #
       #   <%= sanitize @article.body %>
-      # 
+      #
       # You can add or remove tags/attributes if you want to customize it a bit.  See ActionView::Base for full docs on the
       # available options.  You can add tags/attributes for single uses of #sanitize by passing either the :attributes or :tags options:
       #
@@ -27,27 +27,27 @@ module ActionView
       # Custom Use (only the mentioned tags and attributes are allowed, nothing else)
       #
       #   <%= sanitize @article.body, :tags => %w(table tr td), :attributes => %w(id class style)
-      # 
+      #
       # Add table tags to the default allowed tags
-      #   
+      #
       #   Rails::Initializer.run do |config|
       #     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
       #   end
-      # 
+      #
       # Remove tags to the default allowed tags
-      #   
+      #
       #   Rails::Initializer.run do |config|
       #     config.after_initialize do
       #       ActionView::Base.sanitized_allowed_tags.delete 'div'
       #     end
       #   end
-      # 
+      #
       # Change allowed default attributes
-      # 
+      #
       #   Rails::Initializer.run do |config|
       #     config.action_view.sanitized_allowed_attributes = 'id', 'class', 'style'
       #   end
-      # 
+      #
       def sanitize(html, options = {})
         self.class.white_list_sanitizer.sanitize(html, options)
       end
@@ -57,8 +57,8 @@ module ActionView
         self.class.white_list_sanitizer.sanitize_css(style)
       end
 
-      # Strips all HTML tags from the +html+, including comments.  This uses the 
-      # html-scanner tokenizer and so its HTML parsing ability is limited by 
+      # Strips all HTML tags from the +html+, including comments.  This uses the
+      # html-scanner tokenizer and so its HTML parsing ability is limited by
       # that of html-scanner.
       #
       # ==== Examples
@@ -68,10 +68,10 @@ module ActionView
       #
       #   strip_tags("<b>Bold</b> no more!  <a href='more.html'>See more here</a>...")
       #   # => Bold no more!  See more here...
-      # 
+      #
       #   strip_tags("<div id='top-bar'>Welcome to my website!</div>")
       #   # => Welcome to my website!
-      def strip_tags(html)     
+      def strip_tags(html)
         self.class.full_sanitizer.sanitize(html)
       end
 
@@ -105,7 +105,7 @@ module ActionView
             eval helper_def
           end
         end
-        
+
         # Gets the HTML::FullSanitizer instance used by strip_tags.  Replace with
         # any object that responds to #sanitize
         #

@@ -34,10 +34,10 @@ end
 
 puts "=> Rails application starting on http://#{OPTIONS[:ip]}:#{OPTIONS[:port]}"
 
-parameters = [ 
-  "start", 
-  "-p", OPTIONS[:port].to_s, 
-  "-a", OPTIONS[:ip].to_s, 
+parameters = [
+  "start",
+  "-p", OPTIONS[:port].to_s,
+  "-a", OPTIONS[:ip].to_s,
   "-e", OPTIONS[:environment],
   "-P", "#{RAILS_ROOT}/tmp/pids/mongrel.pid"
 ]

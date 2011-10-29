@@ -62,7 +62,7 @@ spec = Gem::Specification.new do |s|
   dist_dirs.each do |dir|
     s.files = s.files + Dir.glob( "#{dir}/**/*" ).delete_if { |item| item.include?( "\.svn" ) }
   end
-  
+
   s.add_dependency('activesupport', '= 2.0.2' + PKG_BUILD)
 
   s.require_path = 'lib'
@@ -71,13 +71,13 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc = true
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main',  'README']
-  
+
   s.author = "David Heinemeier Hansson"
   s.email = "david@loudthinking.com"
   s.homepage = "http://www.rubyonrails.org"
   s.rubyforge_project = "activeresource"
 end
-  
+
 Rake::GemPackageTask.new(spec) do |p|
   p.gem_spec = spec
   p.need_tar = true
@@ -98,10 +98,10 @@ task :lines do
       codelines += 1
     end
     puts "L: #{sprintf("%4d", lines)}, LOC #{sprintf("%4d", codelines)} | #{file_name}"
-    
+
     total_lines     += lines
     total_codelines += codelines
-    
+
     lines, codelines = 0, 0
   end
 
@@ -112,13 +112,13 @@ end
 # Publishing ------------------------------------------------------
 
 desc "Publish the beta gem"
-task :pgem => [:package] do 
+task :pgem => [:package] do
   Rake::SshFilePublisher.new("davidhh@wrath.rubyonrails.org", "public_html/gems/gems", "pkg", "#{PKG_FILE_NAME}.gem").upload
   `ssh davidhh@wrath.rubyonrails.org './gemupdate.sh'`
 end
 
 desc "Publish the API documentation"
-task :pdoc => [:rdoc] do 
+task :pdoc => [:rdoc] do
   Rake::SshDirPublisher.new("davidhh@wrath.rubyonrails.org", "public_html/ar", "doc").upload
 end
 

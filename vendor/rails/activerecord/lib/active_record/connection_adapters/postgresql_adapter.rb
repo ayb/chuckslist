@@ -45,7 +45,7 @@ module ActiveRecord
           # depending on the server specifics
           super
         end
-  
+
         # Escapes binary strings for bytea input to the database.
         def self.string_to_binary(value)
           if PGconn.respond_to?(:escape_bytea)
@@ -67,7 +67,7 @@ module ActiveRecord
           end
           self.class.string_to_binary(value)
         end
-  
+
         # Unescapes bytea output from a database to the binary string it represents.
         def self.binary_to_string(value)
           # In each case, check if the value actually is escaped PostgreSQL bytea output
@@ -110,8 +110,8 @@ module ActiveRecord
             end
           end
           self.class.binary_to_string(value)
-        end  
-  
+        end
+
         # Maps PostgreSQL-specific data types to logical Rails types.
         def simplified_type(field_type)
           case field_type
@@ -146,7 +146,7 @@ module ActiveRecord
               :string
             # Arrays
             when /^\D+\[\]$/
-              :string              
+              :string
             # Object identifier types
             when /^oid$/
               :integer
@@ -155,7 +155,7 @@ module ActiveRecord
               super
           end
         end
-  
+
         # Extracts the value from a PostgreSQL column default definition.
         def self.extract_value_from_default(default)
           case default
@@ -650,7 +650,7 @@ module ActiveRecord
           'bigint'
         end
       end
-      
+
       # Returns a SELECT DISTINCT clause for a given set of columns and a given ORDER BY clause.
       #
       # PostgreSQL requires the ORDER BY columns in the select list for distinct queries, and
@@ -671,18 +671,18 @@ module ActiveRecord
         sql = "DISTINCT ON (#{columns}) #{columns}, "
         sql << order_columns * ', '
       end
-      
+
       # Returns an ORDER BY clause for the passed order option.
-      # 
+      #
       # PostgreSQL does not allow arbitrary ordering when using DISTINCT ON, so we work around this
       # by wrapping the sql as a sub-select and ordering in that query.
       def add_order_by_for_association_limiting!(sql, options) #:nodoc:
         return sql if options[:order].blank?
-        
+
         order = options[:order].split(',').collect { |s| s.strip }.reject(&:blank?)
         order.map! { |s| 'DESC' if s =~ /\bdesc$/i }
         order = order.zip((0...order.size).to_a).map { |s,i| "id_list.alias_#{i} #{s}" }.join(', ')
-        
+
         sql.replace "SELECT * FROM (#{sql}) AS id_list ORDER BY #{order}"
       end
 
@@ -795,7 +795,7 @@ module ActiveRecord
                 if res.type(cell_index) == MONEY_COLUMN_TYPE_OID
                   # Because money output is formatted according to the locale, there are two
                   # cases to consider (note the decimal separators):
-                  #  (1) $12,345,678.12        
+                  #  (1) $12,345,678.12
                   #  (2) $12.345.678,12
                   case column = row[cell_index]
                     when /^-?\D+[\d,]+\.\d{2}$/  # (1)

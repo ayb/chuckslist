@@ -60,7 +60,7 @@ class TestController < ActionController::Base
   def render_nothing_with_appendix
     render :text => "appended"
   end
-  
+
   def render_invalid_args
     render("test/hello")
   end
@@ -144,7 +144,7 @@ class TestController < ActionController::Base
   def partial_dot_html
     render :partial => 'partial.html.erb'
   end
-  
+
   def partial_as_rjs
     render :update do |page|
       page.replace :foo, :partial => 'partial'
@@ -268,11 +268,11 @@ class RenderTest < Test::Unit::TestCase
     assert_response 200
     assert_equal 'appended', @response.body
   end
-  
+
   def test_attempt_to_render_with_invalid_arguments
     assert_raises(ActionController::RenderError) { get :render_invalid_args }
   end
-  
+
   def test_attempt_to_access_object_method
     assert_raises(ActionController::UnknownAction, "No action responded to [clone]") { get :clone }
   end
@@ -404,17 +404,17 @@ class RenderTest < Test::Unit::TestCase
     get :formatted_html_erb
     assert_equal 'formatted html erb', @response.body
   end
-  
+
   def test_should_render_formatted_xml_erb_template
     get :formatted_xml_erb, :format => :xml
     assert_equal '<test>passed formatted xml erb</test>', @response.body
   end
-  
+
   def test_should_render_formatted_html_erb_template
     get :formatted_xml_erb
     assert_equal '<test>passed formatted html erb</test>', @response.body
   end
-  
+
   def test_should_render_formatted_html_erb_template_with_faulty_accepts_header
     @request.env["HTTP_ACCEPT"] = "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, appliction/x-shockwave-flash, */*"
     get :formatted_xml_erb
@@ -457,7 +457,7 @@ class RenderTest < Test::Unit::TestCase
   end
 
   protected
-  
+
     def etag_for(text)
       %("#{Digest::MD5.hexdigest(text)}")
     end

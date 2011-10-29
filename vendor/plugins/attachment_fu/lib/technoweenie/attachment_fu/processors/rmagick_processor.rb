@@ -7,7 +7,7 @@ module Technoweenie # :nodoc:
           base.send :extend, ClassMethods
           base.alias_method_chain :process_attachment, :processing
         end
-        
+
         module ClassMethods
           # Yields a block containing an RMagick Image for the given binary data.
           def with_image(file, &block)
@@ -35,7 +35,7 @@ module Technoweenie # :nodoc:
             callback_with_args :after_resize, img
           end if image?
         end
-      
+
         # Performs the actual resizing operation for a thumbnail
         def resize_image(img, size)
           size = size.first if size.is_a?(Array) && size.length == 1 && !size.first.is_a?(Fixnum)

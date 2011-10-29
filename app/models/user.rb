@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
   end
 
   def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at 
+    remember_token_expires_at && Time.now.utc < remember_token_expires_at
   end
-  
+
   # These create and unset the fields required for remembering users between browser closes
   def remember_me
     self.remember_token_expires_at = 2.weeks.from_now.utc
@@ -49,22 +49,22 @@ class User < ActiveRecord::Base
     self.remember_token            = nil
     save(false)
   end
-  
+
     def no_users?
       User.count == 0
     end
-    
+
   def self.display_paged_data(page)
     paginate(:page => page, :per_page => 10,:order => "id")
   end
-  
+
   # reset password to a random password
   # return the password if successful,
   # else return false
   def reset_password(length = 8)
-    chars = ("a".."z").to_a 
-    chars += ("A".."Z").to_a 
-    chars += ("0".."9").to_a 
+    chars = ("a".."z").to_a
+    chars += ("A".."Z").to_a
+    chars += ("0".."9").to_a
     new_password = ""
     1.upto(length) { |i| new_password << chars[rand(chars.size-1)] }
 
@@ -78,17 +78,17 @@ class User < ActiveRecord::Base
   end
 
   protected
-    # before filter 
+    # before filter
     def encrypt_password
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--") if new_record?
       self.crypted_password = encrypt(password)
     end
-    
+
     def password_required?
       crypted_password.blank? || !password.blank?
     end
-        
+
     def first_record_is_admin
       if no_users?
         self.isAdmin = true

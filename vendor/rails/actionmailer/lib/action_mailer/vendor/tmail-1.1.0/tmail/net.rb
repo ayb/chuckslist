@@ -163,7 +163,7 @@ module TMail
       m.encoding = encoding('7bit')
       mail.parts.push m
     end
-  
+
   end
 
 
@@ -188,7 +188,7 @@ module TMail
       end
       delete_if {|n,v| v.empty? } if @delete_empty_fields
     end
-  
+
   end
 
 
@@ -203,7 +203,7 @@ module TMail
     def exec( mail )
       mail.message_id = ::TMail::new_msgid(@fqdn)
     end
-  
+
   end
 
 
@@ -212,7 +212,7 @@ module TMail
     def exec( mail )
       mail.date = Time.now
     end
-  
+
   end
 
 
@@ -231,10 +231,10 @@ module TMail
       then @multipart_composer
       else @singlepart_composer end.exec mail
     end
-  
+
   end
 
-  
+
   class MimeEncodeSingle
 
     def exec( mail )
@@ -258,7 +258,7 @@ module TMail
       mail.set_content_type 'application', 'octet-stream'
       mail.encoding = 'Base64'
     end
-  
+
   end
 
 

@@ -3,7 +3,7 @@ require 'stringio'
 require 'strscan'
 
 module ActionController
-  # HTTP methods which are accepted by default. 
+  # HTTP methods which are accepted by default.
   ACCEPTED_HTTP_METHODS = Set.new(%w( get head put post delete options ))
 
   # CgiRequest and TestRequest provide concrete implementations.
@@ -87,7 +87,7 @@ module ActionController
         end
     end
 
-    # Returns the Mime type for the format used in the request. If there is no format available, the first of the 
+    # Returns the Mime type for the format used in the request. If there is no format available, the first of the
     # accept types will be used. Examples:
     #
     #   GET /posts/5.xml   | request.format => Mime::XML
@@ -96,14 +96,14 @@ module ActionController
     def format
       @format ||= parameters[:format] ? Mime::Type.lookup_by_extension(parameters[:format]) : accepts.first
     end
-    
-    
+
+
     # Sets the format by string extension, which can be used to force custom formats that are not controlled by the extension.
     # Example:
     #
     #   class ApplicationController < ActionController::Base
     #     before_filter :adjust_format_for_iphone
-    #   
+    #
     #     private
     #       def adjust_format_for_iphone
     #         request.format = :iphone if request.env["HTTP_USER_AGENT"][/iPhone/]
@@ -253,9 +253,9 @@ module ActionController
 
       # Cut off the path to the installation directory if given
       path.sub!(%r/^#{relative_url_root}/, '')
-      path || ''      
+      path || ''
     end
-    
+
     # Returns the path minus the web server relative installation directory.
     # This can be set with the environment variable RAILS_RELATIVE_URL_ROOT.
     # It can be automatically extracted for Apache setups. If the server is not
@@ -292,15 +292,15 @@ module ActionController
       @symbolized_path_parameters = @parameters = nil
     end
 
-    # The same as <tt>path_parameters</tt> with explicitly symbolized keys 
-    def symbolized_path_parameters 
+    # The same as <tt>path_parameters</tt> with explicitly symbolized keys
+    def symbolized_path_parameters
       @symbolized_path_parameters ||= path_parameters.symbolize_keys
     end
 
     # Returns a hash with the parameters used to form the path of the request.
     # Returned hash keys are strings.  See <tt>symbolized_path_parameters</tt> for symbolized keys.
     #
-    # Example: 
+    # Example:
     #
     #   {'action' => 'my_action', 'controller' => 'my_controller'}
     def path_parameters

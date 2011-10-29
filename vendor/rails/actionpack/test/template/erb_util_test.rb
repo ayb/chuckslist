@@ -2,11 +2,11 @@ require "#{File.dirname(__FILE__)}/../abstract_unit"
 
 class ErbUtilTest < Test::Unit::TestCase
   include ERB::Util
-  
+
   def test_amp
     assert_equal '&amp;', html_escape('&')
   end
-  
+
   def test_quot
     assert_equal '&quot;', html_escape('"')
   end
@@ -18,7 +18,7 @@ class ErbUtilTest < Test::Unit::TestCase
   def test_gt
     assert_equal '&gt;', html_escape('>')
   end
-  
+
   def test_rest_in_ascii
     (0..127).to_a.map(&:chr).each do |chr|
       next if %w(& " < >).include?(chr)
@@ -30,11 +30,11 @@ require "#{File.dirname(__FILE__)}/../abstract_unit"
 
 class ErbUtilTest < Test::Unit::TestCase
   include ERB::Util
-  
+
   def test_amp
     assert_equal '&amp;', html_escape('&')
   end
-  
+
   def test_quot
     assert_equal '&quot;', html_escape('"')
   end
@@ -46,7 +46,7 @@ class ErbUtilTest < Test::Unit::TestCase
   def test_gt
     assert_equal '&gt;', html_escape('>')
   end
-  
+
   def test_rest_in_ascii
     (0..127).to_a.map(&:chr).each do |chr|
       next if %w(& " < >).include?(chr)

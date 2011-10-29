@@ -8,6 +8,6 @@ class MainController < ApplicationController
       flash[:warning] = "No categories are set up.  Either add them in the Admin section, or run 'rake db:fixtures:import'.<br/>(Refer to README file for installation instructions.)"
     end
   end
-  
-  
+
+
 end

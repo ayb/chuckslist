@@ -145,13 +145,13 @@ class FinderTest < Test::Unit::TestCase
     assert topic.attribute_present?("author_name")
     assert topic.respond_to?("author_name")
   end
-  
+
   def test_find_on_blank_conditions
     [nil, " ", [], {}].each do |blank|
       assert_nothing_raised { Topic.find(:first, :conditions => blank) }
     end
   end
-  
+
   def test_find_on_blank_bind_conditions
     [ [""], ["",{}] ].each do |blank|
       assert_nothing_raised { Topic.find(:first, :conditions => blank) }
@@ -337,7 +337,7 @@ class FinderTest < Test::Unit::TestCase
     assert_equal topics(:first), Topic.find_by_title("The First Topic")
     assert_nil Topic.find_by_title("The First Topic!")
   end
-  
+
   def test_find_by_one_attribute_caches_dynamic_finder
     # ensure this test can run independently of order
     class << Topic; self; end.send(:remove_method, :find_by_title) if Topic.respond_to?(:find_by_title)
@@ -482,13 +482,13 @@ class FinderTest < Test::Unit::TestCase
     assert_equal "38signals", sig38.name
     assert sig38.new_record?
   end
-  
+
   def test_find_or_initialize_from_one_attribute_should_set_attribute_even_when_protected
     c = Company.find_or_initialize_by_name_and_rating("Fortune 1000", 1000)
     assert_equal "Fortune 1000", c.name
     assert_equal 1000, c.rating
     assert c.valid?
-    assert c.new_record?    
+    assert c.new_record?
   end
 
   def test_find_or_create_from_one_attribute_should_set_attribute_even_when_protected
@@ -496,11 +496,11 @@ class FinderTest < Test::Unit::TestCase
     assert_equal "Fortune 1000", c.name
     assert_equal 1000, c.rating
     assert c.valid?
-    assert !c.new_record?    
+    assert !c.new_record?
   end
 
   def test_dynamic_find_or_initialize_from_one_attribute_caches_method
-    class << Company; self; end.send(:remove_method, :find_or_initialize_by_name) if Company.respond_to?(:find_or_initialize_by_name)    
+    class << Company; self; end.send(:remove_method, :find_or_initialize_by_name) if Company.respond_to?(:find_or_initialize_by_name)
     assert !Company.respond_to?(:find_or_initialize_by_name)
     sig38 = Company.find_or_initialize_by_name("38signals")
     assert Company.respond_to?(:find_or_initialize_by_name)

@@ -17,7 +17,7 @@ module ActionView
       #       # GET /posts.atom
       #       def index
       #         @posts = Post.find(:all)
-      #         
+      #
       #         respond_to do |format|
       #           format.html
       #           format.atom
@@ -29,12 +29,12 @@ module ActionView
       #     atom_feed do |feed|
       #       feed.title("My great blog!")
       #       feed.updated((@posts.first.created_at))
-      #     
+      #
       #       for post in @posts
       #         feed.entry(post) do |entry|
       #           entry.title(post.title)
       #           entry.content(post.body, :type => 'html')
-      #     
+      #
       #           entry.author do |author|
       #             author.name("DHH")
       #           end
@@ -54,7 +54,7 @@ module ActionView
         xml.instruct!
 
         xml.feed "xml:lang" => options[:language] || "en-US", "xmlns" => 'http://www.w3.org/2005/Atom' do
-          xml.id("tag:#{request.host}:#{request.request_uri.split(".")[0].gsub("/", "")}")      
+          xml.id("tag:#{request.host}:#{request.request_uri.split(".")[0].gsub("/", "")}")
           xml.link(:rel => 'alternate', :type => 'text/html', :href => options[:root_url] || (request.protocol + request.host_with_port))
 
           if options[:url]
@@ -70,7 +70,7 @@ module ActionView
         def initialize(xml, view)
           @xml, @view = xml, view
         end
-        
+
         # Accepts a Date or Time object and inserts it in the proper format. If nil is passed, current time in UTC is used.
         def updated(date_or_time = nil)
           @xml.updated((date_or_time || Time.now.utc).xmlschema)
@@ -84,7 +84,7 @@ module ActionView
         # * <tt>:published</tt>: Time first published. Defaults to the updated_at attribute on the record if one such exists.
         # * <tt>:url</tt>: The URL for this entry. Defaults to the polymorphic_url for the record.
         def entry(record, options = {})
-          @xml.entry do 
+          @xml.entry do
             @xml.id("tag:#{@view.request.host_with_port}:#{record.class}#{record.id}")
 
             if options[:published] || (record.respond_to?(:created_at) && record.created_at)

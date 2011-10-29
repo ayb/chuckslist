@@ -1,7 +1,7 @@
 class CreateAdImages < ActiveRecord::Migration
   def self.up
     create_table :ad_images do |t|
-      
+
       t.integer :ad_id
 
 

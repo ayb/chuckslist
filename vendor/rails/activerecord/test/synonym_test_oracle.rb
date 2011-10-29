@@ -13,5 +13,5 @@ class TestOracleSynonym < Test::Unit::TestCase
     subject = Subject.new
     assert_equal(topic.attributes, subject.attributes)
   end
-  
+
 end

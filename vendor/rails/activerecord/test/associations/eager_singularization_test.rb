@@ -85,7 +85,7 @@ class EagerSingularizationTest < Test::Unit::TestCase
       @have_tables = false
     end
   end
-  
+
   def teardown
     ActiveRecord::Base.connection.drop_table :viri
     ActiveRecord::Base.connection.drop_table :octopi
@@ -99,7 +99,7 @@ class EagerSingularizationTest < Test::Unit::TestCase
     ActiveRecord::Base.connection.drop_table :dresses
     ActiveRecord::Base.connection.drop_table :compresses
   end
-  
+
   def test_eager_no_extra_singularization_belongs_to
     return unless @have_tables
     assert_nothing_raised do
@@ -135,7 +135,7 @@ class EagerSingularizationTest < Test::Unit::TestCase
       Crisis.find(:all, :include => :successes)
     end
   end
-  
+
   def test_eager_no_extra_singularization_has_many_through_has_many
     return unless @have_tables
     assert_nothing_raised do

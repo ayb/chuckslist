@@ -35,7 +35,7 @@ class ActiveSchemaTest < Test::Unit::TestCase
   def test_drop_table_with_specific_database
     assert_equal "DROP TABLE `otherdb`.`people`", drop_table('otherdb.people')
   end
-  
+
   private
     def method_missing(method_symbol, *arguments)
       ActiveRecord::Base.connection.send(method_symbol, *arguments)

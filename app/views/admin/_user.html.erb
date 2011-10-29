@@ -4,9 +4,9 @@
  <td><a href="#" onclick="Element.toggle('edit_user_<%= user.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
    <% if !user.isAdmin %>
        <%= link_to image_tag('/images/admin.png'), {:action => 'toggle_user_admin', :id => user}, {:method => :post, :confirm => "Make User:#{user.email} Admin?"} %>
-   <% else %>    
+   <% else %>
        <%= link_to image_tag('/images/unadmin.png'), {:action => 'toggle_user_admin', :id => user}, {:method => :post, :confirm => "Make User:#{user.email} Non-admin?"} %>
-   <% end %>        
+   <% end %>
    <%= link_to image_tag('/images/trash2.png'), {:action => 'delete_user', :id => user}, {:method => :post, :confirm => "Confirm Delete Category:#{user.email}"} %>
  </td>
 </tr>

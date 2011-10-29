@@ -2,14 +2,14 @@
 module ActiveSupport::Multibyte::Handlers #:nodoc:
   class EncodingError < ArgumentError #:nodoc:
   end
-  
+
   class Codepoint #:nodoc:
     attr_accessor :code, :combining_class, :decomp_type, :decomp_mapping, :uppercase_mapping, :lowercase_mapping
   end
-  
+
   class UnicodeDatabase #:nodoc:
     attr_writer :codepoints, :composition_exclusion, :composition_map, :boundary, :cp1252
-    
+
     # self-expiring methods that lazily load the Unicode database and then return the value.
     [:codepoints, :composition_exclusion, :composition_map, :boundary, :cp1252].each do |attr_name|
       class_eval(<<-EOS, __FILE__, __LINE__)
@@ -19,20 +19,20 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
         end
       EOS
     end
-    
+
     # Shortcut to ucd.codepoints[]
     def [](index); codepoints[index]; end
-    
+
     # Returns the directory in which the data files are stored
     def self.dirname
       File.dirname(__FILE__) + '/../../values/'
     end
-    
+
     # Returns the filename for the data file for this version
     def self.filename
       File.expand_path File.join(dirname, "unicode_tables.dat")
     end
-    
+
     # Loads the unicode database and returns all the internal objects of UnicodeDatabase
     # Once the values have been loaded, define attr_reader methods for the instance variables.
     def load
@@ -46,7 +46,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       @composition_map ||= {}
       @boundary ||= {}
       @cp1252 ||= {}
-      
+
       # Redefine the === method so we can write shorter rules for grapheme cluster breaks
       @boundary.each do |k,_|
         @boundary[k].instance_eval do
@@ -62,7 +62,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       end
     end
   end
-  
+
   # UTF8Handler implements Unicode aware operations for strings, these operations will be used by the Chars
   # proxy when $KCODE is set to 'UTF8'.
   class UTF8Handler
@@ -79,7 +79,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
     HANGUL_SLAST = HANGUL_SBASE + HANGUL_SCOUNT
     HANGUL_JAMO_FIRST = 0x1100
     HANGUL_JAMO_LAST = 0x11FF
-    
+
     # All the unicode whitespace
     UNICODE_WHITESPACE = [
       (0x0009..0x000D).to_a,  # White_Space # Cc   [5] <control-0009>..<control-000D>
@@ -95,11 +95,11 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       0x205F,          # White_Space # Zs       MEDIUM MATHEMATICAL SPACE
       0x3000,          # White_Space # Zs       IDEOGRAPHIC SPACE
     ].flatten.freeze
-    
+
     # BOM (byte order mark) can also be seen as whitespace, it's a non-rendering character used to distinguish
     # between little and big endian. This is not an issue in utf-8, so it must be ignored.
     UNICODE_LEADERS_AND_TRAILERS = UNICODE_WHITESPACE + [65279] # ZERO-WIDTH NO-BREAK SPACE aka BOM
-    
+
     # Borrowed from the Kconv library by Shinji KONO - (also as seen on the W3C site)
      UTF8_PAT = /\A(?:
                    [\x00-\x7f]                                     |
@@ -110,20 +110,20 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
                    [\xf1-\xf3] [\x80-\xbf] [\x80-\xbf] [\x80-\xbf] |
                    \xf4        [\x80-\x8f] [\x80-\xbf] [\x80-\xbf]
                   )*\z/xn
-    
+
     # Returns a regular expression pattern that matches the passed Unicode codepoints
     def self.codepoints_to_pattern(array_of_codepoints) #:nodoc:
-      array_of_codepoints.collect{ |e| [e].pack 'U*' }.join('|') 
+      array_of_codepoints.collect{ |e| [e].pack 'U*' }.join('|')
     end
     UNICODE_TRAILERS_PAT = /(#{codepoints_to_pattern(UNICODE_LEADERS_AND_TRAILERS)})+\Z/
     UNICODE_LEADERS_PAT = /\A(#{codepoints_to_pattern(UNICODE_LEADERS_AND_TRAILERS)})+/
-    
+
     class << self
-      
+
       # ///
       # /// BEGIN String method overrides
       # ///
-      
+
       # Inserts the passed string at specified codepoint offsets
       def insert(str, offset, fragment)
         str.replace(
@@ -133,13 +133,13 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           ).flatten.pack('U*')
         )
       end
-      
+
       # Returns the position of the passed argument in the string, counting in codepoints
       def index(str, *args)
         bidx = str.index(*args)
         bidx ? (u_unpack(str.slice(0...bidx)).size) : nil
       end
-      
+
       # Works just like the indexed replace method on string, except instead of byte offsets you specify
       # character offsets.
       #
@@ -177,7 +177,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
         result[range] = u_unpack(replace_by)
         str.replace(result.pack('U*'))
       end
-      
+
       # Works just like String#rjust, only integer specifies characters instead of bytes.
       #
       # Example:
@@ -190,7 +190,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       def rjust(str, integer, padstr=' ')
         justify(str, integer, :right, padstr)
       end
-      
+
       # Works just like String#ljust, only integer specifies characters instead of bytes.
       #
       # Example:
@@ -203,7 +203,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       def ljust(str, integer, padstr=' ')
         justify(str, integer, :left, padstr)
       end
-      
+
       # Works just like String#center, only integer specifies characters instead of bytes.
       #
       # Example:
@@ -216,33 +216,33 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
       def center(str, integer, padstr=' ')
         justify(str, integer, :center, padstr)
       end
-      
+
       # Does Unicode-aware rstrip
       def rstrip(str)
         str.gsub(UNICODE_TRAILERS_PAT, '')
       end
-      
+
       # Does Unicode-aware lstrip
       def lstrip(str)
         str.gsub(UNICODE_LEADERS_PAT, '')
       end
-      
+
       # Removed leading and trailing whitespace
       def strip(str)
         str.gsub(UNICODE_LEADERS_PAT, '').gsub(UNICODE_TRAILERS_PAT, '')
       end
-      
+
       # Returns the number of codepoints in the string
       def size(str)
         u_unpack(str).size
       end
       alias_method :length, :size
-      
+
       # Reverses codepoints in the string.
       def reverse(str)
         u_unpack(str).reverse.pack('U*')
       end
-      
+
       # Implements Unicode-aware slice with codepoints. Slicing on one point returns the codepoints for that
       # character.
       def slice(str, *args)
@@ -264,22 +264,22 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
         end
       end
       alias_method :[], :slice
-      
+
       # Convert characters in the string to uppercase
       def upcase(str); to_case :uppercase_mapping, str; end
-      
+
       # Convert characters in the string to lowercase
       def downcase(str); to_case :lowercase_mapping, str; end
-      
+
       # Returns a copy of +str+ with the first character converted to uppercase and the remainder to lowercase
       def capitalize(str)
         upcase(slice(str, 0..0)) + downcase(slice(str, 1..-1) || '')
       end
-      
+
       # ///
       # /// Extra String methods for unicode operations
       # ///
-      
+
       # Returns the KC normalization of the string by default. NFKC is considered the best normalization form for
       # passing strings to databases and validations.
       #
@@ -301,21 +301,21 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
             raise ArgumentError, "#{form} is not a valid normalization variant", caller
         end.pack('U*')
       end
-      
+
       # Perform decomposition on the characters in the string
       def decompose(str)
         decompose_codepoints(:canonical, u_unpack(str)).pack('U*')
       end
-      
+
       # Perform composition on the characters in the string
       def compose(str)
         compose_codepoints u_unpack(str).pack('U*')
       end
-      
+
       # ///
       # /// BEGIN Helper methods for unicode operation
       # ///
-      
+
       # Used to translate an offset from bytes to characters, for instance one received from a regular expression match
       def translate_offset(str, byte_offset)
         return nil if byte_offset.nil?
@@ -327,16 +327,16 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           rescue ArgumentError => e
             chunk = str[0..(byte_offset+=1)]
             # Stop retrying at the end of the string
-            raise e unless byte_offset < chunk.length 
+            raise e unless byte_offset < chunk.length
             # We damaged a character, retry
             retry
           end
         # Catch the ArgumentError so we can throw our own
-        rescue ArgumentError 
+        rescue ArgumentError
           raise EncodingError.new('malformed UTF-8 character')
         end
       end
-      
+
       # Checks if the string is valid UTF8.
       def consumes?(str)
         # Unpack is a little bit faster than regular expressions
@@ -347,13 +347,13 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           false
         end
       end
-      
+
       # Returns the number of grapheme clusters in the string. This method is very likely to be moved or renamed
       # in future versions.
       def g_length(str)
         g_unpack(str).length
       end
-      
+
       # Replaces all the non-utf-8 bytes by their iso-8859-1 or cp1252 equivalent resulting in a valid utf-8 string
       def tidy_bytes(str)
         str.split(//u).map do |c|
@@ -367,15 +367,15 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           end
         end.join
       end
-      
+
       protected
-      
+
       # Detect whether the codepoint is in a certain character class. Primarily used by the
       # grapheme cluster support.
       def in_char_class?(codepoint, classes)
         classes.detect { |c| UCD.boundary[c] === codepoint } ? true : false
       end
-      
+
       # Unpack the string at codepoints boundaries
       def u_unpack(str)
         begin
@@ -384,7 +384,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           raise EncodingError.new('malformed UTF-8 character')
         end
       end
-      
+
       # Unpack the string at grapheme boundaries instead of codepoint boundaries
       def g_unpack(str)
         codepoints = u_unpack(str)
@@ -412,15 +412,15 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
             unpacked << codepoints[marker..pos-1]
             marker = pos
           end
-        end 
+        end
         unpacked
       end
-      
+
       # Reverse operation of g_unpack
       def g_pack(unpacked)
         unpacked.flatten
       end
-      
+
       # Justifies a string in a certain way. Valid values for <tt>way</tt> are <tt>:right</tt>, <tt>:left</tt> and
       # <tt>:center</tt>. Is primarily used as a helper method by <tt>rjust</tt>, <tt>ljust</tt> and <tt>center</tt>.
       def justify(str, integer, way, padstr=' ')
@@ -438,7 +438,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           str.dup.insert(0, lpad).insert(-1, rpad)
         end
       end
-      
+
       # Generates a padding string of a certain size.
       def padding(padsize, padstr=' ')
         if padsize != 0
@@ -447,11 +447,11 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           ''
         end
       end
-      
+
       # Convert characters to a different case
       def to_case(way, str)
         u_unpack(str).map do |codepoint|
-          cp = UCD[codepoint] 
+          cp = UCD[codepoint]
           unless cp.nil?
             ncp = cp.send(way)
             ncp > 0 ? ncp : codepoint
@@ -460,7 +460,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           end
         end.pack('U*')
       end
-      
+
       # Re-order codepoints so the string becomes canonical
       def reorder_characters(codepoints)
         length = codepoints.length- 1
@@ -476,7 +476,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
         end
         codepoints
       end
-      
+
       # Decompose composed characters to the decomposed form
       def decompose_codepoints(type, codepoints)
         codepoints.inject([]) do |decomposed, cp|
@@ -497,7 +497,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
           end
         end
       end
-      
+
       # Compose decomposed characters to the composed form
       def compose_codepoints(codepoints)
         pos = 0
@@ -556,7 +556,7 @@ module ActiveSupport::Multibyte::Handlers #:nodoc:
         end
         codepoints
       end
-      
+
       # UniCode Database
       UCD = UnicodeDatabase.new
     end

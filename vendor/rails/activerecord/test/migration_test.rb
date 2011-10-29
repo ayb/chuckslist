@@ -24,7 +24,7 @@ if ActiveRecord::Base.connection.supports_migrations?
 
   class MigrationTest < Test::Unit::TestCase
     self.use_transactional_fixtures = false
-    
+
     fixtures :people
 
     def setup
@@ -80,7 +80,7 @@ if ActiveRecord::Base.connection.supports_migrations?
         assert_nothing_raised { Person.connection.add_index("people", ["key"], :name => "key_idx", :unique => true) }
         assert_nothing_raised { Person.connection.remove_index("people", :name => "key_idx", :unique => true) }
       end
-      
+
       # Sybase adapter does not support indexes on :boolean columns
       # OpenBase does not have named indexes.  You must specify a single column
       unless current_adapter?(:SybaseAdapter, :OpenBaseAdapter)
@@ -201,8 +201,8 @@ if ActiveRecord::Base.connection.supports_migrations?
       Person.connection.create_table :testings do |t|
         t.column :foo, :string
       end
-      
-      con = Person.connection     
+
+      con = Person.connection
       Person.connection.enable_identity_insert("testings", true) if current_adapter?(:SybaseAdapter)
       Person.connection.execute "insert into testings (#{con.quote_column_name('id')}, #{con.quote_column_name('foo')}) values (1, 'hello')"
       Person.connection.enable_identity_insert("testings", false) if current_adapter?(:SybaseAdapter)
@@ -297,11 +297,11 @@ if ActiveRecord::Base.connection.supports_migrations?
 
       # Test for 30 significent digits (beyond the 16 of float), 10 of them
       # after the decimal place.
-     
+
       unless current_adapter?(:SQLite3Adapter)
         assert_equal BigDecimal.new("0012345678901234567890.0123456789"), bob.wealth
       end
-      
+
       assert_equal true, bob.male?
 
       assert_equal String, bob.first_name.class
@@ -337,7 +337,7 @@ if ActiveRecord::Base.connection.supports_migrations?
         ActiveRecord::Migration.add_column :people, :intelligence_quotient, :tinyint
         Person.reset_column_information
         Person.create :intelligence_quotient => 300
-        jonnyg = Person.find(:first) 
+        jonnyg = Person.find(:first)
         assert_equal 127, jonnyg.intelligence_quotient
         jonnyg.destroy
       ensure
@@ -430,12 +430,12 @@ if ActiveRecord::Base.connection.supports_migrations?
         Person.connection.add_column("people", "first_name", :string) rescue nil
       end
     end
-    
+
     def test_change_type_of_not_null_column
       assert_nothing_raised do
         Topic.connection.change_column "topics", "written_on", :datetime, :null => false
         Topic.reset_column_information
-        
+
         Topic.connection.change_column "topics", "written_on", :datetime, :null => false
         Topic.reset_column_information
       end
@@ -449,7 +449,7 @@ if ActiveRecord::Base.connection.supports_migrations?
         ActiveRecord::Base.connection.rename_table :octopuses, :octopi
 
         # Using explicit id in insert for compatibility across all databases
-        con = ActiveRecord::Base.connection     
+        con = ActiveRecord::Base.connection
         con.enable_identity_insert("octopi", true) if current_adapter?(:SybaseAdapter)
         assert_nothing_raised { con.execute "INSERT INTO octopi (#{con.quote_column_name('id')}, #{con.quote_column_name('url')}) VALUES (1, 'http://www.foreverflying.com/octopus-black7.jpg')" }
         con.enable_identity_insert("octopi", false) if current_adapter?(:SybaseAdapter)
@@ -461,9 +461,9 @@ if ActiveRecord::Base.connection.supports_migrations?
         ActiveRecord::Base.connection.drop_table :octopi rescue nil
       end
     end
-    
+
     def test_change_column_nullability
-      Person.delete_all 
+      Person.delete_all
       Person.connection.add_column "people", "funny", :boolean
       Person.reset_column_information
       assert Person.columns_hash["funny"].null, "Column 'funny' must initially allow nulls"
@@ -481,11 +481,11 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.column :url, :string
         end
         ActiveRecord::Base.connection.add_index :octopuses, :url
-        
+
         ActiveRecord::Base.connection.rename_table :octopuses, :octopi
 
         # Using explicit id in insert for compatibility across all databases
-        con = ActiveRecord::Base.connection     
+        con = ActiveRecord::Base.connection
         con.enable_identity_insert("octopi", true) if current_adapter?(:SybaseAdapter)
         assert_nothing_raised { con.execute "INSERT INTO octopi (#{con.quote_column_name('id')}, #{con.quote_column_name('url')}) VALUES (1, 'http://www.foreverflying.com/octopus-black7.jpg')" }
         con.enable_identity_insert("octopi", false) if current_adapter?(:SybaseAdapter)
@@ -517,12 +517,12 @@ if ActiveRecord::Base.connection.supports_migrations?
       assert new_columns.find { |c| c.name == 'approved' and c.type == :boolean and c.default == false }
       assert_nothing_raised { Topic.connection.change_column :topics, :approved, :boolean, :default => true }
     end
-    
+
     def test_change_column_with_nil_default
       Person.connection.add_column "people", "contributor", :boolean, :default => true
       Person.reset_column_information
       assert Person.new.contributor?
-      
+
       assert_nothing_raised { Person.connection.change_column "people", "contributor", :boolean, :default => nil }
       Person.reset_column_information
       assert !Person.new.contributor?
@@ -542,7 +542,7 @@ if ActiveRecord::Base.connection.supports_migrations?
     ensure
       Person.connection.remove_column("people", "administrator") rescue nil
     end
-    
+
     def test_change_column_default
       Person.connection.change_column_default "people", "first_name", "Tester"
       Person.reset_column_information
@@ -571,8 +571,8 @@ if ActiveRecord::Base.connection.supports_migrations?
       assert !Reminder.table_exists?
 
       WeNeedReminders.up
-      
-      assert Reminder.create("content" => "hello world", "remind_at" => Time.now)  
+
+      assert Reminder.create("content" => "hello world", "remind_at" => Time.now)
       assert_equal "hello world", Reminder.find(:first).content
 
       WeNeedReminders.down
@@ -805,7 +805,7 @@ if ActiveRecord::Base.connection.supports_migrations?
       columns = Person.connection.columns(:binary_testings)
       data_column = columns.detect { |c| c.name == "data" }
 
-      if current_adapter?(:MysqlAdapter)      
+      if current_adapter?(:MysqlAdapter)
         assert_equal '', data_column.default
       else
         assert_nil data_column.default
@@ -824,11 +824,11 @@ if ActiveRecord::Base.connection.supports_migrations?
       ActiveRecord::Migrator.migrate(File.dirname(__FILE__) + '/fixtures/migrations_with_missing_versions/', 500)
       assert !Person.column_methods_hash.include?(:middle_name)
     	assert_equal 4, ActiveRecord::Migrator.current_version
-			
+
 			ActiveRecord::Migrator.migrate(File.dirname(__FILE__) + '/fixtures/migrations_with_missing_versions/', 2)
 			Person.reset_column_information
 			assert !Reminder.table_exists?
-      assert Person.column_methods_hash.include?(:last_name)			
+      assert Person.column_methods_hash.include?(:last_name)
 			assert_equal 2, ActiveRecord::Migrator.current_version
     end
 
@@ -878,7 +878,7 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.references :customer
         end
       end
- 
+
       def test_references_column_type_with_polymorphic_adds_type
         with_new_table do |t|
           t.expects(:column).with('taggable_type', :string, {})
@@ -886,14 +886,14 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.references :taggable, :polymorphic => true
         end
       end
-      
+
       def test_belongs_to_works_like_references
         with_new_table do |t|
           t.expects(:column).with('customer_id', :integer, {})
           t.belongs_to :customer
         end
       end
-      
+
       def test_timestamps_creates_updated_at_and_created_at
         with_new_table do |t|
           t.expects(:column).with(:created_at, :datetime)
@@ -901,7 +901,7 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.timestamps
         end
       end
-      
+
       def test_integer_creates_integer_column
         with_new_table do |t|
           t.expects(:column).with(:foo, 'integer', {})
@@ -909,7 +909,7 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.integer :foo, :bar
         end
       end
-      
+
       def test_string_creates_string_column
         with_new_table do |t|
           t.expects(:column).with(:foo, 'string', {})
@@ -917,7 +917,7 @@ if ActiveRecord::Base.connection.supports_migrations?
           t.string :foo, :bar
         end
       end
-      
+
       protected
       def with_new_table
         Person.connection.create_table :delete_me do |t|
@@ -926,7 +926,7 @@ if ActiveRecord::Base.connection.supports_migrations?
       ensure
         Person.connection.drop_table :delete_me rescue nil
       end
-      
+
     end # SexyMigrationsTest
   end # uses_mocha
 end

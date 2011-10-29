@@ -3,13 +3,13 @@ module ActiveResource
   end
 
   # Active Resource validation is reported to and from this object, which is used by Base#save
-  # to determine whether the object in a valid state to be saved. See usage example in Validations.  
+  # to determine whether the object in a valid state to be saved. See usage example in Validations.
   class Errors
     include Enumerable
     attr_reader :errors
 
     delegate :empty?, :to => :errors
-    
+
     def initialize(base) # :nodoc:
       @base, @errors = base, {}
     end
@@ -68,7 +68,7 @@ module ActiveResource
       !@errors[attribute.to_s].nil?
     end
 
-    # A method to return the errors associated with +attribute+, which returns nil, if no errors are 
+    # A method to return the errors associated with +attribute+, which returns nil, if no errors are
     # associated with the specified +attribute+, the error message if one error is associated with the specified +attribute+,
     # or an array of error messages if more than one error is associated with the specified +attribute+.
     #
@@ -89,10 +89,10 @@ module ActiveResource
       return nil if errors.nil?
       errors.size == 1 ? errors.first : errors
     end
-    
+
     alias :[] :on
 
-    # A method to return errors assigned to +base+ object through add_to_base, which returns nil, if no errors are 
+    # A method to return errors assigned to +base+ object through add_to_base, which returns nil, if no errors are
     # associated with the specified +attribute+, the error message if one error is associated with the specified +attribute+,
     # or an array of error messages if more than one error is associated with the specified +attribute+.
     #
@@ -198,7 +198,7 @@ module ActiveResource
 
     alias_method :count, :size
     alias_method :length, :size
-    
+
     # Grabs errors from the XML response.
     def from_xml(xml)
       clear
@@ -210,15 +210,15 @@ module ActiveResource
             add humanized_attributes[attr_name], message[(attr_name.size + 1)..-1]
           end
         end
-        
+
         add_to_base message if attr_message.nil?
       end
     end
   end
-  
+
   # Module to allow validation of ActiveResource objects, which creates an Errors instance for every resource.
-  # Methods are implemented by overriding +Base#validate+ or its variants   Each of these methods can inspect 
-  # the state of the object, which usually means  ensuring that a number of attributes have a certain value 
+  # Methods are implemented by overriding +Base#validate+ or its variants   Each of these methods can inspect
+  # the state of the object, which usually means  ensuring that a number of attributes have a certain value
   # (such as not empty, within a given range, matching a certain regular expression and so on).
   #
   # ==== Example
@@ -241,7 +241,7 @@ module ActiveResource
   #          errors.add_to_base("No changes have occurred") if unchanged_attributes?
   #        end
   #   end
-  #   
+  #
   #   person = Person.new("first_name" => "Jim", "phone_number" => "I will not tell you.")
   #   person.save                         # => false (and doesn't do the save)
   #   person.errors.empty?                # => false
@@ -267,7 +267,7 @@ module ActiveResource
     end
 
     # Checks for errors on an object (i.e., is resource.errors empty?).
-    # 
+    #
     # ==== Examples
     #   my_person = Person.create(params[:person])
     #   my_person.valid?

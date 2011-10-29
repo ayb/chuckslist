@@ -22,7 +22,7 @@ module ActiveRecord
       # +null+ determines if this column allows +NULL+ values.
       def initialize(name, default, sql_type = nil, null = true)
         @name, @sql_type, @null = name, sql_type, null
-        @limit, @precision, @scale  = extract_limit(sql_type), extract_precision(sql_type), extract_scale(sql_type) 
+        @limit, @precision, @scale  = extract_limit(sql_type), extract_precision(sql_type), extract_scale(sql_type)
         @type = simplified_type(sql_type)
         @default = extract_default(default)
 
@@ -251,11 +251,11 @@ module ActiveRecord
     end
 
     class ColumnDefinition < Struct.new(:base, :name, :type, :limit, :precision, :scale, :default, :null) #:nodoc:
-      
+
       def sql_type
         base.type_to_sql(type.to_sym, limit, precision, scale) rescue type
       end
-      
+
       def to_sql
         column_sql = "#{base.quote_column_name(name)} #{sql_type}"
         add_column_options!(column_sql, :null => null, :default => default) unless type.to_sym == :primary_key
@@ -313,36 +313,36 @@ module ActiveRecord
       #   Allows or disallows +NULL+ values in the column.  This option could
       #   have been named <tt>:null_allowed</tt>.
       # * <tt>:precision</tt> -
-      #   Specifies the precision for a <tt>:decimal</tt> column. 
+      #   Specifies the precision for a <tt>:decimal</tt> column.
       # * <tt>:scale</tt> -
-      #   Specifies the scale for a <tt>:decimal</tt> column. 
+      #   Specifies the scale for a <tt>:decimal</tt> column.
       #
       # Please be aware of different RDBMS implementations behavior with
       # <tt>:decimal</tt> columns:
       # * The SQL standard says the default scale should be 0, <tt>:scale</tt> <=
       #   <tt>:precision</tt>, and makes no comments about the requirements of
       #   <tt>:precision</tt>.
-      # * MySQL: <tt>:precision</tt> [1..63], <tt>:scale</tt> [0..30]. 
+      # * MySQL: <tt>:precision</tt> [1..63], <tt>:scale</tt> [0..30].
       #   Default is (10,0).
-      # * PostgreSQL: <tt>:precision</tt> [1..infinity], 
+      # * PostgreSQL: <tt>:precision</tt> [1..infinity],
       #   <tt>:scale</tt> [0..infinity]. No default.
-      # * SQLite2: Any <tt>:precision</tt> and <tt>:scale</tt> may be used. 
+      # * SQLite2: Any <tt>:precision</tt> and <tt>:scale</tt> may be used.
       #   Internal storage as strings. No default.
       # * SQLite3: No restrictions on <tt>:precision</tt> and <tt>:scale</tt>,
       #   but the maximum supported <tt>:precision</tt> is 16. No default.
-      # * Oracle: <tt>:precision</tt> [1..38], <tt>:scale</tt> [-84..127]. 
+      # * Oracle: <tt>:precision</tt> [1..38], <tt>:scale</tt> [-84..127].
       #   Default is (38,0).
-      # * DB2: <tt>:precision</tt> [1..63], <tt>:scale</tt> [0..62]. 
+      # * DB2: <tt>:precision</tt> [1..63], <tt>:scale</tt> [0..62].
       #   Default unknown.
-      # * Firebird: <tt>:precision</tt> [1..18], <tt>:scale</tt> [0..18]. 
+      # * Firebird: <tt>:precision</tt> [1..18], <tt>:scale</tt> [0..18].
       #   Default (9,0). Internal types NUMERIC and DECIMAL have different
       #   storage rules, decimal being better.
-      # * FrontBase?: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38]. 
+      # * FrontBase?: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38].
       #   Default (38,0). WARNING Max <tt>:precision</tt>/<tt>:scale</tt> for
       #   NUMERIC is 19, and DECIMAL is 38.
-      # * SqlServer?: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38]. 
+      # * SqlServer?: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38].
       #   Default (38,0).
-      # * Sybase: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38]. 
+      # * Sybase: <tt>:precision</tt> [1..38], <tt>:scale</tt> [0..38].
       #   Default (38,0).
       # * OpenBase?: Documentation unclear. Claims storage in <tt>double</tt>.
       #
@@ -395,7 +395,7 @@ module ActiveRecord
       #     t.timestamps
       #   end
       #
-      # There's a short-hand method for each of the type values declared at the top. And then there's 
+      # There's a short-hand method for each of the type values declared at the top. And then there's
       # TableDefinition#timestamps that'll add created_at and updated_at as datetimes.
       #
       # TableDefinition#references will add an appropriately-named _id column, plus a corresponding _type
@@ -431,13 +431,13 @@ module ActiveRecord
           def #{column_type}(*args)
             options = args.extract_options!
             column_names = args
-            
+
             column_names.each { |name| column(name, '#{column_type}', options) }
           end
         EOV
       end
-      
-      # Appends <tt>:datetime</tt> columns <tt>:created_at</tt> and 
+
+      # Appends <tt>:datetime</tt> columns <tt>:created_at</tt> and
       # <tt>:updated_at</tt> to the table.
       def timestamps
         column(:created_at, :datetime)

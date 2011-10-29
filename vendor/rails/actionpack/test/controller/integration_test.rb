@@ -200,7 +200,7 @@ class SessionTest < Test::Unit::TestCase
     @session.expects(:process).with(:head,path,params,headers_after_xhr)
     @session.xml_http_request(:head,path,params,headers)
   end
-  
+
   def test_xml_http_request_override_accept
     path = "/index"; params = "blah"; headers = {:location => 'blah', "Accept" => "application/xml"}
     headers_after_xhr = headers.merge(

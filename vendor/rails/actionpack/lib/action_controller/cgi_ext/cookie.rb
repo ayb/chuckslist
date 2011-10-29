@@ -22,7 +22,7 @@ class CGI #:nodoc:
     # secure:: whether this cookie is a secure cookie or not (default to
     #          false).  Secure cookies are only transmitted to HTTPS
     #          servers.
-    # http_only:: whether this cookie can be accessed by client side scripts (e.g. document.cookie) or only over HTTP 
+    # http_only:: whether this cookie can be accessed by client side scripts (e.g. document.cookie) or only over HTTP
     #             More details: http://msdn2.microsoft.com/en-us/library/system.web.httpcookie.httponly.aspx
     #             Defaults to false.
     # These keywords correspond to attributes of the cookie object.

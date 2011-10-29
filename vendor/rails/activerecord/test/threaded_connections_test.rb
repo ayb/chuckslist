@@ -13,7 +13,7 @@ unless %w(FrontBase).include? ActiveRecord::Base.connection.adapter_name
     @connections = []
     @allow_concurrency = ActiveRecord::Base.allow_concurrency
   end
-  
+
   def teardown
     # clear the connection cache
     ActiveRecord::Base.send(:clear_all_cached_connections!)
@@ -22,11 +22,11 @@ unless %w(FrontBase).include? ActiveRecord::Base.connection.adapter_name
     # reestablish old connection
     ActiveRecord::Base.establish_connection(@connection)
   end
-  
+
   def gather_connections(use_threaded_connections)
     ActiveRecord::Base.allow_concurrency = use_threaded_connections
     ActiveRecord::Base.establish_connection(@connection)
-    
+
       5.times do
         Thread.new do
           Topic.find :first
