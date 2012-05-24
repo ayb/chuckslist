@@ -13,16 +13,16 @@ module ActionController
     def content_type=(mime_type)
       self.headers["Content-Type"] = charset ? "#{mime_type}; charset=#{charset}" : mime_type
     end
-    
+
     def content_type
       content_type = String(headers["Content-Type"] || headers["type"]).split(";")[0]
       content_type.blank? ? nil : content_type
     end
-    
+
     def charset=(encoding)
       self.headers["Content-Type"] = "#{content_type || Mime::HTML}; charset=#{encoding}"
     end
-    
+
     def charset
       charset = String(headers["Content-Type"] || headers["type"]).split(";")[1]
       charset.blank? ? nil : charset.strip.split("=")[1]
@@ -66,7 +66,7 @@ module ActionController
           self.headers["type"] = content_type
         end
       end
-    
+
       # Don't set the Content-Length for block-based bodies as that would mean reading it all into memory. Not nice
       # for, say, a 2GB streaming file.
       def set_content_length!

@@ -27,7 +27,7 @@ class AccountController < ApplicationController
     return unless request.post?
     @user.save!
     if !logged_in?
-      self.current_user = @user  
+      self.current_user = @user
     end
     #redirect_back_or_default(:controller => '/account', :action => 'index')
     #TODO - do redirection to calling page
@@ -39,11 +39,11 @@ class AccountController < ApplicationController
       flash[:notice] = "Thanks for signing up!"
       redirect_to :controller => 'main', :action => 'index'
     end
-    
+
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end
-  
+
   def logout
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token

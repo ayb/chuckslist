@@ -19,4 +19,3 @@ Generate your mailer:
   ./script/generate authenticated_mailer user
 
 Consult the Acts As Authenticated wiki for more: http://technoweenie.stikipad.com/plugins/show/Acts+as+Authenticated
-   

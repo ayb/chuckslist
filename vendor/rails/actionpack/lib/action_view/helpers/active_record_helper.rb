@@ -21,9 +21,9 @@ module ActionView
         InstanceTag.new(record_name, method, self).to_tag(options)
       end
 
-      # Returns an entire form with all needed input tags for a specified Active Record object. For example, let's say you 
+      # Returns an entire form with all needed input tags for a specified Active Record object. For example, let's say you
       # have a table model <tt>Post</tt> with attributes named <tt>title</tt> of type <tt>VARCHAR</tt> and <tt>body</tt> of type <tt>TEXT</tt>:
-      #   form("post") 
+      #   form("post")
       # That line would yield a form like the following:
       #     <form action='/post/create' method='post'>
       #       <p>
@@ -92,7 +92,7 @@ module ActionView
         if (obj = (object.respond_to?(:errors) ? object : instance_variable_get("@#{object}"))) &&
           (errors = obj.errors.on(method))
           content_tag("div", "#{prepend_text}#{errors.is_a?(Array) ? errors.first : errors}#{append_text}", :class => css_class)
-        else 
+        else
           ''
         end
       end
@@ -112,7 +112,7 @@ module ActionView
       # * <tt>message</tt> - The explanation message after the header message and before the error list.  Pass +nil+ or an empty string to avoid the explanation message altogether.  (default: There were problems with the following fields:)
       #
       # To specify the display for one object, you simply provide its name as a parameter.  For example, for the +User+ model:
-      # 
+      #
       #   error_messages_for 'user'
       #
       # To specify more than one object, you simply list them; optionally, you can add an extra +object_name+ parameter, which

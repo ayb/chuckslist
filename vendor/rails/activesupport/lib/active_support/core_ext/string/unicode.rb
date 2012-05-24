@@ -14,7 +14,7 @@ module ActiveSupport #:nodoc:
         #
         #   name.chars.reverse.to_s #=> "rellüM sualC"
         #   name.chars.length #=> 12
-        #   
+        #
         #
         # All the methods on the chars proxy which normally return a string will return a Chars object. This allows
         # method chaining on the result of any of these methods.

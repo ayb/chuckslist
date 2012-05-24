@@ -49,7 +49,7 @@ class StringInput#:nodoc:
     end
 
     alias open new
-  
+
   end
 
   def initialize( str )
@@ -190,7 +190,7 @@ class StringOutput#:nodoc:
     end
 
     alias open new
-  
+
   end
 
   def initialize( str = '' )

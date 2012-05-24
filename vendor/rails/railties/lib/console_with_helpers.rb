@@ -18,7 +18,7 @@ end
 
 require 'application'
 
-class << helper 
+class << helper
   include_all_modules_from ActionView
 end
 

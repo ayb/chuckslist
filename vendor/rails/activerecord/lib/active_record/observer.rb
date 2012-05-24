@@ -20,7 +20,7 @@ module ActiveRecord
       #   ActiveRecord::Base.observers = Cacher, GarbageCollector
       #
       # Note: Setting this does not instantiate the observers yet.  #instantiate_observers is
-      # called during startup, and before each development request.  
+      # called during startup, and before each development request.
       def observers=(*observers)
         @observers = observers.flatten
       end

@@ -39,14 +39,14 @@ desc %{Test everything with Rails 1.2.x and 2.0.x gems}
 task :test_all do
   all = Rake::Task['test_full']
   ENV['RAILS_VERSION'] = '~>1.2.6'
-  all.invoke 
+  all.invoke
   # reset the invoked flag
   %w( test_full test test_mysql test_postgres ).each do |name|
     Rake::Task[name].instance_variable_set '@already_invoked', false
   end
   # do it again
   ENV['RAILS_VERSION'] = '~>2.0.2'
-  all.invoke 
+  all.invoke
 end
 
 desc 'Generate RDoc documentation for the will_paginate plugin.'
@@ -55,10 +55,10 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.add(files)
   rdoc.main = "README" # page to start on
   rdoc.title = "will_paginate"
-  
+
   templates = %w[/Users/chris/ruby/projects/err/rock/template.rb /var/www/rock/template.rb]
   rdoc.template = templates.find { |t| File.exists? t }
-  
+
   rdoc.rdoc_dir = 'doc' # rdoc output folder
   rdoc.options << '--inline-source'
   rdoc.options << '--charset=UTF-8'

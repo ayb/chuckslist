@@ -13,7 +13,7 @@ class BaseTest < Test::Unit::TestCase
     @people = [{ :id => 1, :name => 'Matz' }, { :id => 2, :name => 'David' }].to_xml(:root => 'people')
     @people_david = [{ :id => 2, :name => 'David' }].to_xml(:root => 'people')
     @addresses = [{ :id => 1, :street => '12345 Street' }].to_xml(:root => 'addresses')
-    
+
     ActiveResource::HttpMock.respond_to do |mock|
       mock.get    "/people/1.xml",             {}, @matz
       mock.get    "/people/2.xml",             {}, @david
@@ -54,13 +54,13 @@ class BaseTest < Test::Unit::TestCase
     assert_equal 'http://foo:bar@beast.caboo.se', Forum.site.to_s
     assert_equal 'http://foo:bar@beast.caboo.se/forums/:forum_id', Topic.site.to_s
   end
-  
+
   def test_site_variable_can_be_reset
-    actor = Class.new(ActiveResource::Base)    
+    actor = Class.new(ActiveResource::Base)
     assert_nil actor.site
     actor.site = 'http://localhost:31337'
     actor.site = nil
-    assert_nil actor.site    
+    assert_nil actor.site
   end
 
   def test_site_reader_uses_superclass_site_until_written
@@ -92,28 +92,28 @@ class BaseTest < Test::Unit::TestCase
     actor.site = 'http://nomad'
     assert_equal actor.site, jester.site
     assert jester.site.frozen?
-    
-    # Subclasses are always equal to superclass site when not overridden    
+
+    # Subclasses are always equal to superclass site when not overridden
     fruit = Class.new(ActiveResource::Base)
     apple = Class.new(fruit)
-    
+
     fruit.site = 'http://market'
     assert_equal fruit.site, apple.site, 'subclass did not adopt changes to parent class'
-    
+
     fruit.site = 'http://supermarket'
-    assert_equal fruit.site, apple.site, 'subclass did not adopt changes to parent class'    
+    assert_equal fruit.site, apple.site, 'subclass did not adopt changes to parent class'
   end
-  
+
   def test_updating_baseclass_site_object_wipes_descendent_cached_connection_objects
-    # Subclasses are always equal to superclass site when not overridden    
+    # Subclasses are always equal to superclass site when not overridden
     fruit = Class.new(ActiveResource::Base)
     apple = Class.new(fruit)
-    
+
     fruit.site = 'http://market'
     assert_equal fruit.connection.site, apple.connection.site
-    
+
     fruit.site = 'http://supermarket'
-    assert_equal fruit.connection.site, apple.connection.site    
+    assert_equal fruit.connection.site, apple.connection.site
   end
 
   def test_collection_name
@@ -130,14 +130,14 @@ class BaseTest < Test::Unit::TestCase
     assert_equal '/people.xml?gender=', Person.collection_path(:gender => nil)
 
     assert_equal '/people.xml?gender=male', Person.collection_path('gender' => 'male')
-    
+
     # Use includes? because ordering of param hash is not guaranteed
     assert Person.collection_path(:gender => 'male', :student => true).include?('/people.xml?')
     assert Person.collection_path(:gender => 'male', :student => true).include?('gender=male')
     assert Person.collection_path(:gender => 'male', :student => true).include?('student=true')
 
     assert_equal '/people.xml?name%5B%5D=bob&name%5B%5D=your+uncle%2Bme&name%5B%5D=&name%5B%5D=false', Person.collection_path(:name => ['bob', 'your uncle+me', nil, false])
-    
+
     assert_equal '/people.xml?struct%5Ba%5D%5B%5D=2&struct%5Ba%5D%5B%5D=1&struct%5Bb%5D=fred', Person.collection_path(:struct => {:a => [2,1], 'b' => 'fred'})
   end
 
@@ -183,21 +183,21 @@ class BaseTest < Test::Unit::TestCase
     assert_equal "/", Person.prefix
     assert_equal Set.new, Person.send!(:prefix_parameters)
   end
-  
+
   def test_set_prefix
     SetterTrap.rollback_sets(Person) do |person_class|
       person_class.prefix = "the_prefix"
       assert_equal "the_prefix", person_class.prefix
     end
   end
-  
+
   def test_set_prefix_with_inline_keys
     SetterTrap.rollback_sets(Person) do |person_class|
       person_class.prefix = "the_prefix:the_param"
       assert_equal "the_prefixthe_param_value", person_class.prefix(:the_param => "the_param_value")
     end
   end
-  
+
   def test_set_prefix_with_default_value
     SetterTrap.rollback_sets(Person) do |person_class|
       person_class.set_prefix
@@ -217,7 +217,7 @@ class BaseTest < Test::Unit::TestCase
     assert_equal "Matz", matz.name
     assert matz.name?
   end
-  
+
   def test_respond_to
     matz = Person.find(1)
     assert matz.respond_to?(:name)
@@ -260,7 +260,7 @@ class BaseTest < Test::Unit::TestCase
 
   def test_find_all_by_from
     ActiveResource::HttpMock.respond_to { |m| m.get "/companies/1/people.xml", {}, @people_david }
-  
+
     people = Person.find(:all, :from => "/companies/1/people.xml")
     assert_equal 1, people.size
     assert_equal "David", people.first.name
@@ -268,7 +268,7 @@ class BaseTest < Test::Unit::TestCase
 
   def test_find_all_by_from_with_options
     ActiveResource::HttpMock.respond_to { |m| m.get "/companies/1/people.xml", {}, @people_david }
-  
+
     people = Person.find(:all, :from => "/companies/1/people.xml")
     assert_equal 1, people.size
     assert_equal "David", people.first.name
@@ -276,7 +276,7 @@ class BaseTest < Test::Unit::TestCase
 
   def test_find_all_by_symbol_from
     ActiveResource::HttpMock.respond_to { |m| m.get "/people/managers.xml", {}, @people_david }
-  
+
     people = Person.find(:all, :from => :managers)
     assert_equal 1, people.size
     assert_equal "David", people.first.name
@@ -306,7 +306,7 @@ class BaseTest < Test::Unit::TestCase
     p = Person.new
     resp = {'Location' => '/foo/bar/1'}
     assert_equal '1', p.send!(:id_from_response, resp)
-    
+
     resp['Location'] << '.xml'
     assert_equal '1', p.send!(:id_from_response, resp)
   end
@@ -323,17 +323,17 @@ class BaseTest < Test::Unit::TestCase
     ryan = Person.new(:id => 1, :name => 'Ryan', :address => address)
     assert_equal address.prefix_options, ryan.address.prefix_options
   end
-  
+
   def test_reload_works_with_prefix_options
     address = StreetAddress.find(1, :params => { :person_id => 1 })
     assert_equal address, address.reload
   end
-  
-  def test_reload_works_without_prefix_options    
+
+  def test_reload_works_without_prefix_options
     person = Person.find(:first)
     assert_equal person, person.reload
   end
-    
+
 
   def test_create
     rick = Person.create(:name => 'Rick')
@@ -343,11 +343,11 @@ class BaseTest < Test::Unit::TestCase
 
     # test additional attribute returned on create
     assert_equal 25, rick.age
-    
+
     # Test that save exceptions get bubbled up too
     ActiveResource::HttpMock.respond_to do |mock|
       mock.post   "/people.xml", {}, nil, 409
-    end    
+    end
     assert_raises(ActiveResource::ResourceConflict) { Person.create(:name => 'Rick') }
   end
 
@@ -374,7 +374,7 @@ class BaseTest < Test::Unit::TestCase
     assert_equal "54321 Lane", addy.street
     addy.save
   end
-  
+
   def test_update_conflict
     ActiveResource::HttpMock.respond_to do |mock|
       mock.get "/people/2.xml", {}, @david
@@ -406,7 +406,7 @@ class BaseTest < Test::Unit::TestCase
     end
     assert_raises(ActiveResource::ResourceNotFound) { Person.find(1) }
   end
-  
+
   def test_delete_with_custom_prefix
     assert StreetAddress.delete(1, :person_id => 1)
     ActiveResource::HttpMock.respond_to do |mock|
@@ -436,7 +436,7 @@ class BaseTest < Test::Unit::TestCase
     assert !StreetAddress.new({:id => 1, :person_id => 2}).exists?
     assert !StreetAddress.new({:id => 2, :person_id => 1}).exists?
   end
-  
+
   def test_to_xml
     matz = Person.find(1)
     xml = matz.to_xml

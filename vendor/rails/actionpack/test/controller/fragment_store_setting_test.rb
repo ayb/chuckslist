@@ -6,7 +6,7 @@ class FragmentCacheStoreSettingTest < Test::Unit::TestCase
   def teardown
     ActionController::Base.fragment_cache_store = ActionController::Caching::Fragments::MemoryStore.new
   end
-  
+
   def test_file_fragment_cache_store
     ActionController::Base.fragment_cache_store = :file_store, "/path/to/cache/directory"
     assert_kind_of(
@@ -15,7 +15,7 @@ class FragmentCacheStoreSettingTest < Test::Unit::TestCase
     )
     assert_equal "/path/to/cache/directory", ActionController::Base.fragment_cache_store.cache_path
   end
-  
+
   def test_drb_fragment_cache_store
     ActionController::Base.fragment_cache_store = :drb_store, "druby://localhost:9192"
     assert_kind_of(

@@ -4,7 +4,7 @@
 
 =end
 # RFC #822 ftp://ftp.isi.edu/in-notes/rfc822.txt
-# 
+#
 #
 #--
 # Copyright (c) 1998-2003 Minero Aoki <aamine@loveruby.net>
@@ -81,7 +81,7 @@ module TMail
 
       @illegal = false
       @parsed = false
-      
+
       if intern
         @parsed = true
         parse_init
@@ -887,7 +887,7 @@ module TMail
         strategy.kv_pair k, unquote(v)
       end
     end
-      
+
   end
 
 

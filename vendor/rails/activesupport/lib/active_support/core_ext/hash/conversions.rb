@@ -143,7 +143,7 @@ module ActiveSupport #:nodoc:
                 end
               end
             end
-            
+
             yield options[:builder] if block_given?
           end
 
@@ -194,7 +194,7 @@ module ActiveSupport #:nodoc:
                   # blank or nil parsed values are represented by nil
                   elsif value.blank? || value['nil'] == 'true'
                     nil
-                  # If the type is the only element which makes it then 
+                  # If the type is the only element which makes it then
                   # this still makes the value nil
                   elsif value['type'] && value.size == 1
                     nil
@@ -203,7 +203,7 @@ module ActiveSupport #:nodoc:
                       h[k] = typecast_xml_value(v)
                       h
                     end
-                    
+
                     # Turn { :files => { :file => #<StringIO> } into { :files => #<StringIO> } so it is compatible with
                     # how multipart uploaded files from HTML appear
                     xml_value["file"].is_a?(StringIO) ? xml_value["file"] : xml_value

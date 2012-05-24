@@ -7,9 +7,9 @@ require 'tempfile'
 #    file.write("hello")
 #  end
 #
-# If your temp directory is not on the same filesystem as the file you're 
+# If your temp directory is not on the same filesystem as the file you're
 # trying to write, you can provide a different temporary directory.
-# 
+#
 # File.atomic_write("/data/something.imporant", "/data/tmp") do |f|
 #   file.write("hello")
 # end

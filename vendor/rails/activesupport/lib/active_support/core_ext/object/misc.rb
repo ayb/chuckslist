@@ -30,7 +30,7 @@ class Object
   end
 
   # An elegant way to refactor out common options
-  # 
+  #
   #   with_options :order => 'created_at', :class_name => 'Comment' do |post|
   #     post.has_many :comments, :conditions => ['approved = ?', true], :dependent => :delete_all
   #     post.has_many :unapproved_comments, :conditions => ['approved = ?', false]
@@ -47,7 +47,7 @@ class Object
   def with_options(options)
     yield ActiveSupport::OptionMerger.new(self, options)
   end
-  
+
   # A duck-type assistant method. For example, ActiveSupport extends Date
   # to define an acts_like_date? method, and extends Time to define
   # acts_like_time?. As a result, we can do "x.acts_like?(:time)" and

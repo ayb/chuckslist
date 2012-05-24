@@ -13,13 +13,13 @@ class File
 
     if mime
       return mime
-    else 
-      'unknown/unknown' 
+    else
+      'unknown/unknown'
     end
   end
-  
+
   def self.extensions
     EXTENSIONS
   end
-  
+
 end

@@ -25,17 +25,17 @@ class PageCachingTestController < ActionController::Base
   def not_found
     head :not_found
   end
-  
+
   def custom_path
     render :text => "Super soaker"
     cache_page("Super soaker", "/index.html")
   end
-  
+
   def expire_custom_path
     expire_page("/index.html")
     head :ok
   end
-  
+
   def trailing_slash
     render :text => "Sneak attack"
   end
@@ -95,7 +95,7 @@ class PageCachingTest < Test::Unit::TestCase
     get :expire_custom_path
     assert !File.exist?("#{FILE_STORE_PATH}/index.html")
   end
-  
+
   def test_should_cache_without_trailing_slash_on_url
     @controller.class.cache_page 'cached content', '/page_caching_test/trailing_slash'
     assert File.exist?("#{FILE_STORE_PATH}/page_caching_test/trailing_slash.html")
@@ -215,7 +215,7 @@ class ActionCacheTest < Test::Unit::TestCase
     get :index
     assert_equal cached_time, @response.body
   end
-  
+
   def test_action_cache_with_custom_cache_path
     get :show
     cached_time = content_to_cache
@@ -262,9 +262,9 @@ class ActionCacheTest < Test::Unit::TestCase
     @request.host = 'jamis.hostname.com'
     get :index
     jamis_cache = content_to_cache
-    
+
     reset!
-    
+
     @request.host = 'david.hostname.com'
     get :index
     david_cache = content_to_cache
@@ -308,7 +308,7 @@ class ActionCacheTest < Test::Unit::TestCase
     assert_equal 'xml', path_object.extension
     assert_equal 'example.org/posts/index.xml', path_object.path
   end
-  
+
   def test_correct_content_type_is_returned_for_cache_hit
     # run it twice to cache it the first time
     get :index, :id => 'content-type.xml'
@@ -341,7 +341,7 @@ class ActionCacheTest < Test::Unit::TestCase
       @controller = ActionCachingTestController.new
       @request.host = 'hostname.com'
     end
-    
+
     def assert_cache_exists(path)
       full_path = File.join(FILE_STORE_PATH, path + '.cache')
       assert File.exist?(full_path), "#{full_path.inspect} does not exist."

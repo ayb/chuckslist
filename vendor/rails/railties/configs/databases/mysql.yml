@@ -46,7 +46,7 @@ production:
   encoding: utf8
   database: <%= app_name %>_production
   username: root
-  password: 
+  password:
 <% if socket -%>
   socket: <%= socket %>
 <% else -%>

@@ -2,7 +2,7 @@
 atom_feed do |feed|
 	feed.title "Latest Ads"
 	feed.updated((@ads.last.created_at))
-	
+
 	for a in @ads
 		feed.entry(a) do |entry|
 			entry.title(a.title)

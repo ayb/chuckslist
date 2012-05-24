@@ -5,13 +5,13 @@ namespace :db do
       ActiveRecord::Base.configurations.each_value do |config|
         # Skip entries that don't have a database key, such as the first entry here:
         #
-        #  defaults: &defaults 
-        #    adapter: mysql 
+        #  defaults: &defaults
+        #    adapter: mysql
         #    username: root
-        #    password: 
+        #    password:
         #    host: localhost
-        #  
-        #  development: 
+        #
+        #  development:
         #    database: blog_development
         #    <<: *defaults
         next unless config['database']
@@ -157,21 +157,21 @@ namespace :db do
         Fixtures.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
       end
     end
-    
+
     desc "Search for a fixture given a LABEL or ID."
     task :identify => :environment do
       require "active_record/fixtures"
 
       label, id = ENV["LABEL"], ENV["ID"]
       raise "LABEL or ID required" if label.blank? && id.blank?
-      
+
       puts %Q(The fixture ID for "#{label}" is #{Fixtures.identify(label)}.) if label
-      
+
       Dir["#{RAILS_ROOT}/test/fixtures/**/*.yml"].each do |file|
         if data = YAML::load(ERB.new(IO.read(file)).result)
           data.keys.each do |key|
             key_id = Fixtures.identify(key)
-            
+
             if key == label || key_id == id.to_i
               puts "#{file}: #{key} (#{key_id})"
             end

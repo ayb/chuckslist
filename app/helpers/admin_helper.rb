@@ -1,5 +1,5 @@
 module AdminHelper
-  
+
   # UNTESTED
   # I came across this here: http://www.railsforum.com/viewtopic.php?pid=7689
   # and thought it could come in handy later..
@@ -11,9 +11,9 @@ module AdminHelper
   #   end
   # end
 
-  
+
   def ad_text_area_size(ad)
     ((ad.ad.size/255)+1*4)
   end
-  
+
 end

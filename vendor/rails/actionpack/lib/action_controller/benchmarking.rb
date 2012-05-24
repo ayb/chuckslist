@@ -14,7 +14,7 @@ module ActionController #:nodoc:
     end
 
     module ClassMethods
-      # Log and benchmark the workings of a single block and silence whatever logging that may have happened inside it 
+      # Log and benchmark the workings of a single block and silence whatever logging that may have happened inside it
       # (unless <tt>use_silence</tt> is set to false).
       #
       # The benchmark is only recorded if the current level of the logger matches the <tt>log_level</tt>, which makes it
@@ -58,7 +58,7 @@ module ActionController #:nodoc:
 
           render_output
         end
-      end    
+      end
 
     private
       def perform_action_with_benchmark

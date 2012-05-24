@@ -56,7 +56,7 @@ module TMail
 
   module TextUtils
     # Defines characters per RFC that are OK for TOKENs, ATOMs, PHRASEs and CONTROL characters.
-    
+
     aspecial     = '()<>[]:;.\\,"'
     tspecial     = '()<>[];:\\,"/?='
     lwsp         = " \t\r\n"
@@ -73,13 +73,13 @@ module TMail
     end
 
     def quote_atom( str )
-      # If the string supplied has ATOM unsafe characters in it, will return the string quoted 
+      # If the string supplied has ATOM unsafe characters in it, will return the string quoted
       # in double quotes, otherwise returns the string unmodified
       (ATOM_UNSAFE === str) ? dquote(str) : str
     end
 
     def quote_phrase( str )
-      # If the string supplied has PHRASE unsafe characters in it, will return the string quoted 
+      # If the string supplied has PHRASE unsafe characters in it, will return the string quoted
       # in double quotes, otherwise returns the string unmodified
       (PHRASE_UNSAFE === str) ? dquote(str) : str
     end
@@ -90,7 +90,7 @@ module TMail
     end
 
     def quote_token( str )
-      # If the string supplied has TOKEN unsafe characters in it, will return the string quoted 
+      # If the string supplied has TOKEN unsafe characters in it, will return the string quoted
       # in double quotes, otherwise returns the string unmodified
       (TOKEN_UNSAFE === str) ? dquote(str) : str
     end
@@ -111,7 +111,7 @@ module TMail
       # Returns unquoted string
       str =~ /^"(.*?)"$/ ? $1 : str
     end
-    
+
     def join_domain( arr )
       arr.map {|i|
           if /\A\[.*\]\z/ === i
@@ -212,7 +212,7 @@ module TMail
     def mime_encoded?( str )
       MIME_ENCODED === str
     end
-  
+
 
     def decode_params( hash )
       new = Hash.new

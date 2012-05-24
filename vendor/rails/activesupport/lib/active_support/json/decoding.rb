@@ -5,7 +5,7 @@ module ActiveSupport
   module JSON
     class ParseError < StandardError
     end
-    
+
     class << self
       # Converts a JSON string into a Ruby object.
       def decode(json)
@@ -13,7 +13,7 @@ module ActiveSupport
       rescue ArgumentError => e
         raise ParseError, "Invalid JSON string"
       end
-      
+
       protected
         # matches YAML-formatted dates
         DATE_REGEX = /^\d{4}-\d{2}-\d{2}|\d{4}-\d{1,2}-\d{1,2}[ \t]+\d{1,2}:\d{2}:\d{2}(\.[0-9]*)?(([ \t]*)Z|[-+]\d{2}?(:\d{2})?)?$/

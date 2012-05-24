@@ -11,7 +11,7 @@ xml.rss(:version => "2.0") {
 					xml.description(a.ad)
 					xml.author(a.email)
 					xml.pubDate(a.created_at.strftime("%a %d %b %Y %H:%M:%S %z"))
-					xml.link(url_for(:controller => 'ads', 
+					xml.link(url_for(:controller => 'ads',
 						:action => 'show', :host => DOMAIN,
 						:id => a.id, :only_path => false))
 					xml.guid(url_for(:controller => 'ads',

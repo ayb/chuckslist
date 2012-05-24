@@ -28,7 +28,7 @@ class SchemaAuthorizationTest < Test::Unit::TestCase
   end
 
   def teardown
-    set_session_auth 
+    set_session_auth
     @connection.execute "RESET search_path"
     USERS.each do |u|
       @connection.execute "DROP SCHEMA #{u} CASCADE"

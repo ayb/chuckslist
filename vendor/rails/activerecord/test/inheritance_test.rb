@@ -33,7 +33,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert Company.find(2).kind_of?(Client), "Summit should be a client"
     assert Client.find(2).kind_of?(Client), "Summit should be a client"
   end
-  
+
   def test_alt_inheritance_find
     switch_to_alt_inheritance_column
     test_inheritance_find
@@ -45,7 +45,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert companies[0].kind_of?(Firm), "37signals should be a firm"
     assert companies[1].kind_of?(Client), "Summit should be a client"
   end
-  
+
   def test_alt_inheritance_find_all
     switch_to_alt_inheritance_column
     test_inheritance_find_all
@@ -56,11 +56,11 @@ class InheritanceTest < Test::Unit::TestCase
     firm = Firm.new
     firm.name = "Next Angle"
     firm.save
-    
+
     next_angle = Company.find(firm.id)
     assert next_angle.kind_of?(Firm), "Next Angle should be a firm"
   end
-  
+
   def test_alt_inheritance_save
     switch_to_alt_inheritance_column
     test_inheritance_save
@@ -72,7 +72,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert_equal 2, Firm.count
     assert_equal 3, Client.count
   end
-  
+
   def test_alt_inheritance_condition
     switch_to_alt_inheritance_column
     test_inheritance_condition
@@ -83,7 +83,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Firm.find(2) }
     assert_nothing_raised   { Firm.find(1) }
   end
-  
+
   def test_alt_finding_incorrect_type_data
     switch_to_alt_inheritance_column
     test_finding_incorrect_type_data
@@ -95,7 +95,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert_equal "I am a client", Client.find(:all).first.name
     assert_equal "37signals", Firm.find(:all).first.name
   end
-  
+
   def test_alt_update_all_within_inheritance
     switch_to_alt_inheritance_column
     test_update_all_within_inheritance
@@ -107,7 +107,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert_equal 0, Client.count
     assert_equal 2, Firm.count
   end
-  
+
   def test_alt_destroy_all_within_inheritance
     switch_to_alt_inheritance_column
     test_destroy_all_within_inheritance
@@ -119,7 +119,7 @@ class InheritanceTest < Test::Unit::TestCase
     assert_kind_of Firm, Firm.find(:first, :conditions => "name = '37signals'")
     assert_nil Client.find(:first, :conditions => "name = '37signals'")
   end
-  
+
   def test_alt_find_first_within_inheritance
     switch_to_alt_inheritance_column
     test_find_first_within_inheritance
@@ -141,12 +141,12 @@ class InheritanceTest < Test::Unit::TestCase
     test_complex_inheritance
     switch_to_default_inheritance_column
   end
-  
+
   def test_eager_load_belongs_to_something_inherited
     account = Account.find(1, :include => :firm)
     assert_not_nil account.instance_variable_get("@firm"), "nil proves eager load failed"
   end
-  
+
   def test_alt_eager_loading
     switch_to_alt_inheritance_column
     test_eager_load_belongs_to_something_inherited

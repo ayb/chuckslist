@@ -36,7 +36,7 @@ module ActiveSupport #:nodoc:
         # By default, camelize converts strings to UpperCamelCase. If the argument to camelize
         # is set to ":lower" then camelize produces lowerCamelCase.
         #
-        # camelize will also convert '/' to '::' which is useful for converting paths to namespaces 
+        # camelize will also convert '/' to '::' which is useful for converting paths to namespaces
         #
         # Examples
         #   "active_record".camelize #=> "ActiveRecord"
@@ -66,7 +66,7 @@ module ActiveSupport #:nodoc:
         alias_method :titlecase, :titleize
 
         # The reverse of +camelize+. Makes an underscored form from the expression in the string.
-        # 
+        #
         # Changes '::' to '/' to convert namespaces to paths.
         #
         # Examples
@@ -114,12 +114,12 @@ module ActiveSupport #:nodoc:
         def classify
           Inflector.classify(self)
         end
-        
+
         # Capitalizes the first word and turns underscores into spaces and strips _id.
         # Like titleize, this is meant for creating pretty output.
         #
         # Examples
-        #   "employee_salary" #=> "Employee salary" 
+        #   "employee_salary" #=> "Employee salary"
         #   "author_id" #=> "Author"
         def humanize
           Inflector.humanize(self)

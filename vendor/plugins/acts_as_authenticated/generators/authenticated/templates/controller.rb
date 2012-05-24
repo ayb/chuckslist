@@ -32,7 +32,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end
-  
+
   def logout
     self.current_<%= file_name %>.forget_me if logged_in?
     cookies.delete :auth_token

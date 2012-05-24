@@ -209,7 +209,7 @@ module ActionController
   # With conditions you can define restrictions on routes. Currently the only valid condition is <tt>:method</tt>.
   #
   # * <tt>:method</tt> - Allows you to specify which method can access the route. Possible values are <tt>:post</tt>,
-  #   <tt>:get</tt>, <tt>:put</tt>, <tt>:delete</tt> and <tt>:any</tt>. The default value is <tt>:any</tt>, 
+  #   <tt>:get</tt>, <tt>:put</tt>, <tt>:delete</tt> and <tt>:any</tt>. The default value is <tt>:any</tt>,
   #   <tt>:any</tt> means that any method can access the route.
   #
   # Example:
@@ -221,7 +221,7 @@ module ActionController
   #
   # Now, if you POST to <tt>/posts/:id</tt>, it will route to the <tt>create_comment</tt> action. A GET on the same
   # URL will route to the <tt>show</tt> action.
-  # 
+  #
   # == Reloading routes
   #
   # You can reload routes if you feel you must:
@@ -1048,7 +1048,7 @@ module ActionController
       end
     end
 
-    class RouteSet #:nodoc: 
+    class RouteSet #:nodoc:
       # Mapper instances are used to build routes. The object passed to the draw
       # block in config/routes.rb is a Mapper instance.
       #

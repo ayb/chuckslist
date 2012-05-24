@@ -130,7 +130,7 @@ class CompiledTemplateTests < Test::Unit::TestCase
     `rm #{@s}; ln -s #{@b} #{@s}` unless windows
     # private methods template_changed_since? and compile_template?
     # should report true for symlink since it has changed since compile
-    
+
     # t + 3.seconds is for the symlink
     File::Stat.any_instance.expects(:mtime).times(windows ? 6 : 9).returns(
       *(windows ? [ t + 1.second, t + 1.second ] :

@@ -42,7 +42,7 @@ module ActionView
     #
     # If the object name contains square brackets the id for the object will be inserted. For example:
     #
-    #   <%= text_field "person[]", "name" %> 
+    #   <%= text_field "person[]", "name" %>
     #
     # ...will generate the following ERb.
     #
@@ -77,7 +77,7 @@ module ActionView
       #
       # Even further, the form_for method allows you to more easily escape the instance variable convention. So while the stand-alone
       # approach would require <tt>text_field :person, :name, :object => person</tt>
-      # to work with local variables instead of instance ones, the form_for calls remain the same. You simply declare once with 
+      # to work with local variables instead of instance ones, the form_for calls remain the same. You simply declare once with
       # <tt>:person, person</tt> and all subsequent field calls save <tt>:person</tt> and <tt>:object => person</tt>.
       #
       # Also note that form_for doesn't create an exclusive scope. It's still possible to use both the stand-alone FormHelper methods
@@ -135,7 +135,7 @@ module ActionView
       #     ...
       #   <% end %>
       #
-      # And for namespaced routes, like admin_post_url: 
+      # And for namespaced routes, like admin_post_url:
       #
       #   <% form_for([:admin, @post]) do |f| %>
       #    ...
@@ -316,7 +316,7 @@ module ActionView
       # hash with +options+. These options will be tagged onto the HTML as an HTML element attribute as in the example
       # shown.
       #
-      # ==== Examples 
+      # ==== Examples
       #   hidden_field(:signup, :pass_confirm)
       #   # => <input type="hidden" id="signup_pass_confirm" name="signup[pass_confirm]" value="#{@signup.pass_confirm}" />
       #
@@ -383,7 +383,7 @@ module ActionView
       # is set to 0 which is convenient for boolean values. Since HTTP standards say that unchecked checkboxes don't post anything,
       # we add a hidden value with the same name as the checkbox as a work around.
       #
-      # ==== Examples 
+      # ==== Examples
       #   # Let's say that @post.validated? is 1:
       #   check_box("post", "validated")
       #   # => <input type="checkbox" id="post_validate" name="post[validated]" value="1" checked="checked" />
@@ -652,7 +652,7 @@ module ActionView
           name = "#{object_name}[#{ActionController::RecordIdentifier.singular_class_name(object)}]"
           args.unshift(object)
         end
-        
+
         @template.fields_for(name, *args, &block)
       end
 

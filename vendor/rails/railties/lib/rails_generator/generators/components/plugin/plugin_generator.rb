@@ -25,7 +25,7 @@ class PluginGenerator < Rails::Generator::NamedBase
       m.template 'plugin.rb',     "#{plugin_path}/lib/#{file_name}.rb"
       m.template 'tasks.rake',    "#{plugin_path}/tasks/#{file_name}_tasks.rake"
       m.template 'unit_test.rb',  "#{plugin_path}/test/#{file_name}_test.rb"
-      
+
       if @with_generator
         m.directory "#{plugin_path}/generators"
         m.directory "#{plugin_path}/generators/#{file_name}"

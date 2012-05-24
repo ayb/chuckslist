@@ -94,7 +94,7 @@ module ActiveSupport #:nodoc:
           final_dst   = f.dst? ? 1 : 0
           (seconds.abs >= 86400 && initial_dst != final_dst) ? f + (initial_dst - final_dst).hours : f
         rescue
-          self.to_datetime.since(seconds)          
+          self.to_datetime.since(seconds)
         end
         alias :in :since
 
@@ -180,7 +180,7 @@ module ActiveSupport #:nodoc:
           change(:day => last_day, :hour => 23, :min => 59, :sec => 59, :usec => 0)
         end
         alias :at_end_of_month :end_of_month
-		
+
         # Returns  a new Time representing the start of the quarter (1st of january, april, july, october, 0:00)
         def beginning_of_quarter
           beginning_of_month.change(:month => [10, 7, 4, 1].detect { |m| m <= self.month })

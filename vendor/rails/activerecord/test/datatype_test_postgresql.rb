@@ -43,10 +43,10 @@ class PostgresqlDataTypeTest < Test::Unit::TestCase
 
     @connection.execute("INSERT INTO postgresql_network_addresses (cidr_address, inet_address, mac_address) VALUES('192.168.0/24', '172.16.1.254/32', '01:23:45:67:89:0a')")
     @first_network_address = PostgresqlNetworkAddress.find(1)
-    
+
     @connection.execute("INSERT INTO postgresql_bit_strings (bit_string, bit_string_varying) VALUES (B'00010101', X'15')")
     @first_bit_string = PostgresqlBitString.find(1)
-    
+
     @connection.execute("INSERT INTO postgresql_oids (obj_id) VALUES (1234)")
     @first_oid = PostgresqlOid.find(1)
   end

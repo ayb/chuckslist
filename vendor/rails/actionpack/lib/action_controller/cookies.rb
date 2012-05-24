@@ -25,7 +25,7 @@ module ActionController #:nodoc:
   # * <tt>secure</tt> - whether this cookie is a secure cookie or not (default to false).
   #                     Secure cookies are only transmitted to HTTPS servers.
   # * <tt>http_only</tt> - whether this cookie is accessible via scripting or only HTTP (defaults to false).
-  
+
   module Cookies
     def self.included(base)
       base.helper_method :cookies

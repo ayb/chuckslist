@@ -124,7 +124,7 @@ module ActionView
       #
       #   # Generates a date select that when POSTed is stored in the post variable, in the written_on attribute,
       #   # with the year in the year drop down box starting at 1995, numbers used for months instead of words,
-      #   # and without a day select box. 
+      #   # and without a day select box.
       #   date_select("post", "written_on", :start_year => 1995, :use_month_numbers => true,
       #                                     :discard_day => true, :include_blank => true)
       #
@@ -155,7 +155,7 @@ module ActionView
       # Returns a set of select tags (one for hour, minute and optionally second) pre-selected for accessing a specified
       # time-based attribute (identified by +method+) on an object assigned to the template (identified by +object+).
       # You can include the seconds with <tt>:include_seconds</tt>.
-      # 
+      #
       # ==== Examples
       #   # Creates a time select tag that, when POSTed, will be stored in the post variable in the sunrise attribute
       #   time_select("post", "sunrise")
@@ -166,12 +166,12 @@ module ActionView
       #   # Creates a time select tag that, when POSTed, will be stored in the mail variable in the sent_at attribute
       #   time_select("mail", "sent_at")
       #
-      #   # Creates a time select tag with a seconds field that, when POSTed, will be stored in the post variables in 
-      #   # the sunrise attribute. 
+      #   # Creates a time select tag with a seconds field that, when POSTed, will be stored in the post variables in
+      #   # the sunrise attribute.
       #   time_select("post", "start_time", :include_seconds => true)
       #
-      #   # Creates a time select tag with a seconds field that, when POSTed, will be stored in the entry variables in 
-      #   # the submission_time attribute. 
+      #   # Creates a time select tag with a seconds field that, when POSTed, will be stored in the entry variables in
+      #   # the submission_time attribute.
       #   time_select("entry", "submission_time", :include_seconds => true)
       #
       #   # You can set the :minute_step to 15 which will give you: 00, 15, 30 and 45.
@@ -192,11 +192,11 @@ module ActionView
       #   # Generates a datetime select that, when POSTed, will be stored in the post variable in the written_on attribute
       #   datetime_select("post", "written_on")
       #
-      #   # Generates a datetime select with a year select that starts at 1995 that, when POSTed, will be stored in the 
+      #   # Generates a datetime select with a year select that starts at 1995 that, when POSTed, will be stored in the
       #   # post variable in the written_on attribute.
       #   datetime_select("post", "written_on", :start_year => 1995)
       #
-      #   # Generates a datetime select with a default value of 3 days from the current time that, when POSTed, will be stored in the 
+      #   # Generates a datetime select with a default value of 3 days from the current time that, when POSTed, will be stored in the
       #   # trip variable in the departing attribute.
       #   datetime_select("trip", "departing", :default => 3.days.from_now)
       #
@@ -232,7 +232,7 @@ module ActionView
       #   # with a '/' between each date field.
       #   select_datetime(my_date_time, :date_separator => '/')
       #
-      #   # Generates a datetime select that discards the type of the field and defaults to the datetime in 
+      #   # Generates a datetime select that discards the type of the field and defaults to the datetime in
       #   # my_date_time (four days after today)
       #   select_datetime(my_date_time, :discard_type => true)
       #
@@ -263,7 +263,7 @@ module ActionView
       #   # with the fields ordered year, month, day rather than month, day, year.
       #   select_date(my_date, :order => [:year, :month, :day])
       #
-      #   # Generates a date select that discards the type of the field and defaults to the date in 
+      #   # Generates a date select that discards the type of the field and defaults to the date in
       #   # my_date (six days after today)
       #   select_datetime(my_date_time, :discard_type => true)
       #
@@ -283,7 +283,7 @@ module ActionView
       end
 
       # Returns a set of html select-tags (one for hour and minute)
-      # You can set <tt>:time_separator</tt> key to format the output, and 
+      # You can set <tt>:time_separator</tt> key to format the output, and
       # the <tt>:include_seconds</tt> option to include an input for seconds.
       #
       # ==== Examples
@@ -296,7 +296,7 @@ module ActionView
       #   select_time()
       #
       #   # Generates a time select that defaults to the time in my_time,
-      #   # which has fields separated by ':' 
+      #   # which has fields separated by ':'
       #   select_time(my_time, :time_separator => ':')
       #
       #   # Generates a time select that defaults to the time in my_time,
@@ -324,7 +324,7 @@ module ActionView
       #
       #   # Generates a select field for seconds that defaults to the number given
       #   select_second(33)
-      # 
+      #
       #   # Generates a select field for seconds that defaults to the seconds for the time in my_time
       #   # that is named 'interval' rather than 'second'
       #   select_second(my_time, :field_name => 'interval')
@@ -358,7 +358,7 @@ module ActionView
       #
       #   # Generates a select field for minutes that defaults to the number given
       #   select_minute(14)
-      # 
+      #
       #   # Generates a select field for minutes that defaults to the minutes for the time in my_time
       #   # that is named 'stride' rather than 'second'
       #   select_minute(my_time, :field_name => 'stride')
@@ -391,7 +391,7 @@ module ActionView
       #
       #   # Generates a select field for minutes that defaults to the number given
       #   select_minute(14)
-      # 
+      #
       #   # Generates a select field for minutes that defaults to the minutes for the time in my_time
       #   # that is named 'stride' rather than 'second'
       #   select_minute(my_time, :field_name => 'stride')
@@ -424,7 +424,7 @@ module ActionView
       #
       #   # Generates a select field for days that defaults to the number given
       #   select_day(5)
-      # 
+      #
       #   # Generates a select field for days that defaults to the day for the date in my_date
       #   # that is named 'due' rather than 'day'
       #   select_day(my_time, :field_name => 'due')
@@ -451,7 +451,7 @@ module ActionView
       # set the <tt>:use_month_numbers</tt> key in +options+ to true for this to happen. If you want both numbers and names,
       # set the <tt>:add_month_numbers</tt> key in +options+ to true. If you would prefer to show month names as abbreviations,
       # set the <tt>:use_short_month</tt> key in +options+ to true. If you want to use your own month names, set the
-      # <tt>:use_month_names</tt> key in +options+ to an array of 12 month names. Override the field name using the 
+      # <tt>:use_month_names</tt> key in +options+ to an array of 12 month names. Override the field name using the
       # <tt>:field_name</tt> option, 'month' by default.
       #
       # ==== Examples
@@ -464,7 +464,7 @@ module ActionView
       #   select_month(Date.today, :field_name => 'start')
       #
       #   # Generates a select field for months that defaults to the current month that
-      #   # will use keys like "1", "3".       
+      #   # will use keys like "1", "3".
       #   select_month(Date.today, :use_month_numbers => true)
       #
       #   # Generates a select field for months that defaults to the current month that

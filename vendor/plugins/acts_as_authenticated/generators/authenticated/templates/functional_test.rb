@@ -84,7 +84,7 @@ class <%= controller_class_name %>ControllerTest < Test::Unit::TestCase
     post :login, :login => 'quentin', :password => 'test', :remember_me => "0"
     assert_nil @response.cookies["auth_token"]
   end
-  
+
   def test_should_delete_token_on_logout
     login_as :quentin
     get :logout
@@ -115,14 +115,14 @@ class <%= controller_class_name %>ControllerTest < Test::Unit::TestCase
 
   protected
     def create_<%= file_name %>(options = {})
-      post :signup, :<%= file_name %> => { :login => 'quire', :email => 'quire@example.com', 
+      post :signup, :<%= file_name %> => { :login => 'quire', :email => 'quire@example.com',
         :password => 'quire', :password_confirmation => 'quire' }.merge(options)
     end
-    
+
     def auth_token(token)
       CGI::Cookie.new('name' => 'auth_token', 'value' => token)
     end
-    
+
     def cookie_for(<%= file_name %>)
       auth_token <%= table_name %>(<%= file_name %>).remember_token
     end

@@ -52,25 +52,25 @@ module TMail
       end
     end
     module_function :create_dest
-    
+
     def encoded( eol = "\r\n", charset = 'j', dest = nil )
       accept_strategy Encoder, eol, charset, dest
     end
-    
+
     def decoded( eol = "\n", charset = 'e', dest = nil )
       # Turn the E-Mail into a string and return it with all
       # encoded characters decoded.  alias for to_s
       accept_strategy Decoder, eol, charset, dest
     end
-    
+
     alias to_s decoded
-    
+
     def accept_strategy( klass, eol, charset, dest = nil )
       dest ||= ''
       accept klass.new( create_dest(dest), charset, eol )
       dest
     end
-    
+
   end
 
 
@@ -121,7 +121,7 @@ module TMail
     def header_body( str )
       @f << decode(str)
     end
-      
+
     def space
       @f << ' '
     end
@@ -131,7 +131,7 @@ module TMail
     def lwsp( str )
       @f << str
     end
-      
+
     def meta( str )
       @f << str
     end
@@ -202,7 +202,7 @@ module TMail
     def preserve_quotes=( bool )
       @preserve_quotes
     end
-    
+
     def preserve_quotes
       @preserve_quotes
     end
@@ -378,7 +378,7 @@ module TMail
         i += 1
       end
     end
-    
+
     METHOD_ID = {
       ?j => :extract_J,
       ?e => :extract_E,

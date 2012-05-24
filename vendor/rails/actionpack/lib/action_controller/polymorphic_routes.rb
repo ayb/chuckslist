@@ -4,7 +4,7 @@ module ActionController
       record = extract_record(record_or_hash_or_array)
 
       namespace = extract_namespace(record_or_hash_or_array)
-      
+
       args = case record_or_hash_or_array
         when Hash;  [ record_or_hash_or_array ]
         when Array; record_or_hash_or_array.dup
@@ -22,7 +22,7 @@ module ActionController
         else
           :singular
         end
-      
+
       named_route = build_named_route_call(record_or_hash_or_array, namespace, inflection, options)
       send!(named_route, *args)
     end
@@ -54,7 +54,7 @@ module ActionController
       end
 
       def build_named_route_call(records, namespace, inflection, options = {})
-        records = Array.new([extract_record(records)]) unless records.is_a?(Array)        
+        records = Array.new([extract_record(records)]) unless records.is_a?(Array)
         base_segment = "#{RecordIdentifier.send!("#{inflection}_class_name", records.pop)}_"
 
         method_root = records.reverse.inject(base_segment) do |string, name|
@@ -72,7 +72,7 @@ module ActionController
           else        record_or_hash_or_array
         end
       end
-      
+
       def extract_namespace(record_or_hash_or_array)
         returning "" do |namespace|
           if record_or_hash_or_array.is_a?(Array)
@@ -81,7 +81,7 @@ module ActionController
                 namespace << "#{record_or_namespace.to_s}_"
               end
             end
-          end  
+          end
         end
       end
   end

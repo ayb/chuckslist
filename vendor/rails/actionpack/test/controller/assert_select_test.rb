@@ -73,7 +73,7 @@ class AssertSelectTest < Test::Unit::TestCase
   def teardown
     ActionMailer::Base.deliveries.clear
   end
-  
+
   def assert_failure(message, &block)
     e = assert_raises(AssertionFailedError, &block)
     assert_match(message, e.message) if Regexp === message
@@ -181,7 +181,7 @@ class AssertSelectTest < Test::Unit::TestCase
     end
   end
 
-  
+
   def test_nested_assert_select
     render_html %Q{<div id="1">foo</div><div id="2">foo</div>}
     assert_select "div" do |elements|
@@ -200,7 +200,7 @@ class AssertSelectTest < Test::Unit::TestCase
         assert_select "#3", false
       end
     end
-    
+
     assert_failure(/Expected at least 1 element matching \"#4\", found 0\./) do
       assert_select "div" do
         assert_select "#4"
@@ -472,7 +472,7 @@ class AssertSelectTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   # Simple hide
   def test_assert_select_rjs_for_hide
     render_rjs do |page|
@@ -493,7 +493,7 @@ class AssertSelectTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   # Simple toggle
   def test_assert_select_rjs_for_toggle
     render_rjs do |page|
@@ -514,7 +514,7 @@ class AssertSelectTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   # Non-positioned insert.
   def test_assert_select_rjs_for_nonpositioned_insert
     render_rjs do |page|
@@ -561,7 +561,7 @@ class AssertSelectTest < Test::Unit::TestCase
       assert_select "div", 4
     end
   end
-  
+
   # Simple selection from a single result.
   def test_nested_assert_select_rjs_with_single_result
     render_rjs do |page|

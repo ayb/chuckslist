@@ -24,7 +24,7 @@ module ActiveSupport #:nodoc:
           end
         end
 
-        # Calls to_param on all its elements and joins the result with slashes. This is used by url_for in Action Pack. 
+        # Calls to_param on all its elements and joins the result with slashes. This is used by url_for in Action Pack.
         def to_param
           map(&:to_param).join '/'
         end

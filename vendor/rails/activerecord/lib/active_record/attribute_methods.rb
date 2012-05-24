@@ -51,11 +51,11 @@ module ActiveRecord
       def generated_methods #:nodoc:
         @generated_methods ||= Set.new
       end
-      
+
       def generated_methods?
         !generated_methods.empty?
       end
-      
+
       # generates all the attribute related methods for columns in the database
       # accessors, mutators and query methods
       def define_attribute_methods
@@ -88,7 +88,7 @@ module ActiveRecord
         raise DangerousAttributeError, "#{method_name} is defined by ActiveRecord" if @@_defined_activerecord_methods.include?(method_name)
         @_defined_class_methods.include?(method_name)
       end
-      
+
       alias :define_read_methods :define_attribute_methods
 
       # +cache_attributes+ allows you to declare which converted attribute values should
@@ -119,7 +119,7 @@ module ActiveRecord
         def attribute_method_suffixes
           @@attribute_method_suffixes ||= []
         end
-        
+
         # Define an attribute reader method.  Cope with nil column.
         def define_read_method(symbol, attr_name, column)
           cast_code = column.type_cast_code('v') if column
@@ -128,7 +128,7 @@ module ActiveRecord
           unless attr_name.to_s == self.primary_key.to_s
             access_code = access_code.insert(0, "missing_attribute('#{attr_name}', caller) unless @attributes.has_key?('#{attr_name}'); ")
           end
-          
+
           if cache_attribute?(attr_name)
             access_code = "@attributes_cache['#{attr_name}'] ||= (#{access_code})"
           end
@@ -189,7 +189,7 @@ module ActiveRecord
           return self.send(method_id, *args, &block)
         end
       end
-      
+
       if self.class.primary_key.to_s == method_name
         id
       elsif md = self.class.match_attribute_method?(method_name)
@@ -245,7 +245,7 @@ module ActiveRecord
           "#{attr_name} was supposed to be a #{self.class.serialized_attributes[attr_name]}, but was a #{unserialized_object.class.to_s}"
       end
     end
-  
+
 
     # Updates the attribute identified by <tt>attr_name</tt> with the specified +value+. Empty strings for fixnum and float
     # columns are turned into nil.
@@ -278,7 +278,7 @@ module ActiveRecord
         end
       end
     end
-    
+
     # A Person object with a name attribute can ask person.respond_to?("name"), person.respond_to?("name="), and
     # person.respond_to?("name?") which will all return true.
     alias :respond_to_without_attributes? :respond_to?
@@ -292,7 +292,7 @@ module ActiveRecord
           return true
         end
       end
-        
+
       if @attributes.nil?
         return super
       elsif @attributes.include?(method_name)
@@ -302,14 +302,14 @@ module ActiveRecord
       end
       super
     end
-    
+
 
     private
-    
+
       def missing_attribute(attr_name, stack)
         raise ActiveRecord::MissingAttributeError, "missing attribute: #{attr_name}", stack
       end
-      
+
       # Handle *? for method_missing.
       def attribute?(attribute_name)
         query_attribute(attribute_name)

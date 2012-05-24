@@ -71,13 +71,13 @@ class ReadOnlyTest < Test::Unit::TestCase
   end
 
   def test_readonly_scoping
-    Post.with_scope(:find => { :conditions => '1=1' }) do 
+    Post.with_scope(:find => { :conditions => '1=1' }) do
       assert !Post.find(1).readonly?
       assert Post.find(1, :readonly => true).readonly?
       assert !Post.find(1, :readonly => false).readonly?
     end
 
-    Post.with_scope(:find => { :joins => '   ' }) do 
+    Post.with_scope(:find => { :joins => '   ' }) do
       assert !Post.find(1).readonly?
       assert Post.find(1, :readonly => true).readonly?
       assert !Post.find(1, :readonly => false).readonly?
@@ -86,7 +86,7 @@ class ReadOnlyTest < Test::Unit::TestCase
     # Oracle barfs on this because the join includes unqualified and
     # conflicting column names
     unless current_adapter?(:OracleAdapter)
-      Post.with_scope(:find => { :joins => ', developers' }) do 
+      Post.with_scope(:find => { :joins => ', developers' }) do
         assert Post.find(1).readonly?
         assert Post.find(1, :readonly => true).readonly?
         assert !Post.find(1, :readonly => false).readonly?

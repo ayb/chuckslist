@@ -149,7 +149,7 @@ module TMail
 
 
   class UNIXMbox
-  
+
     def UNIXMbox.lock( fname )
       begin
         f = File.open(fname)
@@ -371,7 +371,7 @@ module TMail
 
       begin
         fname = "#{Time.now.to_i}.#{$$}_#{Maildir.unique_number}.#{Socket.gethostname}"
-        
+
         tmpfname = "#{@tmp}/#{fname}"
         newfname = "#{@new}/#{fname}"
       end while FileTest.exist? tmpfname
@@ -400,7 +400,7 @@ module TMail
 
     def check_tmp
       old = Time.now.to_i - TOO_OLD
-      
+
       each_filename(@tmp) do |full, fname|
         if FileTest.file? full and
            File.stat(full).mtime.to_i < old
@@ -427,7 +427,7 @@ module TMail
         end
       end
     end
-    
+
   end   # Maildir
 
   MaildirLoader = Maildir

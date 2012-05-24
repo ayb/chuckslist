@@ -7,7 +7,7 @@ require 'fixtures/category'
 
 class MethodScopingTest < Test::Unit::TestCase
   fixtures :developers, :projects, :comments, :posts
-  
+
   def test_set_conditions
     Developer.with_scope(:find => { :conditions => 'just a test...' }) do
       assert_equal 'just a test...', Developer.send(:current_scoped_methods)[:find][:conditions]
@@ -19,46 +19,46 @@ class MethodScopingTest < Test::Unit::TestCase
       assert_nothing_raised { Developer.find(1) }
     end
   end
-  
+
   def test_scoped_find_first
     Developer.with_scope(:find => { :conditions => "salary = 100000" }) do
       assert_equal Developer.find(10), Developer.find(:first, :order => 'name')
     end
   end
-  
+
   def test_scoped_find_combines_conditions
     Developer.with_scope(:find => { :conditions => "salary = 9000" }) do
       assert_equal developers(:poor_jamis), Developer.find(:first, :conditions => "name = 'Jamis'")
     end
   end
-  
+
   def test_scoped_find_sanitizes_conditions
     Developer.with_scope(:find => { :conditions => ['salary = ?', 9000] }) do
       assert_equal developers(:poor_jamis), Developer.find(:first)
-    end  
+    end
   end
-  
+
   def test_scoped_find_combines_and_sanitizes_conditions
     Developer.with_scope(:find => { :conditions => ['salary = ?', 9000] }) do
       assert_equal developers(:poor_jamis), Developer.find(:first, :conditions => ['name = ?', 'Jamis'])
-    end  
+    end
   end
-  
+
   def test_scoped_find_all
     Developer.with_scope(:find => { :conditions => "name = 'David'" }) do
       assert_equal [developers(:david)], Developer.find(:all)
-    end      
+    end
   end
-  
+
   def test_scoped_count
     Developer.with_scope(:find => { :conditions => "name = 'David'" }) do
       assert_equal 1, Developer.count
-    end        
+    end
 
     Developer.with_scope(:find => { :conditions => 'salary = 100000' }) do
       assert_equal 8, Developer.count
       assert_equal 1, Developer.count(:conditions => "name LIKE 'fixture_1%'")
-    end        
+    end
   end
 
   def test_scoped_find_include
@@ -70,7 +70,7 @@ class MethodScopingTest < Test::Unit::TestCase
     assert !scoped_developers.include?(developers(:jamis))
     assert_equal 1, scoped_developers.size
   end
-  
+
   def test_scoped_count_include
     # with the include, will retrieve only developers for the given project
     Developer.with_scope(:find => { :include => :projects }) do
@@ -184,7 +184,7 @@ class NestedScopingTest < Test::Unit::TestCase
         assert_nothing_raised { Developer.find(1) }
         assert_equal('David', Developer.find(:first).name)
       end
-    end  
+    end
   end
 
   def test_nested_scoped_find_merged_include
@@ -194,31 +194,31 @@ class NestedScopingTest < Test::Unit::TestCase
         assert_equal 1, Developer.instance_eval('current_scoped_methods')[:find][:include].length
         assert_equal('David', Developer.find(:first).name)
       end
-    end  
-    
+    end
+
     # the nested scope doesn't remove the first :include
     Developer.with_scope(:find => { :include => :projects, :conditions => "projects.id = 2" }) do
       Developer.with_scope(:find => { :include => [] }) do
         assert_equal 1, Developer.instance_eval('current_scoped_methods')[:find][:include].length
         assert_equal('David', Developer.find(:first).name)
       end
-    end  
-    
+    end
+
     # mixing array and symbol include's will merge correctly
     Developer.with_scope(:find => { :include => [:projects], :conditions => "projects.id = 2" }) do
       Developer.with_scope(:find => { :include => :projects }) do
         assert_equal 1, Developer.instance_eval('current_scoped_methods')[:find][:include].length
         assert_equal('David', Developer.find(:first).name)
       end
-    end  
+    end
   end
-  
+
   def test_nested_scoped_find_replace_include
     Developer.with_scope(:find => { :include => :projects }) do
       Developer.with_exclusive_scope(:find => { :include => [] }) do
         assert_equal 0, Developer.instance_eval('current_scoped_methods')[:find][:include].length
       end
-    end  
+    end
   end
 
   def test_three_level_nested_exclusive_scoped_find
@@ -315,11 +315,11 @@ end
 
 class HasManyScopingTest< Test::Unit::TestCase
   fixtures :comments, :posts
-  
+
   def setup
     @welcome = Post.find(1)
   end
-  
+
   def test_forwarding_of_static_methods
     assert_equal 'a comment...', Comment.what_are_you
     assert_equal 'a comment...', @welcome.comments.what_are_you
@@ -329,7 +329,7 @@ class HasManyScopingTest< Test::Unit::TestCase
     assert_equal 4, Comment.search_by_type('Comment').size
     assert_equal 2, @welcome.comments.search_by_type('Comment').size
   end
-  
+
   def test_forwarding_to_dynamic_finders
     assert_equal 4, Comment.find_all_by_type('Comment').size
     assert_equal 2, @welcome.comments.find_all_by_type('Comment').size

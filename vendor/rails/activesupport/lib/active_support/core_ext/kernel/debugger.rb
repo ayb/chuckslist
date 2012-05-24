@@ -5,7 +5,7 @@ module Kernel
       RAILS_DEFAULT_LOGGER.info "\n***** Debugger requested, but was not available: Start server with --debugger to enable *****\n"
     end
   end
-  
+
   def breakpoint
     RAILS_DEFAULT_LOGGER.info "\n***** The 'breakpoint' command has been renamed 'debugger' -- please change *****\n"
     debugger

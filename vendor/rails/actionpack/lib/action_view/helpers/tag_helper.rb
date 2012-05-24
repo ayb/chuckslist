@@ -10,14 +10,14 @@ module ActionView
 
       BOOLEAN_ATTRIBUTES = Set.new(%w(disabled readonly multiple))
 
-      # Returns an empty HTML tag of type +name+ which by default is XHTML 
-      # compliant. Set +open+ to true to create an open tag compatible 
-      # with HTML 4.0 and below. Add HTML attributes by passing an attributes 
+      # Returns an empty HTML tag of type +name+ which by default is XHTML
+      # compliant. Set +open+ to true to create an open tag compatible
+      # with HTML 4.0 and below. Add HTML attributes by passing an attributes
       # hash to +options+. Set +escape+ to false to disable attribute value
       # escaping.
       #
       # ==== Options
-      # The +options+ hash is used with attributes with no value like (<tt>disabled</tt> and 
+      # The +options+ hash is used with attributes with no value like (<tt>disabled</tt> and
       # <tt>readonly</tt>), which you can give a value of true in the +options+ hash. You can use
       # symbols or strings for the attribute names.
       #
@@ -28,7 +28,7 @@ module ActionView
       #   tag("br", nil, true)
       #   # => <br>
       #
-      #   tag("input", { :type => 'text', :disabled => true }) 
+      #   tag("input", { :type => 'text', :disabled => true })
       #   # => <input type="text" disabled="disabled" />
       #
       #   tag("img", { :src => "open & shut.png" })
@@ -41,13 +41,13 @@ module ActionView
       end
 
       # Returns an HTML block tag of type +name+ surrounding the +content+. Add
-      # HTML attributes by passing an attributes hash to +options+. 
+      # HTML attributes by passing an attributes hash to +options+.
       # Instead of passing the content as an argument, you can also use a block
       # in which case, you pass your +options+ as the second parameter.
       # Set escape to false to disable attribute value escaping.
       #
       # ==== Options
-      # The +options+ hash is used with attributes with no value like (<tt>disabled</tt> and 
+      # The +options+ hash is used with attributes with no value like (<tt>disabled</tt> and
       # <tt>readonly</tt>), which you can give a value of true in the +options+ hash. You can use
       # symbols or strings for the attribute names.
       #

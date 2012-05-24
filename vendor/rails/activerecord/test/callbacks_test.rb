@@ -56,7 +56,7 @@ class ParentDeveloper < ActiveRecord::Base
 end
 
 class ChildDeveloper < ParentDeveloper
-  
+
 end
 
 class RecursiveCallbackDeveloper < ActiveRecord::Base
@@ -361,7 +361,7 @@ class CallbacksTest < Test::Unit::TestCase
     david = ImmutableDeveloper.find(1)
     assert !david.destroy
     assert_not_nil ImmutableDeveloper.find_by_id(1)
-  end  
+  end
 
   def test_zzz_callback_returning_false # must be run last since we modify CallbackDeveloper
     david = CallbackDeveloper.find(1)
@@ -384,17 +384,17 @@ class CallbacksTest < Test::Unit::TestCase
       [ :before_validation, :returning_false  ]
     ], david.history
   end
-  
+
   def test_inheritence_of_callbacks
     parent = ParentDeveloper.new
     assert !parent.after_save_called
     parent.save
     assert parent.after_save_called
-    
+
     child = ChildDeveloper.new
     assert !child.after_save_called
     child.save
     assert child.after_save_called
   end
-  
+
 end

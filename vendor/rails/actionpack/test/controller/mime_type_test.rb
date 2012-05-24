@@ -21,24 +21,24 @@ class MimeTypeTest < Test::Unit::TestCase
     expect = [Mime::HTML, Mime::XML, Mime::PNG, Mime::PDF, Mime::TEXT, Mime::YAML, Mime::ALL]
     assert_equal expect, Mime::Type.parse(accept)
   end
-  
+
   # Accept header send with user HTTP_USER_AGENT: Sunrise/0.42j (Windows XP)
   def test_parse_crappy_broken_acceptlines
     accept = "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/*,,*/*;q=0.5"
     expect = [Mime::HTML, Mime::XML, "image/*", Mime::TEXT, Mime::ALL]
     assert_equal expect, Mime::Type.parse(accept).collect { |c| c.to_s }
   end
-  
+
   def test_custom_type
     Mime::Type.register("image/gif", :gif)
-    assert_nothing_raised do 
+    assert_nothing_raised do
       Mime::GIF
       assert_equal Mime::GIF, Mime::SET.last
     end
   ensure
     Mime.module_eval { remove_const :GIF if const_defined?(:GIF) }
   end
-  
+
   def test_type_convenience_methods
     types = [:html, :xml, :png, :pdf, :yaml, :url_encoded_form]
     types.each do |type|
@@ -47,7 +47,7 @@ class MimeTypeTest < Test::Unit::TestCase
       (types - [type]).each { |t| assert !mime.send("#{t}?"), "Mime::#{t.to_s.upcase} is #{t}?" }
     end
   end
-  
+
   def test_mime_all_is_html
     assert Mime::ALL.all?,  "Mime::ALL is not all?"
     assert Mime::ALL.html?, "Mime::ALL is not html?"

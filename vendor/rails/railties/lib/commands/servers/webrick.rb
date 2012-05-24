@@ -11,7 +11,7 @@ OPTIONS = {
   :charset      => "UTF-8",
   :mime_types   => WEBrick::HTTPUtils::DefaultMimeTypes,
   :debugger     => false
-  
+
 }
 
 ARGV.options do |opts|

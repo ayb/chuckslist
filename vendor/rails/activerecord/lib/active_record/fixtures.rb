@@ -194,20 +194,20 @@ end
 #   class FooTest < Test::Unit::TestCase
 #     self.use_transactional_fixtures = true
 #     self.use_instantiated_fixtures = false
-#   
+#
 #     fixtures :foos
-#   
+#
 #     def test_godzilla
 #       assert !Foo.find(:all).empty?
 #       Foo.destroy_all
 #       assert Foo.find(:all).empty?
 #     end
-#   
+#
 #     def test_godzilla_aftermath
 #       assert !Foo.find(:all).empty?
 #     end
 #   end
-#   
+#
 # If you preload your test database with all fixture data (probably in the Rakefile task) and use transactional fixtures,
 # then you may omit all fixtures declarations in your test cases since all the data's already there and every case rolls back its changes.
 #
@@ -969,7 +969,7 @@ module Test #:nodoc:
       def self.method_added(method)
         return if @__disable_method_added__
         @__disable_method_added__ = true
-        
+
         case method.to_s
         when 'setup'
           unless method_defined?(:setup_without_fixtures)
@@ -990,7 +990,7 @@ module Test #:nodoc:
           end
           alias_method :teardown, :full_teardown
         end
-        
+
         @__disable_method_added__ = false
       end
 

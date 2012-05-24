@@ -74,7 +74,7 @@ begin
         def update
           @cache.set(@session_key, @session_data, @expires)
         end
-      
+
         # Update and close the session's memcache entry.
         def close
           update
@@ -85,7 +85,7 @@ begin
           @cache.delete(@session_key)
           @session_data = {}
         end
-        
+
         def data
           @session_data
         end

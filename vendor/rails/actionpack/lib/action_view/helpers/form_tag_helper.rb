@@ -6,7 +6,7 @@ module ActionView
     # Provides a number of methods for creating form tags that doesn't rely on an ActiveRecord object assigned to the template like
     # FormHelper does. Instead, you provide the names and values manually.
     #
-    # NOTE: The HTML options <tt>disabled</tt>, <tt>readonly</tt>, and <tt>multiple</tt> can all be treated as booleans. So specifying 
+    # NOTE: The HTML options <tt>disabled</tt>, <tt>readonly</tt>, and <tt>multiple</tt> can all be treated as booleans. So specifying
     # <tt>:disabled => true</tt> will give <tt>disabled="disabled"</tt>.
     module FormTagHelper
       # Starts a form tag that points the action to an url configured with <tt>url_for_options</tt> just like
@@ -15,20 +15,20 @@ module ActionView
       # ==== Options
       # * <tt>:multipart</tt> - If set to true, the enctype is set to "multipart/form-data".
       # * <tt>:method</tt>    - The method to use when submitting the form, usually either "get" or "post".
-      #                         If "put", "delete", or another verb is used, a hidden input with name _method 
+      #                         If "put", "delete", or another verb is used, a hidden input with name _method
       #                         is added to simulate the verb over post.
       # * A list of parameters to feed to the URL the form will be posted to.
       #
       # ==== Examples
-      #   form_tag('/posts')                      
+      #   form_tag('/posts')
       #   # => <form action="/posts" method="post">
       #
-      #   form_tag('/posts/1', :method => :put)   
+      #   form_tag('/posts/1', :method => :put)
       #   # => <form action="/posts/1" method="put">
       #
-      #   form_tag('/upload', :multipart => true) 
+      #   form_tag('/upload', :multipart => true)
       #   # => <form action="/upload" method="post" enctype="multipart/form-data">
-      # 
+      #
       #   <% form_tag '/posts' do -%>
       #     <div><%= submit_tag 'Save' %></div>
       #   <% end -%>
@@ -88,7 +88,7 @@ module ActionView
       # * <tt>:size</tt> - The number of visible characters that will fit in the input.
       # * <tt>:maxlength</tt> - The maximum number of characters that the browser will allow the user to enter.
       # * Any other key creates standard HTML attributes for the tag.
-      # 
+      #
       # ==== Examples
       #   text_field_tag 'name'
       #   # => <input id="name" name="name" type="text" />
@@ -128,13 +128,13 @@ module ActionView
       #   # => <input id="token" name="token" type="hidden" value="VUBJKB23UIVI1UU1VOBVI@" />
       #
       #   hidden_field_tag 'collected_input', '', :onchange => "alert('Input collected!')"
-      #   # => <input id="collected_input" name="collected_input" onchange="alert('Input collected!')" 
+      #   # => <input id="collected_input" name="collected_input" onchange="alert('Input collected!')"
       #   #    type="hidden" value="" />
       def hidden_field_tag(name, value = nil, options = {})
         text_field_tag(name, value, options.stringify_keys.update("type" => "hidden"))
       end
 
-      # Creates a file upload field.  If you are using file uploads then you will also need 
+      # Creates a file upload field.  If you are using file uploads then you will also need
       # to set the multipart option for the form tag:
       #
       #   <%= form_tag { :action => "post" }, { :multipart => true } %>
@@ -142,7 +142,7 @@ module ActionView
       #     <%= submit_tag %>
       #   <%= end_form_tag %>
       #
-      # The specified URL will then be passed a File object containing the selected file, or if the field 
+      # The specified URL will then be passed a File object containing the selected file, or if the field
       # was left blank, a StringIO object.
       #
       # ==== Options
@@ -163,7 +163,7 @@ module ActionView
       #   # => <input id="resume" name="resume" type="file" value="~/resume.doc" />
       #
       #   file_field_tag 'user_pic', :accept => 'image/png,image/gif,image/jpeg'
-      #   # => <input accept="image/png,image/gif,image/jpeg" id="user_pic" name="user_pic" type="file" /> 
+      #   # => <input accept="image/png,image/gif,image/jpeg" id="user_pic" name="user_pic" type="file" />
       #
       #   file_field_tag 'file', :accept => 'text/html', :class => 'upload', :value => 'index.html'
       #   # => <input accept="text/html" class="upload" id="file" name="file" type="file" value="index.html" />
@@ -268,7 +268,7 @@ module ActionView
         tag :input, html_options
       end
 
-      # Creates a radio button; use groups of radio buttons named the same to allow users to 
+      # Creates a radio button; use groups of radio buttons named the same to allow users to
       # select from a group of options.
       #
       # ==== Options
@@ -295,11 +295,11 @@ module ActionView
         tag :input, html_options
       end
 
-      # Creates a submit button with the text <tt>value</tt> as the caption. 
+      # Creates a submit button with the text <tt>value</tt> as the caption.
       #
       # ==== Options
       # * <tt>:disabled</tt> - If set to true, the user will not be able to use this input.
-      # * <tt>:disable_with</tt> - Value of this parameter will be used as the value for a disabled version 
+      # * <tt>:disable_with</tt> - Value of this parameter will be used as the value for a disabled version
       #                            of the submit button when the form is submitted.
       # * Any other key creates standard HTML options for the tag.
       #
@@ -314,7 +314,7 @@ module ActionView
       #   # => <input disabled="disabled" name="commit" type="submit" value="Save edits" />
       #
       #   submit_tag "Complete sale", :disable_with => "Please wait..."
-      #   # => <input name="commit" onclick="this.disabled=true;this.value='Please wait...';this.form.submit();" 
+      #   # => <input name="commit" onclick="this.disabled=true;this.value='Please wait...';this.form.submit();"
       #   #    type="submit" value="Complete sale" />
       #
       #   submit_tag nil, :class => "form_submit"
@@ -324,7 +324,7 @@ module ActionView
       #   # => <input class="edit-button" disable_with="Editing..." name="commit" type="submit" value="Edit" />
       def submit_tag(value = "Save changes", options = {})
         options.stringify_keys!
-        
+
         if disable_with = options.delete("disable_with")
           options["onclick"] = [
             "this.setAttribute('originalValue', this.value)",
@@ -336,10 +336,10 @@ module ActionView
             "return result",
           ].join(";")
         end
-          
+
         tag :input, { "type" => "submit", "name" => "commit", "value" => value }.update(options.stringify_keys)
       end
-      
+
       # Displays an image which when clicked will submit the form.
       #
       # <tt>source</tt> is passed to AssetTagHelper#image_path
@@ -385,7 +385,7 @@ module ActionView
         concat(content, block.binding)
         concat("</fieldset>", block.binding)
       end
-      
+
       private
         def html_options_for_form(url_for_options, options, *parameters_for_url)
           returning options.stringify_keys do |html_options|
@@ -393,7 +393,7 @@ module ActionView
             html_options["action"]  = url_for(url_for_options, *parameters_for_url)
           end
         end
-        
+
         def extra_tags_for_form(html_options)
           case method = html_options.delete("method").to_s
             when /^get$/i # must be case-insentive, but can't use downcase as might be nil
@@ -407,12 +407,12 @@ module ActionView
               content_tag(:div, tag(:input, :type => "hidden", :name => "_method", :value => method) + token_tag, :style => 'margin:0;padding:0')
           end
         end
-        
+
         def form_tag_html(html_options)
           extra_tags = extra_tags_for_form(html_options)
           tag(:form, html_options, true) + extra_tags
         end
-        
+
         def form_tag_in_block(html_options, &block)
           content = capture(&block)
           concat(form_tag_html(html_options), block.binding)

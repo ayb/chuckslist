@@ -54,7 +54,7 @@ class JavaScriptHelperTest < Test::Unit::TestCase
   end
 
   def test_link_to_function_with_href
-    assert_dom_equal %(<a href="http://example.com/" onclick="alert('Hello world!'); return false;">Greeting</a>), 
+    assert_dom_equal %(<a href="http://example.com/" onclick="alert('Hello world!'); return false;">Greeting</a>),
       link_to_function("Greeting", "alert('Hello world!')", :href => 'http://example.com/')
   end
 

@@ -8,5 +8,5 @@ class AddFieldsToAdsModel < ActiveRecord::Migration
       remove_column :ads, :active
       remove_column :ads, :activation_hash
   end
-  
+
 end

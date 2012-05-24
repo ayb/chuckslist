@@ -5,14 +5,14 @@
   <%= text_field_tag "title", @ad.title, :size => 57 %><br/><br/>
   Posting Description:<br/>
   <%= text_area_tag "ad", @ad.ad, :rows => 10, :cols => 55 %><br/><br/>
-  
+
 
   Attach Additional Images (optional):<br/>
   <%= file_field_tag "image_attachments[]", :id => "image_attachment" %><br/>
   <%= link_to "Attach Another...", "#", :class => "clone", :rel => "image_attachment" %>
   <br/><br />
-  
-  
+
+
   <%= hidden_field_tag 'activation_hash', @ad.activation_hash %>
   <%= submit_tag 'Update Ad &raquo;' %>
 <% end %>

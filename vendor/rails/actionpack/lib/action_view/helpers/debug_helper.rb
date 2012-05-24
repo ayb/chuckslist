@@ -9,10 +9,10 @@ module ActionView
       #  my_hash = {'first' => 1, 'second' => 'two', 'third' => [1,2,3]}
       #  debug(my_hash)
       #
-      #  => <pre class='debug_dump'>--- 
+      #  => <pre class='debug_dump'>---
       #  first: 1
       #  second: two
-      #  third: 
+      #  third:
       #  - 1
       #  - 2
       #  - 3

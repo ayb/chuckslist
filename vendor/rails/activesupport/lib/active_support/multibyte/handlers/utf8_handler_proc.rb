@@ -18,17 +18,17 @@ class ActiveSupport::Multibyte::Handlers::UTF8HandlerProc < ActiveSupport::Multi
           raise ArgumentError, "#{form} is not a valid normalization variant", caller
       end
     end
-    
+
     def decompose(str) #:nodoc:
       utf8map(str, :stable)
     end
-    
+
     def downcase(str) #:nodoc:c
       utf8map(str, :casefold)
     end
-    
+
     protected
-    
+
     def utf8map(str, *option_array) #:nodoc:
       options = 0
       option_array.each do |option|

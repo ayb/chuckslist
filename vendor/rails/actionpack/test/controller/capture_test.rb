@@ -11,7 +11,7 @@ class CaptureController < ActionController::Base
   def content_for_with_parameter
     render :layout => "talk_from_action"
   end
-  
+
   def content_for_concatenated
     render :layout => "talk_from_action"
   end

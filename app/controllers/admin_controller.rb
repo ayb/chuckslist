@@ -1,29 +1,29 @@
 class AdminController < ApplicationController
   include AuthenticatedSystem
-  
+
   before_filter :login_required
-  
+
   def index
    if (!current_user.isAdmin)
     redirect_to :controller => 'main', :action => 'index'
    end
   end
-    
+
   def manager
     #@ads = Ad.find(:all)
     @display_data = Ad.display_paged_data(params[:page])
   end
-  
+
   def authors
     @display_data = Author.display_paged_data(params[:page])
   end
-  
+
   def category
     @display_data = Category.display_paged_data(params[:page])
     @parents = ParentCategory.find(:all)
     @parent_categories = @parents.collect { |p| [p.name, p.id] }
   end
-    
+
   def create_category
     if request.post? && params[:new_category] != ""
       begin
@@ -37,7 +37,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'category'
   end
-  
+
   def delete_cat
     if request.post?
       cat = Category.find(params[:id])
@@ -47,11 +47,11 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'category'
   end
-  
+
   def parent_category
     @display_data = ParentCategory.display_paged_data(params[:page])
   end
-  
+
   def create_parent_category
     if request.post? && params[:parent_category] != ""
       begin
@@ -65,7 +65,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'parent_category'
   end
-  
+
   def del_parent
     #Add check for child dependencies in the model
     if request.post?
@@ -75,7 +75,7 @@ class AdminController < ApplicationController
       redirect_to :action => 'parent_category'
     end
   end
-  
+
   def delete_author_and_ads
     @author = Author.find_by_id(params[:id])
     if request.post? && !@author.nil?
@@ -87,12 +87,12 @@ class AdminController < ApplicationController
     end
     redirect_to :action => "authors"
   end
-  
-  
+
+
   def user
     @display_data = User.display_paged_data(params[:page])
   end
-  
+
   def delete_user
     #simple check to prevent last user to be deleted
     if request.post? && User.count > 1
@@ -102,7 +102,7 @@ class AdminController < ApplicationController
       end
     redirect_to :action => 'user'
   end
-  
+
   def toggle_user_admin
     if request.post?
           user = User.find(params[:id])
@@ -117,7 +117,7 @@ class AdminController < ApplicationController
         end
     redirect_to :action => 'user'
   end
-   
+
   def expire_ad
     if request.post?
       ad = Ad.find(params[:id])
@@ -126,7 +126,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'manager'
   end
-  
+
   def extend_ad
     if request.post?
       ad = Ad.find(params[:id])
@@ -135,7 +135,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'manager'
   end
-  
+
   def reset_ad
     if request.post?
       ad = Ad.find(params[:id])
@@ -144,7 +144,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'manager'
   end
-  
+
   def delete_ad
     if request.post?
       ad = Ad.find(params[:id])
@@ -153,17 +153,17 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'manager'
   end
-  
+
   def destroy
     if logged_in?
       reset_session
-      flash[:notice] = 'You have successfully logged out'      
+      flash[:notice] = 'You have successfully logged out'
     end
     redirect_to :controller => 'main', :action => 'index'
   end
-  
+
   def change_password
-    if (params[:old_password].empty? || params[:new_password].empty? ) 
+    if (params[:old_password].empty? || params[:new_password].empty? )
       flash[:warning] = 'Passwords cannot be empty'
       render :action => 'pwd'
     else
@@ -173,7 +173,7 @@ class AdminController < ApplicationController
         begin
           current_user.save!
           flash[:notice] = 'Password successfully changed'
-          redirect_to :action => "index" 
+          redirect_to :action => "index"
         rescue ActiveRecord::RecordInvalid => e
           flash[:warning] = "Could not change your password: #{e}"
           render :action => 'pwd'
@@ -182,9 +182,9 @@ class AdminController < ApplicationController
         flash[:warning] = 'You supplied the wrong password'
         render :action => 'pwd'
       end
-    end    
+    end
   end
-  
+
   def reset_password
     @user = User.find_by_id(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
@@ -200,7 +200,7 @@ class AdminController < ApplicationController
       redirect_to :controller => "main", :action => "index"
     end
   end
-  
+
   def ban_user
     @user = User.find_by_id(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
@@ -211,7 +211,7 @@ class AdminController < ApplicationController
       end
     end
   end
-  
+
   def unban_user
     @user = User.find_by_id(params[:id])
     if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
@@ -222,9 +222,9 @@ class AdminController < ApplicationController
       end
     end
   end
-  
-  
-  # not needed for now  
+
+
+  # not needed for now
   # def edit_category
   #   @category = Category.find_by_id(params[:id])
   #   if @category.nil?
@@ -232,7 +232,7 @@ class AdminController < ApplicationController
   #     redirect_to :action => 'index'
   #   end
   # end
-  
+
   def update_category
     # update the category
     @category = Category.find_by_id(params[:id])
@@ -248,14 +248,14 @@ class AdminController < ApplicationController
         flash[:warning] = "Error Updating Category"
       end
     end
-    
+
     # fail gracefully if non ajax
     # (if we make this function ajax)
     #respond_to do |format|
     #  format.html { redirect_to :action => "category" }
     #  format.js # will just execute the RJS
     #end
-    
+
     redirect_to :action => 'category'
   end
 
@@ -267,7 +267,7 @@ class AdminController < ApplicationController
   #     redirect_to :action => 'index'
   #   end
   # end
-  
+
   def update_ad
     @ad = Ad.find_by_id(params[:id])
     if @ad.nil?
@@ -285,7 +285,7 @@ class AdminController < ApplicationController
     end
     redirect_to :action => 'manager'
   end
-  
+
   def update_parent_category
     # update the category
     @parent_category = ParentCategory.find_by_id(params[:id])
@@ -325,6 +325,6 @@ class AdminController < ApplicationController
   #   redirect_to :action => 'user'
   # end
 
-  
-  
+
+
 end

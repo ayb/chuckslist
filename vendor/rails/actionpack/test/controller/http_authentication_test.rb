@@ -2,15 +2,15 @@ require File.dirname(__FILE__) + '/../abstract_unit'
 
 class HttpBasicAuthenticationTest < Test::Unit::TestCase
   include ActionController::HttpAuthentication::Basic
-  
+
   class DummyController
     attr_accessor :headers, :renders, :request
-    
+
     def initialize
       @headers, @renders = {}, []
       @request = ActionController::TestRequest.new
     end
-    
+
     def render(options)
       self.renders << options
     end
@@ -40,7 +40,7 @@ class HttpBasicAuthenticationTest < Test::Unit::TestCase
     set_headers
     assert !authenticate(@controller) { |user_name, password| user_name == "dhh" && password == "incorrect" }
   end
-  
+
   def test_authentication_request
     authentication_request(@controller, "Megaglobalapp")
     assert_equal 'Basic realm="Megaglobalapp"', @controller.headers["WWW-Authenticate"]

@@ -5,18 +5,18 @@ module AuthenticatedSystem
     def logged_in?
       current_<%= file_name %> != :false
     end
-    
+
     # Accesses the current <%= file_name %> from the session.
     def current_<%= file_name %>
       @current_<%= file_name %> ||= (session[:<%= file_name %>] && <%= class_name %>.find_by_id(session[:<%= file_name %>])) || :false
     end
-    
+
     # Store the given <%= file_name %> in the session.
     def current_<%= file_name %>=(new_<%= file_name %>)
       session[:<%= file_name %>] = (new_<%= file_name %>.nil? || new_<%= file_name %>.is_a?(Symbol)) ? nil : new_<%= file_name %>.id
       @current_<%= file_name %> = new_<%= file_name %>
     end
-    
+
     # Check if the <%= file_name %> is authorized.
     #
     # Override this method in your controllers if you want to restrict access
@@ -52,7 +52,7 @@ module AuthenticatedSystem
       self.current_<%= file_name %> ||= <%= class_name %>.authenticate(username, passwd) || :false if username && passwd
       logged_in? && authorized? ? true : access_denied
     end
-    
+
     # Redirect as appropriate when an access request fails.
     #
     # The default action is to redirect to the login screen.
@@ -74,22 +74,22 @@ module AuthenticatedSystem
         end
       end
       false
-    end  
-    
+    end
+
     # Store the URI of the current request in the session.
     #
     # We can return to this location by calling #redirect_back_or_default.
     def store_location
       session[:return_to] = request.request_uri
     end
-    
+
     # Redirect to the URI stored by the most recent store_location call or
     # to the passed default.
     def redirect_back_or_default(default)
       session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(default)
       session[:return_to] = nil
     end
-    
+
     # Inclusion hook to make #current_<%= file_name %> and #logged_in?
     # available as ActionView helper methods.
     def self.included(base)
@@ -115,6 +115,6 @@ module AuthenticatedSystem
     def get_auth_data
       auth_key  = @@http_auth_headers.detect { |h| request.env.has_key?(h) }
       auth_data = request.env[auth_key].to_s.split unless auth_key.blank?
-      return auth_data && auth_data[0] == 'Basic' ? Base64.decode64(auth_data[1]).split(':')[0..1] : [nil, nil] 
+      return auth_data && auth_data[0] == 'Basic' ? Base64.decode64(auth_data[1]).split(':')[0..1] : [nil, nil]
     end
 end

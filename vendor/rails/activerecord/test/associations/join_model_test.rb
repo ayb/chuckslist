@@ -32,7 +32,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     assert_equal 2, authors(:mary).categorized_posts.size
     assert_equal 1, authors(:mary).unique_categorized_posts.size
   end
-  
+
   def test_has_many_uniq_through_count
     author = authors(:mary)
     assert !authors(:mary).unique_categorized_posts.loaded?
@@ -41,7 +41,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     assert_queries(1) { assert_equal 0, author.unique_categorized_posts.count(:title, :conditions => "title is NULL") }
     assert !authors(:mary).unique_categorized_posts.loaded?
   end
-  
+
   def test_polymorphic_has_many
     assert posts(:welcome).taggings.include?(taggings(:welcome_general))
   end
@@ -107,7 +107,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
   def test_polymorphic_has_many_create_model_with_inheritance_and_custom_base_class
     post = SubStiPost.create :title => 'SubStiPost', :body => 'SubStiPost body'
     assert_instance_of SubStiPost, post
-    
+
     tagging = tags(:misc).taggings.create(:taggable => post)
     assert_equal "SubStiPost", tagging.taggable_type
   end
@@ -123,7 +123,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
   def test_polymorphic_has_many_create_model_with_inheritance
     post = posts(:thinking)
     assert_instance_of SpecialPost, post
-    
+
     tagging = tags(:misc).taggings.create(:taggable => post)
     assert_equal "Post", tagging.taggable_type
   end
@@ -151,7 +151,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     assert_equal "Post", tagging.taggable_type
     assert_equal old_count+1, posts(:welcome).taggings.count
   end
-  
+
   def test_create_bang_polymorphic_with_has_many_scope
     old_count = posts(:welcome).taggings.count
     tagging = posts(:welcome).taggings.create!(:tag => tags(:misc))
@@ -241,7 +241,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
       assert_equal tagging, post.tagging
     end
   end
-  
+
   def test_include_polymorphic_has_one_defined_in_abstract_parent
     item    = Item.find_by_id(items(:dvd).id, :include => :tagging)
     tagging = taggings(:godfather)
@@ -249,7 +249,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
       assert_equal tagging, item.tagging
     end
   end
-  
+
   def test_include_polymorphic_has_many_through
     posts           = Post.find(:all, :order => 'posts.id')
     posts_with_tags = Post.find(:all, :include => :tags, :order => 'posts.id')
@@ -271,7 +271,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
   def test_has_many_find_all
     assert_equal [categories(:general)], authors(:david).categories.find(:all)
   end
-  
+
   def test_has_many_find_first
     assert_equal categories(:general), authors(:david).categories.find(:first)
   end
@@ -279,7 +279,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
   def test_has_many_with_hash_conditions
     assert_equal categories(:general), authors(:david).categories_like_general.find(:first)
   end
-  
+
   def test_has_many_find_conditions
     assert_equal categories(:general), authors(:david).categories.find(:first, :conditions => "categories.name = 'General'")
     assert_equal nil, authors(:david).categories.find(:first, :conditions => "categories.name = 'Technology'")
@@ -320,7 +320,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
       assert_equal posts(:welcome, :thinking), tags(:general).taggings.find(:all, :include => :taggable)
     end
   end
-  
+
   def test_has_many_polymorphic_with_source_type
     assert_equal posts(:welcome, :thinking), tags(:general).tagged_posts
   end
@@ -385,7 +385,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
       assert_equal [1,2,3,5,6,7,8,9,10], author.comments.collect(&:id)
     end
   end
-  
+
   def test_eager_load_has_many_through_has_many_with_conditions
     post = Post.find(:first, :include => :invalid_tags)
     assert_no_queries do
@@ -410,7 +410,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     authors(:david).author_favorites.create :favorite_author => new_author
     assert_equal new_author, authors(:david).reload.favorite_authors.first
   end
-  
+
   def test_has_many_through_uses_conditions_specified_on_the_has_many_association
     author = Author.find(:first)
     assert !author.comments.blank?
@@ -506,7 +506,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     post_thinking.tags << tag
     assert_equal(count + 1, post_thinking.tags(true).size)
 
-    assert_nothing_raised { post_thinking.tags.delete(tag) }    
+    assert_nothing_raised { post_thinking.tags.delete(tag) }
     assert_equal(count, post_thinking.tags.size)
     assert_equal(count, post_thinking.tags(true).size)
     assert_equal(tags_before.sort, post_thinking.tags.sort)
@@ -522,7 +522,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
     post_thinking.tags << doomed << doomed2
     assert_equal(count + 2, post_thinking.tags(true).size)
 
-    assert_nothing_raised { post_thinking.tags.delete(doomed, doomed2, quaked) }    
+    assert_nothing_raised { post_thinking.tags.delete(doomed, doomed2, quaked) }
     assert_equal(count, post_thinking.tags.size)
     assert_equal(count, post_thinking.tags(true).size)
     assert_equal(tags_before.sort, post_thinking.tags.sort)
@@ -539,7 +539,7 @@ class AssociationsJoinModelTest < Test::Unit::TestCase
   def test_has_many_through_has_many_with_sti
     assert_equal [comments(:does_it_hurt)], authors(:david).special_post_comments
   end
-  
+
   def test_uniq_has_many_through_should_retain_order
     comment_ids = authors(:david).comments.map(&:id)
     assert_equal comment_ids.sort, authors(:david).ordered_uniq_comments.map(&:id)

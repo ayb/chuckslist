@@ -10,10 +10,10 @@ module ActiveRecord
       end unless self.new_record?
     end
 
-    # Active Record implements aggregation through a macro-like class method called +composed_of+ for representing attributes 
+    # Active Record implements aggregation through a macro-like class method called +composed_of+ for representing attributes
     # as value objects. It expresses relationships like "Account [is] composed of Money [among other things]" or "Person [is]
-    # composed of [an] address". Each call to the macro adds a description of how the value objects are created from the 
-    # attributes of the entity object (when the entity is initialized either as a new object or from finding an existing object) 
+    # composed of [an] address". Each call to the macro adds a description of how the value objects are created from the
+    # attributes of the entity object (when the entity is initialized either as a new object or from finding an existing object)
     # and how it can be turned back into attributes (when the entity is saved to the database). Example:
     #
     #   class Customer < ActiveRecord::Base
@@ -30,10 +30,10 @@ module ActiveRecord
     #  class Money
     #    include Comparable
     #    attr_reader :amount, :currency
-    #    EXCHANGE_RATES = { "USD_TO_DKK" => 6 }  
-    # 
-    #    def initialize(amount, currency = "USD") 
-    #      @amount, @currency = amount, currency 
+    #    EXCHANGE_RATES = { "USD_TO_DKK" => 6 }
+    #
+    #    def initialize(amount, currency = "USD")
+    #      @amount, @currency = amount, currency
     #    end
     #
     #    def exchange_to(other_currency)
@@ -56,19 +56,19 @@ module ActiveRecord
     #
     #  class Address
     #    attr_reader :street, :city
-    #    def initialize(street, city) 
-    #      @street, @city = street, city 
+    #    def initialize(street, city)
+    #      @street, @city = street, city
     #    end
     #
-    #    def close_to?(other_address) 
-    #      city == other_address.city 
+    #    def close_to?(other_address)
+    #      city == other_address.city
     #    end
     #
     #    def ==(other_address)
     #      city == other_address.city && street == other_address.street
     #    end
     #  end
-    #  
+    #
     # Now it's possible to access attributes from the database through the value objects instead. If you choose to name the
     # composition the same as the attribute's name, it will be the only way to access that attribute. That's the case with our
     # +balance+ attribute. You interact with the value objects just like you would any other attribute, though:
@@ -87,8 +87,8 @@ module ActiveRecord
     #   customer.address_city   = "Copenhagen"
     #   customer.address        # => Address.new("Hyancintvej", "Copenhagen")
     #   customer.address = Address.new("May Street", "Chicago")
-    #   customer.address_street # => "May Street" 
-    #   customer.address_city   # => "Chicago" 
+    #   customer.address_street # => "May Street"
+    #   customer.address_city   # => "Chicago"
     #
     # == Writing value objects
     #
@@ -103,9 +103,9 @@ module ActiveRecord
     # returns a new value object instead of changing its own values. Active Record won't persist value objects that have been
     # changed through means other than the writer method.
     #
-    # The immutable requirement is enforced by Active Record by freezing any object assigned as a value object. Attempting to 
+    # The immutable requirement is enforced by Active Record by freezing any object assigned as a value object. Attempting to
     # change it afterwards will result in a <tt>TypeError</tt>.
-    # 
+    #
     # Read more about value objects on http://c2.com/cgi/wiki?ValueObject and on the dangers of not keeping value objects
     # immutable on http://c2.com/cgi/wiki?ValueObjectsShouldBeImmutable
     module ClassMethods
@@ -143,7 +143,7 @@ module ActiveRecord
 
         reader_method(name, class_name, mapping, allow_nil)
         writer_method(name, class_name, mapping, allow_nil, block)
-        
+
         create_reflection(:composed_of, part_id, options, self)
       end
 

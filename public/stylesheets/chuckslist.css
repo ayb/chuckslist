@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : chuckslist
     Author     : kevin
     Description:
@@ -36,7 +36,7 @@ li {
 }
 
 a:link {
-    color: #006666;    
+    color: #006666;
     text-decoration: none;
     font-family: Verdana,Arial,Helvetica,sans-serif;
 }
@@ -75,7 +75,7 @@ a:visited
 
 tr.header td {
     background-color: #000000;
-    color: #ffffff;    
+    color: #ffffff;
     font-family: Verdana,Arial,Helvetica,sans-serif;
     padding-left: 1em;
     padding-right: 1em;
@@ -111,7 +111,7 @@ div.ads {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 1px;
-    padding-right: 10px; 
+    padding-right: 10px;
 }
 
 div.ads_category {
@@ -182,9 +182,9 @@ div.login {
     margin-left: 7.5em;
 }
 
-.admin-form .footer-controls, .admin-form .footer-controls .a, 
-      .admin-form .footer-controls .a:visited, 
-      .admin-form .footer-controls .a:hover, 
+.admin-form .footer-controls, .admin-form .footer-controls .a,
+      .admin-form .footer-controls .a:visited,
+      .admin-form .footer-controls .a:hover,
       .admin-form .footer-controls .a:active{
     color: blue;
     font-size: 12px;
@@ -216,7 +216,7 @@ padding-bottom: 1px;
 .admin-form .pagination a, .pagination a:visited{
 padding: 0 5px;
 border: 1px dotted #006666;
-text-decoration: none; 
+text-decoration: none;
 color: #000000;
 }
 
@@ -247,11 +247,11 @@ font-weight: bold;
 }
 
 .admin-form #footer-new-category-show {
-    
+
 }
 
 .admin-form #footer-new-category-hide {
-    
+
 }
 
 .fieldsWithErrors {

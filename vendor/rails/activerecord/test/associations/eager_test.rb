@@ -72,7 +72,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     assert titles.include?(posts(:welcome).title)
     assert titles.include?(posts(:sti_post_and_comments).title)
   end
-  
+
   def test_eager_association_loading_with_belongs_to_and_limit
     comments = Comment.find(:all, :include => :post, :limit => 5, :order => 'comments.id')
     assert_equal 5, comments.length
@@ -96,7 +96,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     assert_equal 3, comments.length
     assert_equal [6,7,8], comments.collect { |c| c.id }
   end
-  
+
   def test_eager_association_loading_with_belongs_to_and_limit_and_offset_and_conditions_array
     comments = Comment.find(:all, :include => :post, :conditions => ['post_id = ?',4], :limit => 3, :offset => 1, :order => 'comments.id')
     assert_equal 3, comments.length
@@ -108,18 +108,18 @@ class EagerAssociationTest < Test::Unit::TestCase
     assert_equal 1, posts.length
     assert_equal [1], posts.collect { |p| p.id }
   end
-  
+
   def test_eager_association_loading_with_belongs_to_and_limit_and_offset_and_multiple_associations
     posts = Post.find(:all, :include => [:author, :very_special_comment], :limit => 1, :offset => 1, :order => 'posts.id')
     assert_equal 1, posts.length
     assert_equal [2], posts.collect { |p| p.id }
   end
-  
+
   def test_eager_association_loading_with_explicit_join
     posts = Post.find(:all, :include => :comments, :joins => "INNER JOIN authors ON posts.author_id = authors.id AND authors.name = 'Mary'", :limit => 1, :order => 'author_id')
     assert_equal 1, posts.length
   end
-  
+
   def test_eager_with_has_many_through
     posts_with_comments = people(:michael).posts.find(:all, :include => :comments)
     posts_with_author = people(:michael).posts.find(:all, :include => :author )
@@ -133,7 +133,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     author = Author.find(:first, :include => :special_post_comments, :order => 'authors.id')
     assert_equal [comments(:does_it_hurt)], assert_no_queries { author.special_post_comments }
   end
-  
+
   def test_eager_with_has_many_through_an_sti_join_model_with_conditions_on_both
     author = Author.find(:first, :include => :special_nonexistant_post_comments, :order => 'authors.id')
     assert_equal [], author.special_nonexistant_post_comments
@@ -168,13 +168,13 @@ class EagerAssociationTest < Test::Unit::TestCase
       posts = Post.find(:all, :include => [ :author, :comments ], :limit => 2, :conditions => [ "posts.body = ?", 'hello' ], :order => "posts.id")
     end
     assert_equal 2, posts.size
-    assert_equal [4,5], posts.collect { |p| p.id }    
+    assert_equal [4,5], posts.collect { |p| p.id }
   end
 
   def test_eager_with_has_many_and_limit_and_conditions_array_on_the_eagers
     posts = Post.find(:all, :include => [ :author, :comments ], :limit => 2, :conditions => [ "authors.name = ?", 'David' ])
     assert_equal 2, posts.size
-    
+
     count = Post.count(:include => [ :author, :comments ], :limit => 2, :conditions => [ "authors.name = ?", 'David' ])
     assert_equal count, posts.size
   end
@@ -193,7 +193,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     posts = Post.find(:all, :include => [ :author, :comments ], :limit => 2, :conditions => "posts.title = 'magic forest'")
     assert_equal 0, posts.size
   end
-  
+
   def test_eager_count_performed_on_a_has_many_association_with_multi_table_conditional
     author = authors(:david)
     author_posts_without_comments = author.posts.select { |post| post.comments.blank? }
@@ -211,15 +211,15 @@ class EagerAssociationTest < Test::Unit::TestCase
   end
 
   def test_eager_with_has_many_and_limit_and_conditions_on_the_eagers
-    posts = authors(:david).posts.find(:all, 
-      :include    => :comments, 
+    posts = authors(:david).posts.find(:all,
+      :include    => :comments,
       :conditions => "comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment'",
       :limit      => 2
     )
     assert_equal 2, posts.size
-    
+
     count = Post.count(
-      :include    => [ :comments, :author ], 
+      :include    => [ :comments, :author ],
       :conditions => "authors.name = 'David' AND (comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment')",
       :limit      => 2
     )
@@ -229,15 +229,15 @@ class EagerAssociationTest < Test::Unit::TestCase
   def test_eager_with_has_many_and_limit_and_scoped_conditions_on_the_eagers
     posts = nil
     Post.with_scope(:find => {
-      :include    => :comments, 
+      :include    => :comments,
       :conditions => "comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment'"
     }) do
       posts = authors(:david).posts.find(:all, :limit => 2)
       assert_equal 2, posts.size
     end
-    
+
     Post.with_scope(:find => {
-      :include    => [ :comments, :author ], 
+      :include    => [ :comments, :author ],
       :conditions => "authors.name = 'David' AND (comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment')"
     }) do
       count = Post.count(:limit => 2)
@@ -247,15 +247,15 @@ class EagerAssociationTest < Test::Unit::TestCase
 
   def test_eager_with_has_many_and_limit_and_scoped_and_explicit_conditions_on_the_eagers
     Post.with_scope(:find => { :conditions => "1=1" }) do
-      posts = authors(:david).posts.find(:all, 
-        :include    => :comments, 
+      posts = authors(:david).posts.find(:all,
+        :include    => :comments,
         :conditions => "comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment'",
         :limit      => 2
       )
       assert_equal 2, posts.size
-      
+
       count = Post.count(
-        :include    => [ :comments, :author ], 
+        :include    => [ :comments, :author ],
         :conditions => "authors.name = 'David' AND (comments.body like 'Normal%' OR comments.#{QUOTED_TYPE}= 'SpecialComment')",
         :limit      => 2
       )
@@ -311,7 +311,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     assert_not_nil f.account
     assert_equal companies(:first_firm, :reload).account, f.account
   end
-  
+
   def test_eager_with_multi_table_conditional_properly_counts_the_records_when_using_size
     author = authors(:david)
     posts_with_no_comments = author.posts.select { |post| post.comments.blank? }
@@ -333,16 +333,16 @@ class EagerAssociationTest < Test::Unit::TestCase
       post = Post.find(6, :include=>[ :monkeys, :elephants ])
     }
   end
-  
+
   def find_all_ordered(className, include=nil)
     className.find(:all, :order=>"#{className.table_name}.#{className.primary_key}", :include=>include)
   end
-  
+
   def test_limited_eager_with_order
     assert_equal posts(:thinking, :sti_comments), Post.find(:all, :include => [:author, :comments], :conditions => "authors.name = 'David'", :order => 'UPPER(posts.title)', :limit => 2, :offset => 1)
     assert_equal posts(:sti_post_and_comments, :sti_comments), Post.find(:all, :include => [:author, :comments], :conditions => "authors.name = 'David'", :order => 'UPPER(posts.title) DESC', :limit => 2, :offset => 1)
   end
-  
+
   def test_limited_eager_with_multiple_order_columns
     assert_equal posts(:thinking, :sti_comments), Post.find(:all, :include => [:author, :comments], :conditions => "authors.name = 'David'", :order => 'UPPER(posts.title), posts.id', :limit => 2, :offset => 1)
     assert_equal posts(:sti_post_and_comments, :sti_comments), Post.find(:all, :include => [:author, :comments], :conditions => "authors.name = 'David'", :order => 'UPPER(posts.title) DESC, posts.id', :limit => 2, :offset => 1)
@@ -361,8 +361,8 @@ class EagerAssociationTest < Test::Unit::TestCase
     [Author, Category].each do |className|
       d1 = find_all_ordered(className)
       # test including all post types at once
-      d2 = find_all_ordered(className, post_types) 
-      d1.each_index do |i| 
+      d2 = find_all_ordered(className, post_types)
+      d1.each_index do |i|
         assert_equal(d1[i], d2[i])
         assert_equal_after_sort(d1[i].posts, d2[i].posts)
         post_types[1..-1].each do |post_type|
@@ -375,21 +375,21 @@ class EagerAssociationTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   def test_eager_with_multiple_associations_with_same_table_has_one
     d1 = find_all_ordered(Firm)
     d2 = find_all_ordered(Firm, :account)
-    d1.each_index do |i| 
+    d1.each_index do |i|
       assert_equal(d1[i], d2[i])
       assert_equal(d1[i].account, d2[i].account)
     end
   end
-  
+
   def test_eager_with_multiple_associations_with_same_table_belongs_to
     firm_types = [:firm, :firm_with_basic_id, :firm_with_other_name, :firm_with_condition]
     d1 = find_all_ordered(Client)
     d2 = find_all_ordered(Client, firm_types)
-    d1.each_index do |i| 
+    d1.each_index do |i|
       assert_equal(d1[i], d2[i])
       firm_types.each { |type| assert_equal(d1[i].send(type), d2[i].send(type)) }
     end
@@ -429,7 +429,7 @@ class EagerAssociationTest < Test::Unit::TestCase
     assert_equal 2, one.comments.size
     assert_equal 2, one.categories.size
   end
-  
+
   def test_count_with_include
     if current_adapter?(:SQLServerAdapter, :SybaseAdapter)
       assert_equal 3, authors(:david).posts_with_comments.count(:conditions => "len(comments.body) > 15")
