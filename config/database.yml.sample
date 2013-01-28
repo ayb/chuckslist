@@ -1,0 +1,37 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MySQL driver:
+#   gem install mysql2
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+
+# Received "uninitialized constant MysqlCompat::MysqlRes" error when running "rake db:migrate" with mysql gem 2.8.1
+# To fix, uninstall the mysql gem and then run the follow command:
+# sudo env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: chuckslist_development
+  pool: 5
+  username: root
+  password: 
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: chuckslist_test
+  pool: 5
+  username: root
+  password: 
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: chuckslist_production
+  pool: 5
+  username: root
+  password:

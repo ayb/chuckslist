@@ -1,12 +1,21 @@
-source 'http://rubygems.org'
-source 'http://gems.rubyforge.org'
-source 'http://gems.github.com'
-#source 'http://gemcutter.org'
+source "http://rubygems.org"
 
-gem "rails", "3.0.7"
-gem "mysql", "2.8.1"
-gem "mysql2", "0.2.7"
+gem "rails", "= 3.2.8"
+
+gem "mysql2"
 gem "will_paginate"
+
+# Needed for the new asset pipeline
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
+gem 'pry-rails'
+
+# jQuery is the default JavaScript library in Rails 3.1
+gem 'jquery-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

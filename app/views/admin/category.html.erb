@@ -1,4 +1,4 @@
-<%= render(:partial=>'admin')%>
+<%= render :partial => 'admin' %>
 <br /><br />
 <div class="admin-form">
   <fieldset>
@@ -7,9 +7,9 @@
     <table>
       <tr class="header">
         <td>Category #</td>
-        <td>Parent Category</td>    
+        <td>Parent Category</td>
         <td>Category Name</td>
-		<td>Slug</td>
+        <td>Slug</td>
         <td>Options</td>
       </tr>
       <%= render :partial => 'category', :collection => @display_data %>

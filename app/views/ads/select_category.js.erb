@@ -1,0 +1,2 @@
+jQuery('#new-ad').html('<%= escape_javascript(render :partial => 'show_parent', :locals => { :parent => @parent_category }) %>')
+jQuery('#new-ad').append('<ul>'+'<%= escape_javascript(render :partial => 'category', :collection => @parent_category.categories) %>' + '</ul>')

@@ -27,16 +27,17 @@ namespace :db  do
         end
 	
         files_array.each do |fixture_file|
-            puts "\n Importing " + File.basename(fixture_file.strip, ".yml") + "..."
+            puts "\n Importing " + "#{File.basename(fixture_file.strip, ".yml")}..."
             begin
                   if fixture_file.downcase != 'schema_info'
+                    require 'pry'; binding.pry
                     Fixtures.create_fixtures(file_base_path, File.basename(fixture_file.strip, '.yml'))
                   else
                     raise   "Not willing to import schema_info!"
                   end
                 puts    " Status: Completed"
             rescue
-                puts    " Status: Aborted\n\n" + $!
+                puts    " Status: Aborted\n\n" #+ $!
             end
         end
         puts "\nTask completed!"

@@ -1,10 +1,10 @@
 <tr class="<%= cycle('rowodd','roweven') %>" id="ad_<%= h(ad.id.to_s) %>">
   <td><%= h(ad.id) %></td>
-  <td class="cell-shorttext"><%= h(ad.title)%></td>
-  <td class="cell-longtext"><%= h(truncate(ad.ad, 255))%></td>
+  <td class="cell-shorttext"><%= h(ad.title) %></td>
+  <td class="cell-longtext"><%= h(ad.ad[0..255]) %></td>
   <td>
     <% if !ad.expired? %>
-	  <a href="#" onclick="Element.toggle('edit_ad_<%= ad.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+	  <a href="#" onclick="jQuery('#edit_ad_<%= ad.id %>').toggle();"><%= image_tag("/images/edit.png", :border => 0) %></a>
       <%= link_to image_tag('/images/expire.png', :alt => "Expire Ad"), {:action => 'expire_ad', :id => ad}, {:method => :post, :confirm => "Confirm Expire Ad:#{ad.title}"} %>
     <% end %>
     <%= link_to image_tag('/images/extend.png'), {:action => 'extend_ad', :id => ad},{:method => :post, :confirm => "Confirm Ad Extension to 30 days from today for Ad:#{ad.title}"} %>

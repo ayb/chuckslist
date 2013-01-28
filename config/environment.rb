@@ -3,7 +3,3 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 Chuckslist::Application.initialize!
-
-require "mysql"
-require "mysql2"
-require "will_paginate"

@@ -4,7 +4,7 @@
     <td class="cell-longtext"><%= h(category.name)%></td>
 	<td class="cell-shorttext"><%= h(category.slug) %></td>
     <td class="cell-shorttext">
-	  <a href="#" onclick="Element.toggle('edit_category_<%= category.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+	  <a href="#" onclick="jQuery('#edit_category_<%= category.id %>').toggle();"><%= image_tag("/images/edit.png", :border => 0) %></a>
       <%= link_to image_tag('/images/trash2.png'), {:action => 'delete_cat', :id => category}, {:method => :post, :confirm => "Confirm Delete Category:#{category.name}"} %>
     </td>
 </tr>

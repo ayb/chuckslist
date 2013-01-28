@@ -1,1 +1,3 @@
-<li><%= link_to_remote category.name, :url => { :action => 'show_form', :id => category.id } %></li>
+<% @parent_category.categories.in_order.each do |category| %>
+<li><%= link_to category.name, "/ads/show_form/#{category.id}", :remote => true %></li>
+<% end %>

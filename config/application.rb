@@ -2,11 +2,12 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
-
-Rails.env = 'development'
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 # #####################################################
 # CHUCKSLIST CONFIGURATION VALUES
@@ -38,6 +39,9 @@ module Chuckslist
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W( #{::Rails.root.to_s}/vendor/uuid-1.0.4/lib )
     config.autoload_paths += %W( #{::Rails.root.to_s}/lib)
+
+    config.assets.enabled = false
+    config.assets.version = '1.0'
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

@@ -1,7 +1,7 @@
 <tr id="user_<%= h(user.id.to_s) %>" class="<%= cycle('rowodd','roweven') %>">
  <td><%= h(user.id) %></td>
  <td class="cell-shorttext"><%= "<del>" unless !user.banned %><%= h(user.email)%><%= "</del>" unless !user.banned %> <%= "[Banned]" unless !user.banned %></td>
- <td><a href="#" onclick="Element.toggle('edit_user_<%= user.id.to_s %>')"><%= image_tag("/images/edit.png", :border => 0) %></a>
+ <td><a href="#" onclick="jQuery('#edit_user_<%= user.id %>').toggle();"><%= image_tag("/images/edit.png", :border => 0) %></a>
    <% if !user.isAdmin %>
        <%= link_to image_tag('/images/admin.png'), {:action => 'toggle_user_admin', :id => user}, {:method => :post, :confirm => "Make User:#{user.email} Admin?"} %>
    <% else %>    

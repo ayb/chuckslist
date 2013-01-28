@@ -1,11 +1,29 @@
 CHUCKSLIST
 ----------
-This version works with Rails 3.0.7 and Ruby 1.8.7...documentation to follow soon...
+(Updated January 28, 2013) This version works with Rails 3.2.8 and Ruby 1.9.2p320
+
+TODO
+----
+1) Needs test specs!!!  Use RSpec.
+2) Setup to use paperclip.  Image attachments to ads do not work at the moment because I removed attachment_fu.
+3) Use HAML and SASS instead of ERB
+4) Captcha
+5) S3 configurations in admin panel
 
 SETUP INSTRUCTIONS
 ------------------
-Refer to /doc/INSTALL for setup instructions.
+1) clone
+2) bundle install
+3) rake db:create
+4) rake db:migrate
+5) rake db:fixtures:load
+6) rails s -p 3000
+7) http://localhost:3000/account/signup/
+8) Create a user.  First user created is the admin.
 
+OLD SETUP INSTRUCTIONS
+----------------------
+Refer to /doc/INSTALL for setup instructions.
 
 COPYRIGHT AND LICENSE
 ---------------------

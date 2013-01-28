@@ -1,0 +1,2 @@
+jQuery('#new-ad').html('<%= escape_javascript(render :partial => 'form_header', :locals => { :category => @category }) %>')
+jQuery('#new-ad').append('<ul>'+'<%= escape_javascript(render :partial => 'form', :locals => { :submit_text => raw("create ad"), :category => @category}) %>' + '</ul>')

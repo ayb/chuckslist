@@ -39,13 +39,10 @@ class AdminController < ApplicationController
   end
   
   def delete_cat
-    if request.post?
-      cat = Category.find(params[:id])
-      cat.destroy
-      flash[:notice] = "Category deleted"
-      redirect_to :action => 'category'
-    end
-    redirect_to :action => 'category'
+    cat = Category.find(params[:id])
+    cat.destroy
+    flash[:notice] = "Category deleted"
+    redirect_to category_path
   end
   
   def parent_category
@@ -67,25 +64,22 @@ class AdminController < ApplicationController
   end
   
   def del_parent
-    #Add check for child dependencies in the model
-    if request.post?
-      parent = ParentCategory.find(params[:id])
-      parent.destroy
-      flash[:notice] = "Parent Category deleted"
-      redirect_to :action => 'parent_category'
-    end
+    parent = ParentCategory.find(params[:id])
+    parent.destroy
+    flash[:notice] = "Parent Category deleted"
+    redirect_to parent_path
   end
   
   def delete_author_and_ads
     @author = Author.find(params[:id])
-    if request.post? && !@author.nil?
+    if !@author.nil?
       @author.ads.remove_all
       @author.is_banned
       flash[:notice] = "Author has been banned and all ads removed"
     else
       flash[:warning] = "Error - unable to delete author and ads"
     end
-    redirect_to :action => "authors"
+    redirect_to authors_path
   end
   
   
@@ -95,12 +89,12 @@ class AdminController < ApplicationController
   
   def delete_user
     #simple check to prevent last user to be deleted
-    if request.post? && User.count > 1
-        user = User.find(params[:id])
-        user.destroy
-        flash[:notice] = "User removed"
-      end
-    redirect_to :action => 'user'
+    if User.count > 1
+      user = User.find(params[:id])
+      user.destroy
+      flash[:notice] = "User removed"
+    end
+    redirect_to user_path
   end
   
   def toggle_user_admin
@@ -119,39 +113,33 @@ class AdminController < ApplicationController
   end
    
   def expire_ad
-    if request.post?
       ad = Ad.find(params[:id])
       ad.expire!
       flash[:notice] = "Ad has been expired"
-    end
-    redirect_to :action => 'manager'
+
+    redirect_to manager_path
   end
   
   def extend_ad
-    if request.post?
       ad = Ad.find(params[:id])
       ad.extend!
       flash[:notice] = "Ad has been extended by 30 days from now"
-    end
-    redirect_to :action => 'manager'
+
+    redirect_to manager_path
   end
   
   def reset_ad
-    if request.post?
       ad = Ad.find(params[:id])
       ad.reset!
       flash[:notice] = "Ad has been reset"
-    end
-    redirect_to :action => 'manager'
+    redirect_to manager_path
   end
   
   def delete_ad
-    if request.post?
       ad = Ad.find(params[:id])
       ad.destroy
       flash[:notice] = "Ad has been deleted"
-    end
-    redirect_to :action => 'manager'
+    redirect_to manager_path
   end
   
   def destroy
@@ -203,7 +191,7 @@ class AdminController < ApplicationController
   
   def ban_user
     @user = User.find(params[:id])
-    if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
+    if logged_in? && current_user.isAdmin && !@user.nil?
       @user.banned = true
       if !@user.save
         flash[:warning] = "Unable to Ban User"
@@ -214,7 +202,7 @@ class AdminController < ApplicationController
   
   def unban_user
     @user = User.find(params[:id])
-    if request.post? && logged_in? && current_user.isAdmin && !@user.nil?
+    if logged_in? && current_user.isAdmin && !@user.nil?
       @user.banned = false
       if !@user.save
         flash[:warning] = "Unable to Un-Ban User"

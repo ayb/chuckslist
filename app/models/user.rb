@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     end
     
   def self.display_paged_data(page)
-    paginate(:page => page, :per_page => 10,:order => "id")
+    paginate(:page => page, :per_page => 10,:order => "id") if User.all.present?
   end
   
   # reset password to a random password
